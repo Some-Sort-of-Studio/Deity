@@ -1,1 +1,1 @@
-# Deity
+# Deity Game
