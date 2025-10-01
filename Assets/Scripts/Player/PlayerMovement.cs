@@ -107,6 +107,15 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         else if (!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
 
     private void SpeedControl()
