@@ -470,6 +470,94 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TilemapColliders5pxSpacing_17
+      rect:
+        serializedVersion: 2
+        x: 2261
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 505f0594b9d5d0f43aba61517705abef
+      internalID: -1567181174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilemapColliders5pxSpacing_18
+      rect:
+        serializedVersion: 2
+        x: 2394
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 397afdc6b62ef0248b8bab8e8644e7ec
+      internalID: 1520289580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilemapColliders5pxSpacing_19
+      rect:
+        serializedVersion: 2
+        x: 2527
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec2cdb192d642fb41b80489ec81fa5dd
+      internalID: -293430867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilemapColliders5pxSpacing_20
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7adf6311adad8b4f9758a74183219d0
+      internalID: 1935086916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -493,7 +581,11 @@ TextureImporter:
       TilemapColliders5pxSpacing_14: -2076010555
       TilemapColliders5pxSpacing_15: -473442717
       TilemapColliders5pxSpacing_16: 939456557
+      TilemapColliders5pxSpacing_17: -1567181174
+      TilemapColliders5pxSpacing_18: 1520289580
+      TilemapColliders5pxSpacing_19: -293430867
       TilemapColliders5pxSpacing_2: 414317214
+      TilemapColliders5pxSpacing_20: 1935086916
       TilemapColliders5pxSpacing_3: -1578634487
       TilemapColliders5pxSpacing_4: 1259891221
       TilemapColliders5pxSpacing_5: 250405964
