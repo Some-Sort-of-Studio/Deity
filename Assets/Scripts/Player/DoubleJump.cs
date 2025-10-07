@@ -1,10 +1,11 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class DoubleJump : MonoBehaviour
 {
     PlayerMovement player;
-    Rigidbody rb;
+    Rigidbody2D rb;
 
     public float doubleJumpMutliplier;
 
@@ -12,7 +13,7 @@ public class DoubleJump : MonoBehaviour
     void Start()
     {
         player = GetComponent<PlayerMovement>();
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -30,9 +31,9 @@ public class DoubleJump : MonoBehaviour
         {
             if (Input.GetKeyDown(player.jumpKey) && doubleJump)
             {
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, 0);
 
-                rb.AddForce(transform.up * player.jumpForce * doubleJumpMutliplier, ForceMode.Impulse);
+                rb.AddForce(transform.up * player.jumpForce * doubleJumpMutliplier, ForceMode2D.Impulse);
 
                 doubleJump = false;
             }

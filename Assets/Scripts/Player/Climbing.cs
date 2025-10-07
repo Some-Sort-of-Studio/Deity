@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Climbing : MonoBehaviour
 {
     private float vertical;
@@ -7,11 +8,12 @@ public class Climbing : MonoBehaviour
     private bool isClimable;
     private bool isClimbing;
 
-    private Rigidbody rb;
+    private Rigidbody2D rb;
+    [SerializeField] private float gravity = 1;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -28,16 +30,16 @@ public class Climbing : MonoBehaviour
     {
         if (isClimbing)
         {
-            rb.useGravity = false;
+            rb.gravityScale = 0;
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, vertical * speed);
         }
         else
         {
-            rb.useGravity = true;
+            rb.gravityScale = gravity;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("ClimableObject"))
         {
@@ -45,7 +47,7 @@ public class Climbing : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("ClimableObject"))
         {
