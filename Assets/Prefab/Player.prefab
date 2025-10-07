@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  walkSpeed: 4
+  sprintSpeed: 6
   groundDrag: 5
   jumpForce: 10
   jumpCooldown: 0.25

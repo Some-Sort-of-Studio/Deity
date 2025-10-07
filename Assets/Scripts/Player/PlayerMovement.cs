@@ -5,6 +5,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float sprintSpeed;
     [SerializeField] private float groundDrag;
 
     [Header("Jumping")]
@@ -17,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
-    [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
+    public KeyCode sprintKey = KeyCode.LeftShift;
 
     [Header("Ground Check")]
     [SerializeField] private float playerHeight;
@@ -34,10 +36,12 @@ public class PlayerMovement : MonoBehaviour
 
     public enum MovementState
     {
+        idle,
         walking,
+        sprinting,
         air
     }
-    [SerializeField] private MovementState state;
+    public MovementState state;
 
     private void Start()
     {
@@ -81,7 +85,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
-        state = grounded ? MovementState.walking : MovementState.air;
+        if (grounded)
+        {
+            state = MovementState.idle;
+
+            if (rb.linearVelocity != Vector2.zero)
+            {
+                if (Input.GetKey(sprintKey))
+                {
+                    moveSpeed = sprintSpeed;
+                    state = MovementState.sprinting;
+                }
+                else
+                {
+                    moveSpeed = walkSpeed;
+                    state = MovementState.walking;
+                }
+            }
+        }
+        else
+        {
+            state = MovementState.air;
+        }
     }
 
     private void MovePlayer()
