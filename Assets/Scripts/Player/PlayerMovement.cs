@@ -1,49 +1,47 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    private float moveSpeed;
-    public float walkSpeed;
-    public float sprintSpeed;
-
-    public float groundDrag;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float groundDrag;
 
     [Header("Jumping")]
     public float jumpForce;
-    public float jumpCooldown;
-    public float airMultiplier;
-    public bool readyToJump;
-    public bool hasJumped;
+    [SerializeField] private float jumpCooldown;
+    [SerializeField] private float airMultiplier;
 
-    [Header("keybinds")]
+    [SerializeField] private bool readyToJump;
+    [SerializeField] private bool hasJumped;
+
+    [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode sprintKey = KeyCode.LeftShift;
+    [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
 
     [Header("Ground Check")]
-    public float playerHeight;
-    public LayerMask whatIsGround;
+    [SerializeField] private float playerHeight;
+    [SerializeField] private LayerMask whatIsGround;
     public bool grounded;
 
-    public Transform orientation;
+    [SerializeField] private Transform orientation;
 
     float horizontalInput;
 
     Vector3 moveDirection;
 
-    Rigidbody rb;
+    Rigidbody2D rb;
 
-    public MovementState state;
     public enum MovementState
     {
         walking,
-        sprinting,
         air
     }
+    [SerializeField] private MovementState state;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         readyToJump = true;
         hasJumped = false;
@@ -51,17 +49,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics2D.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         MyInput();
         SpeedControl();
         StateHandler();
 
-        if (grounded)
-            rb.linearDamping = groundDrag;
-        else
-            rb.linearDamping = 0f;
-
+        rb.linearDamping = grounded ? groundDrag : 0f;
     }
 
     private void FixedUpdate()
@@ -69,29 +63,11 @@ public class PlayerMovement : MonoBehaviour
         MovePlayer();
     }
 
-    private void StateHandler()
-    {
-        if(grounded && Input.GetKey(sprintKey))
-        {
-            state = MovementState.sprinting;
-            moveSpeed = sprintSpeed;
-        }
-        else if (grounded)
-        {
-            state = MovementState.walking;
-            moveSpeed = walkSpeed;
-        }
-        else
-        {
-            state = MovementState.air;
-        }
-    }
-
     private void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        if(Input.GetKeyDown(jumpKey) && readyToJump && grounded)
+        if (Input.GetKeyDown(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
 
@@ -103,14 +79,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void StateHandler()
+    {
+        state = grounded ? MovementState.walking : MovementState.air;
+    }
+
     private void MovePlayer()
     {
         moveDirection = orientation.right * horizontalInput;
 
         if (grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode2D.Force);
         else if (!grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode2D.Force);
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -124,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, 0);
 
         if(flatVel.magnitude > moveSpeed)
         {
@@ -135,9 +116,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, 0);
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
 
     private void ResetJump()
