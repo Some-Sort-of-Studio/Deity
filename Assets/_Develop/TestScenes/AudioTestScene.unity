@@ -360,6 +360,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6385934170881127835, guid: 899dbea8043232c4691e17b0a1cfbbfb, type: 3}
+      propertyPath: AudioDataLibrary.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385934170881127835, guid: 899dbea8043232c4691e17b0a1cfbbfb, type: 3}
+      propertyPath: 'AudioDataLibrary.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b8b7c05e4845f7c4fa903844fd143498, type: 2}
+    - target: {fileID: 6385934170881127835, guid: 899dbea8043232c4691e17b0a1cfbbfb, type: 3}
+      propertyPath: 'AudioDataLibrary.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 23b5a7afc259f484dbb6e5620f3eff6e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

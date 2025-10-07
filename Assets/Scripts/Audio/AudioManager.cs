@@ -7,7 +7,8 @@ namespace AudioSystem
     {
         public static AudioManager Instance { get; private set; }
 
-        public readonly Dictionary<string, AudioData> AudioDataLibrary = new();
+        //public Dictionary<string, AudioData> AudioDataLibrary = new();
+        public List<AudioData> AudioDataLibrary = new();
 
         private void Awake()
         {
@@ -22,26 +23,32 @@ namespace AudioSystem
             }
         }
 
-        public void AddData(AudioData data)
-        {
-            AudioDataLibrary.Add(data.ClipName, data);
-        }
-
         public void PlayAudio(string clipname, AudioSource audioSource)
         {
-            if(AudioDataLibrary.ContainsKey(clipname))
+            if(audioSource == null)
             {
-                audioSource.clip = AudioDataLibrary[clipname].Clip;
-                audioSource.outputAudioMixerGroup = AudioDataLibrary[clipname].MixerGroup;
-                audioSource.loop= AudioDataLibrary[clipname].IsLooping;
-
-                audioSource.Play();
+                Debug.LogWarning("Cannot find Audio Source!");
+                return;
             }
+            
+            for (int i = 0; i < AudioDataLibrary.Count; i++)
+            {
+                if (AudioDataLibrary[i].ClipName == clipname)
+                {
+                    SetAudioData(audioSource, AudioDataLibrary[i]);
+
+                    audioSource.Play();
+                }
+            }
+
+            Debug.LogWarning($"Cannot find AudioClip {clipname}");
         }
 
-        public void RemoveData(AudioData data)
+        static void SetAudioData(AudioSource source, AudioData data)
         {
-            AudioDataLibrary.Remove(data.ClipName);
+             source.clip = data.Clip;
+             source.outputAudioMixerGroup = data.MixerGroup;
+             source.loop = data.Clip;
         }
     }
 
