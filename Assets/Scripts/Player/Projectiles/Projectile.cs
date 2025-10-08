@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public Transform firePoint;
+    public FirePoint firePoint;
     public GameObject projectile;
 
     public bool hasFired;
@@ -17,7 +17,8 @@ public class Projectile : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !hasFired)
         {
-            Instantiate(projectile, firePoint.position, firePoint.rotation);
+            firePoint.SetupFiring();
+            Instantiate(projectile, firePoint.transform.position, firePoint.transform.rotation);
             hasFired = true;
         }
     }

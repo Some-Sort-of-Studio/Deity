@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class ProjectileController : MonoBehaviour
 {
     public float speed;
@@ -8,39 +9,37 @@ public class ProjectileController : MonoBehaviour
     public float projectileTimer;
 
     public PlayerMovement playerScript;
-
     Projectile projectile;
 
-    Rigidbody rb;
+    Rigidbody2D rb;
 
-    void Start()
+    void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         playerScript = FindAnyObjectByType<PlayerMovement>();
         projectile = FindAnyObjectByType<Projectile>();
+
+        //if can't find script references then destroy this as it won't work correctly
+        if (playerScript == null || projectile == null) { Destroy(this); }
 
         if (playerScript.transform.localScale.x < 0)
         {
             speed = -speed;
         }
-    }
 
-    void Update()
-    {
-        rb.linearVelocity = new Vector3(speed, rb.linearVelocity.y);
+        rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
 
-        StartCoroutine(DestroyObject());
+        Invoke("DestroyObject", projectileTimer);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
-        projectile.hasFired = false;
+        DestroyObject();
     }
 
-    IEnumerator DestroyObject()
+    private void DestroyObject()
     {
-        yield return new WaitForSeconds(projectileTimer);
+        projectile.hasFired = false;
         Destroy(gameObject);
     }
 }
