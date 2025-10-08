@@ -14,7 +14,5 @@ public class FirePoint : MonoBehaviour
 
         //set position to stick out from player
         transform.position = transform.parent.position + transform.up;
-
-        Debug.DrawLine(transform.position, mousePosition);
     }
 }

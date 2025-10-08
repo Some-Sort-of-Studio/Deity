@@ -164,6 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1058bd105b1ba7d4b8f5bfc0f5082f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 15
   projectileTimer: 7
   playerScript: {fileID: 0}

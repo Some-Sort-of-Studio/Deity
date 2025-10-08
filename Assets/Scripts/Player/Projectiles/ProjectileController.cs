@@ -8,7 +8,6 @@ public class ProjectileController : MonoBehaviour
 
     public float projectileTimer;
 
-    public PlayerMovement playerScript;
     Projectile projectile;
 
     Rigidbody2D rb;
@@ -16,16 +15,10 @@ public class ProjectileController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerScript = FindAnyObjectByType<PlayerMovement>();
         projectile = FindAnyObjectByType<Projectile>();
 
-        //if can't find script references then destroy this as it won't work correctly
-        if (playerScript == null || projectile == null) { Destroy(this); }
-
-        if (playerScript.transform.localScale.x < 0)
-        {
-            speed = -speed;
-        }
+        //if can't find references then destroy this as it won't work correctly
+        if (projectile == null) { Destroy(this); Debug.Log("Missing references for " + this); }
 
         rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
 

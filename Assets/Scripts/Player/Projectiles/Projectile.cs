@@ -10,6 +10,9 @@ public class Projectile : MonoBehaviour
 
     void Start()
     {
+        //if can't find references then destroy this as it won't work correctly
+        if (firePoint == null || projectile == null) { Destroy(this); Debug.Log("Missing references for " + this); }
+
         hasFired = false;
     }
 
