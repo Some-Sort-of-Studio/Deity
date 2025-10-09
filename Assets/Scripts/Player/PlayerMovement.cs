@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float airMultiplier;
 
     [SerializeField] private bool readyToJump;
-    [SerializeField] private bool hasJumped;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -48,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         readyToJump = true;
-        hasJumped = false;
     }
 
     private void Update()
@@ -73,11 +71,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(jumpKey) && readyToJump && grounded)
         {
-            readyToJump = false;
 
             Jump();
-
-            hasJumped = true;
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
