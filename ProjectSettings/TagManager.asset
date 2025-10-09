@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Projectile
   - ClimableObject
+  - SolidObject
+  - IntangibleObject
+  - SongAOE
   layers:
   - Default
   - TransparentFX
