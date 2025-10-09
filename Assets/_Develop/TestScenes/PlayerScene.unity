@@ -893,7 +893,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.0005493}
+    oldSize: {x: 1.0002748, y: 1}
     newSize: {x: 1.0017118, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1549,10 +1549,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7269708747878127785, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1829,7 +1825,7 @@ GameObject:
   - component: {fileID: 1551649096}
   - component: {fileID: 1551649095}
   - component: {fileID: 1551649097}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1874,7 +1870,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.0005493}
+    oldSize: {x: 1.0002748, y: 1}
     newSize: {x: 1.0017118, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2013,7 +2009,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
