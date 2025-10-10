@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class WindBlast : MonoBehaviour
 {
     public FirePoint firePoint;
     public GameObject projectile;
