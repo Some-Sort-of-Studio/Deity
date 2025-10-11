@@ -4,15 +4,19 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Projectile
   - ClimableObject
+  - SolidObject
+  - IntangibleObject
+  - SongAOE
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - whatIsGround
   - Water
   - UI
-  - whatIsGround
+  - 
   - 
   - 
   - 
