@@ -2,20 +2,20 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class ProjectileController : MonoBehaviour
+public class WindBlastObjMovement : MonoBehaviour
 {
     public float speed;
 
     public float projectileTimer;
 
-    Projectile projectile;
+    WindBlast projectile;
 
     Rigidbody2D rb;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        projectile = FindAnyObjectByType<Projectile>();
+        projectile = FindAnyObjectByType<WindBlast>();
 
         //if can't find references then destroy this as it won't work correctly
         if (projectile == null) { Destroy(this); Debug.Log("Missing references for " + this); }
@@ -25,12 +25,7 @@ public class ProjectileController : MonoBehaviour
         Invoke("DestroyObject", projectileTimer);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        DestroyObject();
-    }
-
-    private void DestroyObject()
+    public void DestroyObject()
     {
         projectile.hasFired = false;
         Destroy(gameObject);
