@@ -7,11 +7,11 @@ namespace AudioSystem
     {
         public static AudioManager Instance { get; private set; }
 
-        public readonly Dictionary<string, AudioData> AudioDataLibrary = new();
+        public readonly List<AudioData> AudioDataLibrary = new();
 
         private void Awake()
         {
-            if(Instance != null && Instance != this)
+            if (Instance != null && Instance != this)
             {
                 Destroy(this);
             }
@@ -22,27 +22,25 @@ namespace AudioSystem
             }
         }
 
-        public void AddData(AudioData data)
-        {
-            AudioDataLibrary.Add(data.ClipName, data);
-        }
-
         public void PlayAudio(string clipname, AudioSource audioSource)
         {
-            if(AudioDataLibrary.ContainsKey(clipname))
+            for (int i = 0; i < AudioDataLibrary.Count; i++)
             {
-                audioSource.clip = AudioDataLibrary[clipname].Clip;
-                audioSource.outputAudioMixerGroup = AudioDataLibrary[clipname].MixerGroup;
-                audioSource.loop= AudioDataLibrary[clipname].IsLooping;
+                if (AudioDataLibrary[i].ClipName == clipname)
+                {
+                    SetAudioData(AudioDataLibrary[i], audioSource);
 
-                audioSource.Play();
+                    audioSource.Play();
+                }
             }
         }
 
-        public void RemoveData(AudioData data)
+        static void SetAudioData(AudioData data, AudioSource source)
         {
-            AudioDataLibrary.Remove(data.ClipName);
+            source.clip = data.Clip;
+            source.outputAudioMixerGroup = data.MixerGroup;
+            source.loop = data.IsLooping;
         }
-    }
 
+    }
 }
