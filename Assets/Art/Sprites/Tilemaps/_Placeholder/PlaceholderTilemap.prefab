@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 4667755792413043127}
   - component: {fileID: 3994764100081896478}
   m_Layer: 0
-  m_Name: CollisionTilemap
+  m_Name: PlaceholderTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
