@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         grounded = Physics2D.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        Debug.DrawLine(transform.position, transform.position + Vector3.down * (int)(playerHeight * 0.5f + 0.2f));
 
         MyInput();
         SpeedControl();
