@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        moveSpeed = walkSpeed;
+
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         readyToJump = true;
@@ -95,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
             state = MovementState.idle;
 
-            if (rb.linearVelocity != Vector2.zero)
+            if (rb.linearVelocityX != 0)
             {
                 if (Input.GetKey(sprintKey))
                 {
@@ -150,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        animator.SetTrigger("StartJump");
+        if (grounded) { animator.SetTrigger("StartJump"); }
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, 0);
 
