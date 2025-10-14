@@ -3,8 +3,7 @@ using UnityEngine.Audio;
 
 namespace AudioSystem
 {
-    [System.Serializable]
-    public class AudioData
+    public class AudioData : ScriptableObject
     {
         public string ClipName;
         public AudioClip Clip;

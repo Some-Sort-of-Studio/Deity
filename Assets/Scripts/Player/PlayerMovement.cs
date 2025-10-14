@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float moveSpeed;
+    private float moveSpeed;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float sprintSpeed;
     [SerializeField] private float groundDrag;
@@ -31,7 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 moveDirection;
 
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private Animator animator;
 
     public enum MovementState
     {
@@ -47,6 +48,9 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         readyToJump = true;
+
+        animator = GetComponentInChildren<Animator>();
+        if(animator == null) { Debug.Log("Missing Player Animator"); }
     }
 
     private void Update()
@@ -71,7 +75,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(jumpKey) && readyToJump && grounded)
         {
-
             Jump();
 
             Invoke(nameof(ResetJump), jumpCooldown);
@@ -80,8 +83,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
+        //reset all animator bools
+        animator.SetBool("Walking", false);
+        animator.SetBool("Sprinting", false);
+        animator.SetBool("Air", false);
+
         if (grounded)
         {
+            //if just stopped being in air then run end jump animation
+            if(state == MovementState.air) { animator.SetTrigger("EndJump"); }
+
             state = MovementState.idle;
 
             if (rb.linearVelocity != Vector2.zero)
@@ -90,17 +101,20 @@ public class PlayerMovement : MonoBehaviour
                 {
                     moveSpeed = sprintSpeed;
                     state = MovementState.sprinting;
+                    animator.SetBool("Sprinting", true);
                 }
                 else
                 {
                     moveSpeed = walkSpeed;
                     state = MovementState.walking;
+                    animator.SetBool("Walking", true);
                 }
             }
         }
         else
         {
             state = MovementState.air;
+            animator.SetBool("Air", true);
         }
     }
 
@@ -136,6 +150,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
+        animator.SetTrigger("StartJump");
+
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, 0);
 
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
