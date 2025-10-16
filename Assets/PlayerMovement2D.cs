@@ -7,8 +7,9 @@ public class PlayerMovement2D : MonoBehaviour
     public Rigidbody2D rb;
 
     [Header("Movement")]
+    private float moveSpeed;
     [Tooltip("This variable controls how fast the player moves")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float walkSpeed = 5f;
 
     [Header("Jumping")]
     [Tooltip("This variable controls how high the player can jump")]
@@ -55,6 +56,16 @@ public class PlayerMovement2D : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
+        moveSpeed = walkSpeed;
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
