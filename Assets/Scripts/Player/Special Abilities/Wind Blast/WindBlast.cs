@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WindBlast : MonoBehaviour
 {
@@ -16,9 +17,9 @@ public class WindBlast : MonoBehaviour
         hasFired = false;
     }
 
-    void Update()
+    public void WindBlastAbility(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !hasFired)
+        if (context.performed)
         {
             firePoint.SetupFiring();
             Instantiate(projectile, firePoint.transform.position, firePoint.transform.rotation);
