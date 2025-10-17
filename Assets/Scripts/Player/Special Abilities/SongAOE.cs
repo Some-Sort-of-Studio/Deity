@@ -1,19 +1,19 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SongAOE : MonoBehaviour
 {
     public GameObject AOE;
 
-    public KeyCode AOETrigger = KeyCode.Q;
-    void Update()
+    public void SongAOEAbility(InputAction.CallbackContext context)
     {
-        if (Input.GetKey(AOETrigger))
+        if (context.performed)
         {
             AOE.SetActive(true);
         }
-        else
+        else if(context.canceled)
         {
             AOE.SetActive(false);
         }
