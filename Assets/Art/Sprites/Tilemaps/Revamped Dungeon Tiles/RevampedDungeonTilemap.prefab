@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 2137402959449537}
   - component: {fileID: 7719210983919720703}
   m_Layer: 0
-  m_Name: revamped dungeons
+  m_Name: RevampedDungeonTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
