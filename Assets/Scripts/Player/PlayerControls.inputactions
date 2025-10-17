@@ -25,6 +25,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "2699ebe6-7a3f-4b08-8ef3-6814064376f0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Ability1",
                     "type": "Button",
                     "id": "1488f2a8-7326-4097-bcaf-7e7f78526d5c",
@@ -129,6 +138,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Ability2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab74ab43-2f9b-4efd-b49e-5b4217814e84",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
