@@ -7,9 +7,14 @@ public class PlayerMovement2D : MonoBehaviour
     public Rigidbody2D rb;
 
     [Header("Movement")]
-    private float moveSpeed;
+    public float moveSpeed;
     [Tooltip("This variable controls how fast the player moves")]
     [SerializeField] private float walkSpeed = 5f;
+
+    [Header("Sprint")]
+    [Tooltip("This variable controls how fast the player moves while sprinting")]
+    [SerializeField] private float sprintSpeed = 7f;
+    public bool isSprinting;
 
     [Header("Jumping")]
     [Tooltip("This variable controls how high the player can jump")]
@@ -35,7 +40,17 @@ public class PlayerMovement2D : MonoBehaviour
 
     void Update()
     {
+        if (isSprinting)
+        {
+            moveSpeed = sprintSpeed;
+        }
+        else if (!isSprinting)
+        {
+            moveSpeed = walkSpeed;
+        }
+
         rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocity.y);
+
         GroundCheck();
         Gravity();
     }
@@ -65,6 +80,18 @@ public class PlayerMovement2D : MonoBehaviour
         else if (Input.GetKey(KeyCode.D))
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+    }
+
+    public void Sprint(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isSprinting = true;
+        }
+        else if (context.canceled)
+        {
+            isSprinting = false;
         }
     }
 

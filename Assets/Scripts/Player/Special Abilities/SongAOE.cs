@@ -7,6 +7,11 @@ public class SongAOE : MonoBehaviour
 {
     public GameObject AOE;
 
+    void Start()
+    {
+        AOE.SetActive(false);
+    }
+
     public void SongAOEAbility(InputAction.CallbackContext context)
     {
         if (context.performed)
