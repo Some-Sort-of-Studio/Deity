@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BirdAir
+  m_Name: BirdDoubleJump
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,6 +21,16 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
+      value: {fileID: -1721588144, guid: 4eb6d7b0078b0924fbc7eb2a5d267948, type: 3}
+    - time: 0.083333336
+      value: {fileID: 1000585698, guid: 4eb6d7b0078b0924fbc7eb2a5d267948, type: 3}
+    - time: 0.16666667
+      value: {fileID: 237541733, guid: c8dfb21645886234eab7b08c9876b6e2, type: 3}
+    - time: 0.25
+      value: {fileID: 1000585698, guid: 4eb6d7b0078b0924fbc7eb2a5d267948, type: 3}
+    - time: 0.33333334
+      value: {fileID: -1721588144, guid: 4eb6d7b0078b0924fbc7eb2a5d267948, type: 3}
+    - time: 0.41666666
       value: {fileID: -1721588144, guid: 4eb6d7b0078b0924fbc7eb2a5d267948, type: 3}
     attribute: m_Sprite
     path: 
@@ -45,12 +55,17 @@ AnimationClip:
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
     - {fileID: -1721588144, guid: 4eb6d7b0078b0924fbc7eb2a5d267948, type: 3}
+    - {fileID: 1000585698, guid: 4eb6d7b0078b0924fbc7eb2a5d267948, type: 3}
+    - {fileID: 237541733, guid: c8dfb21645886234eab7b08c9876b6e2, type: 3}
+    - {fileID: 1000585698, guid: 4eb6d7b0078b0924fbc7eb2a5d267948, type: 3}
+    - {fileID: -1721588144, guid: 4eb6d7b0078b0924fbc7eb2a5d267948, type: 3}
+    - {fileID: -1721588144, guid: 4eb6d7b0078b0924fbc7eb2a5d267948, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.016666668
+    m_StopTime: 0.43333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
