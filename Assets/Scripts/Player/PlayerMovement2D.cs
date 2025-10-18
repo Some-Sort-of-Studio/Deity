@@ -2,9 +2,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement2D : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private Animator animator;
 
     [Header("Movement")]
     public float moveSpeed;
@@ -26,6 +28,7 @@ public class PlayerMovement2D : MonoBehaviour
     [Header("GroundCheck")]
     public Transform groundCheckPos;
     [SerializeField] private Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
+    [SerializeField] private Vector2 smallJumpCheckSize = new Vector2(0.5f, 2.5f);
     public LayerMask groundLayer;
 
     [Header("Gravity")]
@@ -37,6 +40,13 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private float fallSpeedMultiplier = 2f;
 
     float horizontalMovement;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
+        if(animator == null) { Debug.Log("Missing Player Animator"); }
+    }
 
     void Update()
     {
@@ -76,10 +86,16 @@ public class PlayerMovement2D : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
+            animator.SetBool("Walking", true);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
+            animator.SetBool("Walking", true);
+        }
+        else
+        {
+            animator.SetBool("Walking", false);
         }
     }
 
@@ -88,10 +104,12 @@ public class PlayerMovement2D : MonoBehaviour
         if (context.performed)
         {
             isSprinting = true;
+            animator.SetBool("Sprinting", true);
         }
         else if (context.canceled)
         {
             isSprinting = false;
+            animator.SetBool("Sprinting", false);
         }
     }
 
@@ -99,18 +117,21 @@ public class PlayerMovement2D : MonoBehaviour
     {
         if (jumpsRemaining > 0)
         {
-                if (context.performed)
-                {
-                    //Hold down jump button = full height
-                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-                    jumpsRemaining--;
-                }
-                else if (context.canceled)
-                {
-                    //Light tap of jump button = half the height
-                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
-                    jumpsRemaining--;
-                }
+            if (context.performed)
+            {
+                //Hold down jump button = full height
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+                jumpsRemaining--;
+                animator.SetTrigger(animator.GetBool("Air") ? "StartDoubleJump" : "StartJump");
+            }
+            else if (context.canceled)
+            {
+                //Light tap of jump button = half the height
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+                jumpsRemaining--;
+                //if still nearish to ground then we've released early so small jump anim
+                if (Physics2D.OverlapBox(groundCheckPos.position, smallJumpCheckSize, 0, groundLayer)) { animator.SetTrigger("StartSmallJump"); }
+            }
         }
     }
 
@@ -118,7 +139,16 @@ public class PlayerMovement2D : MonoBehaviour
     {
         if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
         {
+            //Grounded
             jumpsRemaining = maxJumps;
+
+            //if was in air and have just landed, trigger endjump
+            if(animator.GetBool("Air") == true) { animator.SetTrigger("EndJump"); }
+            animator.SetBool("Air", false);
+        }
+        else
+        {
+            animator.SetBool("Air", true);
         }
     }
 
@@ -126,5 +156,7 @@ public class PlayerMovement2D : MonoBehaviour
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(groundCheckPos.position, smallJumpCheckSize);
     }
 }
