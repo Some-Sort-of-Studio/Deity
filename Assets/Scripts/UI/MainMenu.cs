@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("PlayerScene");
+        SceneManager.LoadScene("vert slice level");
     }
 
     public void QuitGame()
