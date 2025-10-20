@@ -213,11 +213,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2530003954449580818, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2530003954449580818, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2530003954449580818, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_LocalPosition.z
@@ -411,7 +411,19 @@ MonoBehaviour:
     m_ActionId: 3f74d18d-1e68-4754-b496-ffa0964256ea
     m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8354785604208782863}
+        m_TargetAssemblyTypeName: WindBlast, Assembly-CSharp
+        m_MethodName: WindBlastAbility
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1488f2a8-7326-4097-bcaf-7e7f78526d5c
     m_ActionName: 'Player/Ability1[/Mouse/leftButton]'
   - m_PersistentCalls:
@@ -463,7 +475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ff7895200c01404290b6102d21b1cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 4061316806634742811}
   moveSpeed: 5
   walkSpeed: 5
   sprintSpeed: 7
@@ -472,6 +483,7 @@ MonoBehaviour:
   maxJumps: 2
   groundCheckPos: {fileID: 1750447696195482562}
   groundCheckSize: {x: 0.7, y: 0.05}
+  smallJumpCheckSize: {x: 0.5, y: 2.5}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -489,8 +501,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428d21c96b127f14c8394758d66037dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &4061316806634742811 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 2046430605646080832, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
-  m_PrefabInstance: {fileID: 2610631846614798171}
-  m_PrefabAsset: {fileID: 0}
