@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
@@ -8,18 +9,103 @@ public class MovingPlatform : MonoBehaviour
 
     private Vector3 nextPosition;
 
+    public enum PlatformType
+    { 
+        Automatic,
+        Trigger,
+        Switch_Cycle,
+        Switch_Single
+    }
+
+    public PlatformType type;
+
+    private bool isPlayerOnPlatform;
+
+    public bool isSwitchOn;
+
+
     private void Start()
     {
-        nextPosition = pointB.position;
+        if (type == PlatformType.Automatic || type == PlatformType.Switch_Cycle)
+        {
+            nextPosition = pointB.position;
+        }
     }
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
-
-        if (transform.position == nextPosition)
+        if (type == PlatformType.Automatic)
         {
-            nextPosition = (nextPosition == pointA.position) ? pointB.position : pointA.position;
+            transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
+
+            if (transform.position == nextPosition)
+            {
+                nextPosition = (nextPosition == pointA.position) ? pointB.position : pointA.position;
+            }
+        }
+
+        if (type == PlatformType.Trigger)
+        {
+            if (isPlayerOnPlatform)
+            {
+                nextPosition = pointB.position;
+                transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
+            }
+            else if (!isPlayerOnPlatform)
+            {
+                nextPosition = pointA.position;
+                transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
+            }
+        }
+
+        if (type == PlatformType.Switch_Cycle)
+        {
+            if (isSwitchOn)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
+
+                if (transform.position == nextPosition)
+                {
+                    nextPosition = (nextPosition == pointA.position) ? pointB.position : pointA.position;
+                }
+            }
+        }
+
+        if (type == PlatformType.Switch_Single)
+        {
+            if (isSwitchOn)
+            {
+                nextPosition = pointB.position;
+                transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
+            }
+            else if (!isSwitchOn)
+            {
+                nextPosition = pointA.position;
+                transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
+            }
+        }
+    }
+
+    public void switchToggle()
+    {
+        if (type == PlatformType.Switch_Cycle)
+        {
+            if (!isSwitchOn)
+            {
+                isSwitchOn = true;
+            }
+        }
+
+        if (type == PlatformType.Switch_Single)
+        {
+            if (isSwitchOn)
+            {
+                isSwitchOn = false;
+            }
+            else if (!isSwitchOn)
+            {
+                isSwitchOn = true;
+            }
         }
     }
 
@@ -28,6 +114,11 @@ public class MovingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.parent = transform;
+
+            if (type == PlatformType.Trigger)
+            {
+                isPlayerOnPlatform = true;
+            }
         }
     }
 
@@ -36,6 +127,11 @@ public class MovingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.parent = null;
+
+            if (type == PlatformType.Trigger)
+            {
+                isPlayerOnPlatform = false;
+            }
         }
     }
 
