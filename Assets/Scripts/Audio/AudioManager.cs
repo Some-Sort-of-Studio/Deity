@@ -7,7 +7,7 @@ namespace AudioSystem
     {
         public static AudioManager Instance { get; private set; }
 
-        public readonly List<AudioData> AudioDataLibrary = new();
+        public List<AudioData> AudioDataLibrary = new();
 
         private void Awake()
         {
