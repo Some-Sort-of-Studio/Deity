@@ -20,6 +20,12 @@ public class PlayerHealth : MonoBehaviour
         currentCheckpoint = checkpoint;
     }
 
+    public void Startingpoint(GameObject checkpoint)
+    {
+        startingCheckpoint = checkpoint;
+        currentCheckpoint = checkpoint;
+    }
+
     public void Die()
     {
         health--;
