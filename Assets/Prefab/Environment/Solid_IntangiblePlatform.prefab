@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4842378202312136413}
   - component: {fileID: 8204529513210220074}
   - component: {fileID: 3412607450584215917}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Solid_IntangiblePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6615212207585000080}
   - component: {fileID: 6120071447520667019}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Intangible
   m_TagString: IntangibleObject
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}

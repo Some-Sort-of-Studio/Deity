@@ -3,9 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private string StartingLevel;
+
     public void PlayGame()
     {
-        SceneManager.LoadScene("vert slice level");
+        SceneManager.LoadScene(StartingLevel);
     }
 
     public void QuitGame()
