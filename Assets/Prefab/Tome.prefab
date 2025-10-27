@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7861913632505890811}
   - component: {fileID: 3360763332310511635}
   m_Layer: 0
-  m_Name: Scripture
+  m_Name: Tome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896a4d0335d1cdc45bdb697c86356fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tome: {fileID: 0}
