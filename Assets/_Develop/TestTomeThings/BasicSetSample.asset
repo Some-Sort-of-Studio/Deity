@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0d7ac69d0362e42af5b30b197b698b, type: 3}
+  m_Name: BasicSetSample
+  m_EditorClassIdentifier: 
+  Name: Basic Set Sample
+  Tomes:
+  - {fileID: 11400000, guid: 37479143f42fe204c8622c8f088e9865, type: 2}
+  - {fileID: 11400000, guid: 0f7ec0301d5761b4088342423b3dfae7, type: 2}
+  - {fileID: 11400000, guid: d88add565b77bba4a8a910b81663b125, type: 2}
+  EndingCanvas: {fileID: 7579108875875408654, guid: 70baaae595fa7304eb6c7cb5adc8d601, type: 3}

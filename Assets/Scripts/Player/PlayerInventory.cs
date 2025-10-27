@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField] private List<Tome> collectedTomes;
+    [Tooltip("This var should include all potential sets in the game")]
+    [SerializeField] private TomeSet[] existingTomesets;
+    private List<Tome> collectedTomes;
 
     private void Awake()
     {
@@ -13,5 +15,27 @@ public class PlayerInventory : MonoBehaviour
     public void CollectTome(Tome tome)
     {
         collectedTomes.Add(tome);
+        CheckForEndings();
+    }
+
+    private void CheckForEndings()
+    {
+        foreach (TomeSet tomeSet in existingTomesets)
+        {
+            bool hasSet = true;
+
+            foreach (Tome tome in tomeSet.Tomes)
+            {
+                //if cant find one of the tomes then dont have set
+                if (!collectedTomes.Contains(tome)){ hasSet = false; }
+            }
+
+            //if has whole set show ending for that tomeset
+            if (hasSet)
+            {
+                Instantiate(tomeSet.EndingCanvas, null);
+                return;
+            }
+        }
     }
 }
