@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: f96015d226e6fdd46ba87a5f3b0fcc05
   - enabled: 1
-    path: Assets/Scenes/Level_Tutorial.unity
-    guid: 26326a8879d60c340be42adc7c26bb01
+    path: Assets/_Develop/TestScenes/TestBuildScene.unity
+    guid: 80b5412abdc69964e931a70ce7c50e2a
   - enabled: 1
     path: Assets/_Develop/TestScenes/player ability testing scene.unity
     guid: d44ecc3400dd54a4ca5a10916c6dcea3
