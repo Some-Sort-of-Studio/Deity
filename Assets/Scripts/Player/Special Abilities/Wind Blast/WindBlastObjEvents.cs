@@ -19,17 +19,20 @@ public class WindBlastObjEvents : MonoBehaviour
             breakableObject.BreakObject();
         }
 
+        //if hit something that isnt player then destroy self
+        if (!collision.gameObject.CompareTag("Player"))
+        {
+            objMovement.DestroyObject();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         Switch leSwitch = collision.gameObject.GetComponent<Switch>();
 
         if (leSwitch != null)
         {
             leSwitch.ToggleSwitch();
-        }
-
-        //if hit something that isnt player then destroy self
-        if (!collision.gameObject.CompareTag("Player"))
-        {
-            objMovement.DestroyObject();
         }
     }
 }
