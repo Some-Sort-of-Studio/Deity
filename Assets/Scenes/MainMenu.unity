@@ -1646,7 +1646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c9bf4d1771b4b4aba9af549febf8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingLevel: Level_Tutorial
+  StartingLevel: TestBuildScene
 --- !u!4 &1013116942
 Transform:
   m_ObjectHideFlags: 0
