@@ -83,19 +83,18 @@ public class PlayerMovement2D : MonoBehaviour
         horizontalMovement = context.ReadValue<Vector2>().x;
         moveSpeed = walkSpeed;
 
+        animator.SetBool("Walking", false);
+        animator.SetBool("Sprinting", false);
+
         if (Input.GetKey(KeyCode.A))
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
-            animator.SetBool("Walking", true);
+            animator.SetBool(isSprinting ? "Sprinting" : "Walking", true);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
-            animator.SetBool("Walking", true);
-        }
-        else
-        {
-            animator.SetBool("Walking", false);
+            animator.SetBool(isSprinting ? "Sprinting" : "Walking", true);
         }
     }
 
@@ -104,12 +103,10 @@ public class PlayerMovement2D : MonoBehaviour
         if (context.performed)
         {
             isSprinting = true;
-            animator.SetBool("Sprinting", true);
         }
         else if (context.canceled)
         {
             isSprinting = false;
-            animator.SetBool("Sprinting", false);
         }
     }
 
