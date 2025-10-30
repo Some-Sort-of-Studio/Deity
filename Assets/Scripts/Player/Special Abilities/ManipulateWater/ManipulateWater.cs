@@ -39,11 +39,13 @@ public class ManipulateWater : MonoBehaviour
 
         GameObject closestWaterThing = lastPaintedWater != null ? lastPaintedWater : currentWater.gameObject;
 
-        lastPaintedWater = Instantiate(waterPaintPrefab, mousePosition, Quaternion.identity);
-        lastPaintedWater.GetComponent<WaterBlob>().waterSource = currentWater;
-
         float drainAmount = Vector3.Distance(closestWaterThing.transform.position, mousePosition) / currentWater.transform.localScale.x;
         currentWater.Drain(drainAmount);
+
+        lastPaintedWater = Instantiate(waterPaintPrefab, mousePosition, Quaternion.identity);
+        WaterBlob lastPaintedWaterComp = lastPaintedWater.GetComponent<WaterBlob>();
+        lastPaintedWaterComp.waterSource = currentWater;
+        lastPaintedWaterComp.drainAmount = drainAmount;
     }
 
     private Water FindNearestWater()
