@@ -1,11 +1,15 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class ManipulateWater : MonoBehaviour
 {
+    [SerializeField] private float delayBetweenPainting = 1;
     [SerializeField] private float maxPaintDistance = 8;
     [SerializeField] private GameObject waterPaintPrefab;
+
+    private bool painting;
 
     private Water currentWater;
     private GameObject lastPaintedWater;
@@ -14,25 +18,31 @@ public class ManipulateWater : MonoBehaviour
     {
         if (context.performed)
         {
-            currentWater = FindNearestWater();
-            if (currentWater == null) { return; }
-
-            if(context.duration % 2 == 0)
-            {
-                if (!currentWater.empty)
-                {
-                    PaintWater();
-                }
-            }
+            painting = true;
+            StartCoroutine("PaintWater");
         }
 
         if (context.canceled)
         {
+            painting = false;
             lastPaintedWater = null;
         }
     }
 
-    private void PaintWater()
+    private IEnumerator PaintWater()
+    {
+        currentWater = FindNearestWater();
+        if (currentWater != null)
+        {
+            while (painting && !currentWater.empty)
+            {
+                DrawWater();
+                yield return new WaitForSeconds(delayBetweenPainting);
+            }
+        }
+    }
+
+    private void DrawWater()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition = new Vector3(mousePosition.x, mousePosition.y, 0);
@@ -42,8 +52,9 @@ public class ManipulateWater : MonoBehaviour
         float drainAmount = Vector3.Distance(closestWaterThing.transform.position, mousePosition) / currentWater.transform.localScale.x;
         currentWater.Drain(drainAmount);
 
-        lastPaintedWater = Instantiate(waterPaintPrefab, mousePosition, Quaternion.identity);
+        lastPaintedWater = Instantiate(waterPaintPrefab, closestWaterThing.transform.position, Quaternion.identity);
         WaterBlob lastPaintedWaterComp = lastPaintedWater.GetComponent<WaterBlob>();
+        lastPaintedWaterComp.destPosition = mousePosition;
         lastPaintedWaterComp.waterSource = currentWater;
         lastPaintedWaterComp.drainAmount = drainAmount;
     }
