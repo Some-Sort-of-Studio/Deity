@@ -1711,7 +1711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a5f32663c42ea43a58027c824bb45e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenPainting: 0.4
+  delayBetweenPainting: 0.2
   maxPaintDistance: 8
   waterPaintPrefab: {fileID: 2043344352436980482, guid: 29f8bab2e29f0504abab4c4e94662f42, type: 3}
 --- !u!1001 &1283129967

@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterSource: {fileID: 0}
+  lifetime: 10
 --- !u!96 &6990190915619487051
 TrailRenderer:
   serializedVersion: 3
@@ -147,7 +148,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 10
+  m_Time: 9
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -164,6 +165,33 @@ TrailRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.61441964
+        value: 0.9796762
+        inSlope: -0.08265843
+        outSlope: -0.08265843
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.7409946
+      - serializedVersion: 3
+        time: 0.96033937
+        value: 0.58716553
+        inSlope: -3.5237548
+        outSlope: -3.5237548
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 1
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -15.5957575
+        outSlope: -15.5957575
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.030516386
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
