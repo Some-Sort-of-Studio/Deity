@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    private bool dying;
+
     [Header("Lives")]
     [SerializeField] private int health = 5;
 
@@ -9,8 +12,14 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject startingCheckpoint;
     private GameObject currentCheckpoint;
 
+    [Header("UI")]
+    [SerializeField] private GameObject deathCanvas;
+    [SerializeField] private float deathTime;
+
     private void Awake()
     {
+        dying = false;
+
         if (startingCheckpoint == null) { Debug.Log("Missing player start checkpoint"); }
         else { currentCheckpoint = startingCheckpoint; }
     }
@@ -26,17 +35,33 @@ public class PlayerHealth : MonoBehaviour
         currentCheckpoint = checkpoint;
     }
 
-    public void Die()
+    public IEnumerator Die()
     {
-        health--;
-        if (health <= 0)
+        if (!dying)
         {
-            health = 5;
-            transform.position = startingCheckpoint.transform.position;
-        }
-        else
-        {
-            transform.position = currentCheckpoint.transform.position;
+            dying = true;
+            Debug.Log("Died");
+
+            health--;
+            GameObject deathCanvasInstance = Instantiate(deathCanvas, null);
+
+            yield return new WaitForSeconds(deathTime / 2);
+
+            if (health <= 0)
+            {
+                health = 5;
+                transform.position = startingCheckpoint.transform.position;
+            }
+            else
+            {
+                transform.position = currentCheckpoint.transform.position;
+            }
+
+            yield return new WaitForSeconds(deathTime / 2);
+
+            Destroy(deathCanvasInstance);
+
+            dying = false;
         }
     }
 }

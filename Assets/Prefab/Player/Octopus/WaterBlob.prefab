@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5913294416427592709}
   - component: {fileID: 5817852187179957811}
   - component: {fileID: 3699047388538872467}
+  - component: {fileID: 2983103854064992084}
   - component: {fileID: 6990190915619487051}
   m_Layer: 4
   m_Name: WaterBlob
@@ -102,7 +103,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterSource: {fileID: 0}
-  lifetime: 10
+--- !u!114 &2983103854064992084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043344352436980482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 511d6832dc37fb141ac07593c5528f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 10
 --- !u!96 &6990190915619487051
 TrailRenderer:
   serializedVersion: 3

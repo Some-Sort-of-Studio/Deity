@@ -7,13 +7,11 @@ public class WaterBlob : MonoBehaviour
     public Vector3 destPosition { set; private get; }
     public float drainAmount { set; private get; }
 
-    [SerializeField] private float lifetime = 10;
     private bool goingToDest;
 
     private void Awake()
     {
         goingToDest = true;
-        Destroy(gameObject, lifetime);
     }
 
     private void Update()

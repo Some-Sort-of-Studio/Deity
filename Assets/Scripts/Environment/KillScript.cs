@@ -7,7 +7,7 @@ public class KillScript : MonoBehaviour
         PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
         if(playerHealth != null)
         {
-            playerHealth.Die();
+            playerHealth.StartCoroutine("Die");
         }
     }
 }
