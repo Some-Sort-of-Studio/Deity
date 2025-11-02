@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 63d4c5a94081f914ab428333b40bb210
+guid: ad65bececca3cf349b0e4f6bff47d077
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,155 +97,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scripture Spinning Animation_0
+      name: Tome_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
+        y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 509e9952f6144ea4a95358c64b2275ce
-      internalID: -459821464
+      spriteID: a508fbf7063639743b235be33d406367
+      internalID: 478162934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scripture Spinning Animation_1
+      name: Tome_1
       rect:
         serializedVersion: 2
-        x: 37
-        y: 2
+        x: 32
+        y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84b550686337edc40b2d8ba8293b11dc
-      internalID: -1569606228
+      spriteID: 295b93b7db9b7c949be2c31b19a2d418
+      internalID: -771213253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scripture Spinning Animation_2
+      name: Tome_2
       rect:
         serializedVersion: 2
-        x: 69
-        y: 2
+        x: 64
+        y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd971f72a3fa241409a1493b1ff93f4a
-      internalID: -1736637840
+      spriteID: 6eda94fe9742dfd449175aaac0fe7a9a
+      internalID: -1245196929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scripture Spinning Animation_3
+      name: Tome_3
       rect:
         serializedVersion: 2
-        x: 102
-        y: 2
+        x: 96
+        y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdc4ee916eaa3484d99f20a771083cba
-      internalID: 1660634820
+      spriteID: b14647b9cfdb6a440bbefda92363e885
+      internalID: 211521081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scripture Spinning Animation_4
+      name: Tome_4
       rect:
         serializedVersion: 2
-        x: 138
-        y: 2
+        x: 128
+        y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8876b076e80d0b46b4e68fba515f96e
-      internalID: 1531006388
+      spriteID: 915e4bd3f73eb8e4bb005e1b273fea4d
+      internalID: -608835385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scripture Spinning Animation_6
+      name: Tome_5
       rect:
         serializedVersion: 2
-        x: 176
-        y: 2
+        x: 160
+        y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 883b3cf0bec54b245893f5057ac1a017
-      internalID: 1367395357
+      spriteID: b2ff747bd085f5d43b66d957b5141b08
+      internalID: 1282805550
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scripture Spinning Animation_7
+      name: Tome_6
       rect:
         serializedVersion: 2
-        x: 220
-        y: 2
+        x: 192
+        y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd6298c7c2ef19b4fab173a03544365b
-      internalID: -1719221003
+      spriteID: ef37b4383be28b645a8fcfb1122ede36
+      internalID: 478585541
       vertices: []
       indices: 
       edges: []
@@ -254,7 +254,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e1c3243fbb8b82048ae45f526a0a0e06
+    spriteID: e5084a7d6d11cd54b8a04d5c55efda58
     internalID: 0
     vertices: []
     indices: 
@@ -264,14 +264,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Scripture Spinning Animation_0: -459821464
-      Scripture Spinning Animation_1: -1569606228
-      Scripture Spinning Animation_2: -1736637840
-      Scripture Spinning Animation_3: 1660634820
-      Scripture Spinning Animation_4: 1531006388
-      Scripture Spinning Animation_5: -1441148810
-      Scripture Spinning Animation_6: 1367395357
-      Scripture Spinning Animation_7: -1719221003
+      Tome_0: 478162934
+      Tome_1: -771213253
+      Tome_2: -1245196929
+      Tome_3: 211521081
+      Tome_4: -608835385
+      Tome_5: 1282805550
+      Tome_6: 478585541
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

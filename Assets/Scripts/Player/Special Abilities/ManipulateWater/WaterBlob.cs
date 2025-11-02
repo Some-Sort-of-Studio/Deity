@@ -14,11 +14,11 @@ public class WaterBlob : MonoBehaviour
         goingToDest = true;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (goingToDest)
         {
-            transform.position = Vector3.Lerp(transform.position, destPosition, 0.01f);
+            transform.position = Vector3.Lerp(transform.position, destPosition, 0.1f);
 
             if (Vector3.Distance(transform.position, destPosition) < 0.1f)
             {
@@ -27,7 +27,7 @@ public class WaterBlob : MonoBehaviour
         }
         else
         {
-            transform.Translate(Vector3.down * 0.0005f);
+            transform.Translate(Vector3.down * 0.001f);
         }
     }
 

@@ -17,24 +17,18 @@ public class Water : MonoBehaviour
 
     public void Drain(float amount)
     {
-        if(transform.position.y > (startPosition.y - transform.localScale.y))
-        {
-            empty = false;
-            transform.position += Vector3.down * amount;
-        }
-        else
-        {
-            empty = true;
-        }
+        transform.position += Vector3.down * amount;
+
+        full = false;
+        empty = transform.position.y <= (startPosition.y - transform.localScale.y);
     }
 
     public void Fill(float amount)
     {
-        if (transform.position.y < startPosition.y)
-        {
-            full = false;
-            transform.position += Vector3.up * amount;
-        }
+        transform.position += Vector3.up * amount;
+
+        empty = false;
+        if (transform.position.y < startPosition.y) { full = false; }
         else
         {
             full = true;
