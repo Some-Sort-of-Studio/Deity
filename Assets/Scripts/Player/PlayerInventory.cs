@@ -24,7 +24,7 @@ public class PlayerInventory : MonoBehaviour
         {
             bool hasSet = true;
 
-            foreach (Tome tome in tomeSet.Tomes)
+            foreach (Tome tome in tomeSet.tomes)
             {
                 //if cant find one of the tomes then dont have set
                 if (!collectedTomes.Contains(tome)){ hasSet = false; }
@@ -33,7 +33,7 @@ public class PlayerInventory : MonoBehaviour
             //if has whole set show ending for that tomeset
             if (hasSet)
             {
-                Instantiate(tomeSet.EndingCanvas, null);
+                Instantiate(tomeSet.endingCanvas, null);
                 return;
             }
         }
