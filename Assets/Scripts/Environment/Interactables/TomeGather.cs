@@ -9,10 +9,10 @@ public class TomeGather : MonoBehaviour
         if(tome == null) {Debug.Log("Missing Tome SO reference for", this); Destroy(gameObject); }
     }
 
-    private void Update()
-    {
-        transform.Rotate(0, 180 * Time.deltaTime, 0, Space.World);
-    }
+    //private void Update()
+    //{
+    //    transform.Rotate(0, 180 * Time.deltaTime, 0, Space.World);
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
