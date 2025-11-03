@@ -38,6 +38,8 @@ public class UIManager : MonoBehaviour
     // opens pause menu
     public void OpenPauseMenu()
     {
+        if (paused) return;
+
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         paused = true;
@@ -50,9 +52,9 @@ public class UIManager : MonoBehaviour
     public void ClosePauseMenu()
     {
         pauseMenu.SetActive(false);
+        paused = false;
 
         Time.timeScale = 1f;
-        paused = false;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
