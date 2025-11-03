@@ -5,11 +5,16 @@ using System.Collections;
 
 public class SettingsMenu : MonoBehaviour
 {
+    [Header("UI References:")]
     [SerializeField] private Dropdown resDropDown;
+
+    [SerializeField] private Toggle fullScreen;
+    [SerializeField] private Toggle vSync;
     Resolution[] resolutions;
 
     private void Start()
     {
+
         SetFullScreen(true);
         resolutions = Screen.resolutions;
 
@@ -25,6 +30,17 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetFullScreen(bool isfullscreen)
     {
-        Screen.fullScreen = isfullscreen;
+        fullScreen.isOn = isfullscreen;
+    }
+
+    public void SetVSync(bool vsyncOn)
+    {
+        vSync.isOn = vsyncOn;
+    }
+
+    public void ApplyGraphics()
+    {
+
     }
 }
+
