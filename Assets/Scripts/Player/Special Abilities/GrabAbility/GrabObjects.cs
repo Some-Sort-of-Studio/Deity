@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerMovement2D))]
 public class GrabObjects : MonoBehaviour
 {
     public Transform grabDetect;
     [SerializeField] private Vector2 grabDetectSize = new Vector2(0.5f, 0.05f);
+
     public Transform boxHolder;
-    public GameObject boxHolderObject;
 
     public LayerMask grabbableObjectLayer;
 
@@ -22,72 +23,67 @@ public class GrabObjects : MonoBehaviour
     private float distance = 1f;
 
     FirePoint firePoint;
-    public GameObject firePointObject;
+
+    private PlayerMovement2D playerMovement;
 
     private void Start()
     {
-        firePoint = firePointObject.GetComponent<FirePoint>();
+        firePoint = GetComponentInChildren<FirePoint>();
+        playerMovement = GetComponent<PlayerMovement2D>();
     }
 
     private void Update()
     {
         Collider2D grabCheck = Physics2D.OverlapBox(grabDetect.position, grabDetectSize, 0, grabbableObjectLayer);
 
-        firePoint.SetupFiring();
-
         if (Physics2D.OverlapBox(grabDetect.position, grabDetectSize, 0, grabbableObjectLayer))
         {
             objectInRange = true;
-
-            if (isPickingUp)
-            {
-                grabCheck.gameObject.transform.parent = boxHolder;
-                grabCheck.gameObject.transform.position = boxHolder.position;
-                grabCheck.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-                grabCheck.gameObject.GetComponent<Rigidbody2D>().mass = 0;
-            }
-            else
-            {
-                grabCheck.gameObject.transform.parent = null;
-                grabCheck.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
-                grabCheck.gameObject.GetComponent<Rigidbody2D>().mass = 1;
-            }
         }
         else
         {
             objectInRange = false;
         }
 
+        firePoint.SetupFiring();
+
+        if (grabCheck != null)
+        {
+            if (isPickingUp)
+            {
+                playerMovement.enabled = false;
+
+                grabCheck.gameObject.transform.parent = boxHolder.transform;
+                grabCheck.gameObject.transform.localPosition = Vector3.zero;
+                grabCheck.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+                grabCheck.gameObject.GetComponent<Rigidbody2D>().mass = 0;
+                grabCheck.gameObject.GetComponent<Rigidbody2D>().freezeRotation = true;
+            }
+            else
+            {
+                playerMovement.enabled = true;
+
+                grabCheck.gameObject.transform.parent = null;
+                grabCheck.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                grabCheck.gameObject.GetComponent<Rigidbody2D>().mass = 1;
+                grabCheck.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
+            }
+        }
+
         Mathf.Clamp(distance, minDistance, maxDistance);
 
-        if (isZoomingIn && distance > minDistance)
-        {
-            Vector2 boxHolderNormalizedDirection = (boxHolder.transform.position - this.gameObject.transform.position).normalized;
-            Vector2 grabDetectNormalizedDirection = (grabDetect.transform.position - this.gameObject.transform.position).normalized;
-
-            boxHolder.transform.Translate(-boxHolderNormalizedDirection * maxZoomSpeed);
-            grabDetect.transform.Translate(-grabDetectNormalizedDirection * maxZoomSpeed);
-
-            distance--;
-        }
-
-        if (isZoomingOut && distance < maxDistance)
-        {
-            Vector2 BoxHolderNormalizedDirection = (boxHolder.transform.position - this.gameObject.transform.position).normalized;
-            Vector2 grabDetectNormalizedDirection = (grabDetect.transform.position - this.gameObject.transform.position).normalized;
-
-            boxHolder.transform.Translate(BoxHolderNormalizedDirection * maxZoomSpeed);
-            grabDetect.transform.Translate(grabDetectNormalizedDirection * maxZoomSpeed);
-
-            distance++;
-        }
+        boxHolder.transform.position = boxHolder.transform.parent.position + boxHolder.transform.up * distance * maxZoomSpeed;
+        grabDetect.transform.position = grabDetect.transform.parent.position + grabDetect.transform.right + grabDetect.transform.right * distance * maxZoomSpeed;
     }
 
     public void GrabAbility(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            isPickingUp = true;
+            if (objectInRange)
+            {
+                isPickingUp = true;
+            }
         }
         else if (context.canceled)
         {
@@ -99,11 +95,10 @@ public class GrabObjects : MonoBehaviour
     {
         if (context.performed)
         {
-            isZoomingIn = true;
-        }
-        else if (context.canceled)
-        {
-            isZoomingIn = false;
+            if(distance > minDistance)
+            {
+                distance--;
+            }
         }
     }
 
@@ -111,11 +106,10 @@ public class GrabObjects : MonoBehaviour
     {
         if (context.performed)
         {
-            isZoomingOut = true;
-        }
-        else if (context.canceled)
-        {
-            isZoomingOut = false;
+            if (distance < maxDistance)
+            {
+                distance++;
+            }
         }
     }
 
