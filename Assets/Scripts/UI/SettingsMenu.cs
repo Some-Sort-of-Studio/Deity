@@ -14,8 +14,9 @@ public class SettingsMenu : MonoBehaviour
 
     private void Start()
     {
+        fullScreen.isOn = true;
+        QualitySettings.vSyncCount = 1;
 
-        SetFullScreen(true);
         resolutions = Screen.resolutions;
 
         List<string> options = new List<string>();
@@ -28,19 +29,19 @@ public class SettingsMenu : MonoBehaviour
         resDropDown.AddOptions(options);
     }
 
-    public void SetFullScreen(bool isfullscreen)
-    {
-        fullScreen.isOn = isfullscreen;
-    }
-
-    public void SetVSync(bool vsyncOn)
-    {
-        vSync.isOn = vsyncOn;
-    }
-
     public void ApplyGraphics()
     {
+        if(fullScreen.isOn)
+        {
+            Screen.fullScreen = true;
+        }
+        else Screen.fullScreen = false;
 
+        if(vSync.isOn)
+        {
+            QualitySettings.vSyncCount = 1;
+        }
+        else QualitySettings.vSyncCount = 0;
     }
 }
 

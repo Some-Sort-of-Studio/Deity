@@ -61,13 +61,13 @@ public class UIManager : MonoBehaviour
     }
 
     // opens options menu
-    public void OptionsAcitve()
+    public void OptionsActivate()
     {
         settingsMenu.SetActive(true);
     }
 
     // closes options menu
-    public void OptionsDeactive()
+    public void OptionsDeactivate()
     {
         settingsMenu.SetActive(true);
     }
