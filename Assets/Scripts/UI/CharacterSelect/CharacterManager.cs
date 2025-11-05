@@ -6,7 +6,7 @@ public class CharacterManager : MonoBehaviour
     public CharacterDatabase characterDB;
 
     public Text nameText;
-    public SpriteRenderer artworkSprite;
+    public GameObject playerObject;
 
     private int selectedOption = 0;
 
@@ -53,7 +53,7 @@ public class CharacterManager : MonoBehaviour
     private void UpdatedCharacter(int selectedOption)
     {
         Character character = characterDB.GetCharacter(selectedOption);
-        artworkSprite.sprite = character.characterSprite;
+        playerObject = character.characterPrefab;
         nameText.text = character.characterName;
     }
 
