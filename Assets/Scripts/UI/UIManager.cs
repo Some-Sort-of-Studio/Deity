@@ -7,7 +7,6 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject settingsMenu;
     private bool paused;
 
     void Awake()
@@ -29,11 +28,7 @@ public class UIManager : MonoBehaviour
 
         // gets menus
         pauseMenu = GameObject.Find("PauseMenu");
-
         pauseMenu.SetActive(false);
-
-        settingsMenu = GameObject.Find("SettingsMenu");
-        settingsMenu.SetActive(false);
     }
 
     // opens pause menu
@@ -59,18 +54,6 @@ public class UIManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }
-
-    // opens options menu
-    public void OptionsActivate()
-    {
-        settingsMenu.SetActive(true);
-    }
-
-    // closes options menu
-    public void OptionsDeactivate()
-    {
-        settingsMenu.SetActive(true);
     }
 
     public void StartGame()
