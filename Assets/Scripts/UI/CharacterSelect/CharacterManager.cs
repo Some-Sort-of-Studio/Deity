@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,8 +6,11 @@ public class CharacterManager : MonoBehaviour
 {
     public CharacterDatabase characterDB;
 
-    public Text nameText;
+    public TextMeshPro nameText;
+    public TextMeshPro descriptionText;
     public GameObject playerObject;
+    public TextMeshPro ability1Text;
+    public TextMeshPro ability2Text;
 
     private int selectedOption = 0;
 
@@ -55,6 +59,9 @@ public class CharacterManager : MonoBehaviour
         Character character = characterDB.GetCharacter(selectedOption);
         playerObject = character.characterPrefab;
         nameText.text = character.characterName;
+        descriptionText.text = character.characterDescription;
+        ability1Text.text = character.characterAbility1;
+        ability2Text.text = character.characterAbility2;
     }
 
     private void Load()
