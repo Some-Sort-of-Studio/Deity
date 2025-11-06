@@ -6,11 +6,13 @@ using System.Collections;
 public class SettingsMenu : MonoBehaviour
 {
     [Header("UI References:")]
-    [SerializeField] private Dropdown resDropDown;
+    [SerializeField] private Text resolutionText;
 
     [SerializeField] private Toggle fullScreen;
     [SerializeField] private Toggle vSync;
     Resolution[] resolutions;
+
+    private List<string> options = new List<string>();
 
     private void Start()
     {
@@ -19,14 +21,34 @@ public class SettingsMenu : MonoBehaviour
 
         resolutions = Screen.resolutions;
 
-        List<string> options = new List<string>();
-
         foreach (Resolution resolution in resolutions)
         {
             options.Add(resolution.ToString());
         }
 
-        resDropDown.AddOptions(options);
+        resolutionText.text = options[1].ToString();
+    }
+
+    public void ChangeResolutionLeft(int back)
+    {
+        if(Screen.currentResolution.ToString() == options[1].ToString())
+        {
+            return;
+        }
+        else
+        {
+            //ChangeResolution();
+        }
+    }
+
+    public void ChangeResolutionRight(int forward)
+    {
+
+    }
+
+    private static void ChangeResolution(Resolution restoset)
+    {
+
     }
 
     public void ApplyGraphics()
