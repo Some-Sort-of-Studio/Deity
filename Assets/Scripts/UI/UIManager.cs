@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
 
         // gets menus
         pauseMenu = GameObject.Find("PauseMenu");
+
         pauseMenu.SetActive(false);
 
         settingsMenu = GameObject.Find("SettingsMenu");
@@ -74,7 +75,7 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level_Tutorial");
+        SceneManager.LoadScene("Level_Tower");
     }
 
     // takes the player back to main menu
