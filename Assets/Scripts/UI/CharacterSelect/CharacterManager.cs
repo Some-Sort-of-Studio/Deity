@@ -1,18 +1,21 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharacterManager : MonoBehaviour
 {
     public CharacterDatabase characterDB;
 
-    public TextMeshPro nameText;
-    public TextMeshPro descriptionText;
-    public GameObject playerObject;
-    public TextMeshPro ability1Text;
-    public TextMeshPro ability2Text;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI descriptionText;
+    public SpriteRenderer playerSprite;
+    public TextMeshProUGUI ability1Text;
+    public TextMeshProUGUI ability2Text;
 
     private int selectedOption = 0;
+
+    [SerializeField] private string StartingLevel;
 
     private void Start()
     {
@@ -57,7 +60,7 @@ public class CharacterManager : MonoBehaviour
     private void UpdatedCharacter(int selectedOption)
     {
         Character character = characterDB.GetCharacter(selectedOption);
-        playerObject = character.characterPrefab;
+        playerSprite.sprite = character.characterSprite;
         nameText.text = character.characterName;
         descriptionText.text = character.characterDescription;
         ability1Text.text = character.characterAbility1;
@@ -72,5 +75,10 @@ public class CharacterManager : MonoBehaviour
     private void Save()
     {
         PlayerPrefs.SetInt("selectedOption", selectedOption);
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(StartingLevel);
     }
 }
