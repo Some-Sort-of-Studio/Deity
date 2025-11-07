@@ -14,6 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character:
   - characterName: Corvus
-    characterPrefab: {fileID: 1095281449741805334, guid: 3dd5ceb800899c9498ce714e41d5dda8, type: 3}
+    characterDescription: 
+    characterSprite: {fileID: 394363948, guid: c8dfb21645886234eab7b08c9876b6e2, type: 3}
+    playerObject: {fileID: 1095281449741805334, guid: 3dd5ceb800899c9498ce714e41d5dda8, type: 3}
+    characterAbility1: 
+    characterAbility2: 
   - characterName: "\xD8rvatha"
-    characterPrefab: {fileID: 1359130775214588326, guid: 75ceb3dc9c8609f4f949ba8b15940b59, type: 3}
+    characterDescription: 
+    characterSprite: {fileID: 2114205131, guid: 982ef1fc80af2534caa491ef50ecf72d, type: 3}
+    playerObject: {fileID: 1359130775214588326, guid: 75ceb3dc9c8609f4f949ba8b15940b59, type: 3}
+    characterAbility1: 
+    characterAbility2: 

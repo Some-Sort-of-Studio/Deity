@@ -3,8 +3,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public CharacterDatabase characterDB;
-
-    public GameObject playerObject;
+    public Vector3 playerSpawnLocation;
+    private GameObject player;
 
     private int selectedOption = 0;
 
@@ -20,16 +20,26 @@ public class Player : MonoBehaviour
         }
 
         UpdatedCharacter(selectedOption);
+        SpawnPlayer();
     }
 
     private void UpdatedCharacter(int selectedOption)
     {
         Character character = characterDB.GetCharacter(selectedOption);
-        playerObject = character.characterPrefab;
     }
 
     private void Load()
     {
         selectedOption = PlayerPrefs.GetInt("selectedOption");
+    }
+
+    private void SpawnPlayer()
+    {
+        Character character = characterDB.GetCharacter(selectedOption);
+        player = character.playerObject;
+        Vector3 position = playerSpawnLocation;
+        Quaternion playerRotation = Quaternion.identity;
+        Instantiate(player, playerSpawnLocation, playerRotation);
+        
     }
 }

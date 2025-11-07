@@ -34,7 +34,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     [Header("Gravity")]
     [Tooltip("Player base gravity value")]
-    [SerializeField] private float baseGravity = 2f;
+    [SerializeField] private float baseGravity = 1f;
     [Tooltip("The maximum value the fall speed will increase to")]
     [SerializeField] private float maxFallSpeed = 18f;
     [Tooltip("Increases the player fall speed")]
