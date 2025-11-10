@@ -22,6 +22,10 @@ public class UIManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        //for test scenes v
+        FindPauseMenu();
+        FindPlayerObject();
     }
 
     private void FindPauseMenu()

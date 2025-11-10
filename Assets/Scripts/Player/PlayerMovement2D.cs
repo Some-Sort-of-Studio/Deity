@@ -159,6 +159,17 @@ public class PlayerMovement2D : MonoBehaviour
         }
     }
 
+    //interacting with switches idk where else to put this code
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Switch leSwitch = collision.gameObject.GetComponent<Switch>();
+
+        if (leSwitch != null)
+        {
+            leSwitch.ToggleSwitch();
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
