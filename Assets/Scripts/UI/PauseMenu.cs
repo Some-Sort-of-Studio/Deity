@@ -1,73 +1,34 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool paused = false;
-    public GameObject pauseMenuCanvas;
-
-    public bool isOptionsMenuActive;
+    private bool isPauseMenuOpen;
+    private bool isPauseMenuClose;
 
     public void Start()
     {
-        Time.timeScale = 1f;
+        isPauseMenuOpen = false;
+        isPauseMenuClose = true;
     }
 
-    public void Update()
+    public void OpenPauseMenu(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !isOptionsMenuActive)
+        if (context.performed && isPauseMenuClose)
         {
-            if (paused)
-            {
-                Play();
-            }
-            else
-            {
-                Stop();
-            }
+            UIManager.Instance.OpenPauseMenu();
+            isPauseMenuClose = false;
+            isPauseMenuOpen = true;
         }
     }
 
-    public void Stop()
+    public void ClosePauseMenu(InputAction.CallbackContext context)
     {
-        pauseMenuCanvas.SetActive(true);
-
-        Time.timeScale = 0f;
-        paused = true;
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
-    public void Play()
-    {
-        pauseMenuCanvas.SetActive(false);
-
-        Time.timeScale = 1f;
-        paused = false;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
-    public void OptionsAcitve()
-    {
-        isOptionsMenuActive = true;
-    }
-
-    public void OptionsDeactive()
-    {
-        isOptionsMenuActive = false;
-    }
-
-    public void BackToMenu()
-    {
-        pauseMenuCanvas.SetActive(false);
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
+        if (context.performed && isPauseMenuOpen)
+        {
+            UIManager.Instance.ClosePauseMenu();
+            isPauseMenuOpen = false;
+            isPauseMenuClose = true;
+        }
     }
 }
