@@ -7,7 +7,6 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject settingsMenu;
     private bool paused;
 
     void Awake()
@@ -30,9 +29,6 @@ public class UIManager : MonoBehaviour
         // gets menus
         pauseMenu = GameObject.Find("PauseMenu");
         pauseMenu.SetActive(false);
-
-        settingsMenu = GameObject.Find("SettingsMenu");
-        settingsMenu.SetActive(false);
     }
 
     // opens pause menu
@@ -60,21 +56,9 @@ public class UIManager : MonoBehaviour
         Cursor.visible = false;
     }
 
-    // opens options menu
-    public void OptionsAcitve()
-    {
-        settingsMenu.SetActive(true);
-    }
-
-    // closes options menu
-    public void OptionsDeactive()
-    {
-        settingsMenu.SetActive(true);
-    }
-
     public void StartGame()
     {
-        SceneManager.LoadScene("Level_Tutorial");
+        SceneManager.LoadScene("Level_Tower");
     }
 
     // takes the player back to main menu

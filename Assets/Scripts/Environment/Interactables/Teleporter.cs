@@ -4,6 +4,7 @@ public class Teleporter : MonoBehaviour
 {
     private bool playerOverlapping;
     private GameObject playerObject;
+    private Animator playerAnimator;
 
     [SerializeField] private KeyCode interactKey = KeyCode.W;
     [SerializeField] private GameObject objectToTeleportTo;
@@ -20,13 +21,14 @@ public class Teleporter : MonoBehaviour
     {
         if (Input.GetKeyUp(interactKey) && playerOverlapping)
         {
+            playerAnimator.SetBool("Door", true);
             Invoke("Teleport", teleportAnimationTime);
         }
     }
 
     private void Teleport()
     {
-        Debug.Log(playerObject.transform.position);
+        playerAnimator.SetBool("Door", false);
         playerObject.transform.position = objectToTeleportTo.transform.position;
         playerOverlapping = false;
     }
@@ -36,6 +38,7 @@ public class Teleporter : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerObject = collision.gameObject;
+            playerAnimator = playerObject.GetComponentInChildren<Animator>();
             playerOverlapping = true;
         }
     }

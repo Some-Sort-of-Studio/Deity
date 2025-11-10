@@ -1,46 +1,137 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections.Generic;
-using System.Collections;
+using TMPro;
 
 public class SettingsMenu : MonoBehaviour
 {
-    [Header("UI References:")]
-    [SerializeField] private Dropdown resDropDown;
+    [Header("Text References:")]
+    [SerializeField] private TMP_Text resolutionText;
+    [SerializeField] private TMP_Text screenTypeText;
+    [SerializeField] private TMP_Text vSyncText;
+    [SerializeField] private TMP_Text qualityText;
+    [SerializeField] private TMP_Text particleText;
 
-    [SerializeField] private Toggle fullScreen;
-    [SerializeField] private Toggle vSync;
+    // resolution ID + array
+    private int resolutionID;
     Resolution[] resolutions;
+
+    [Header("Quality Settings:")]
+    [SerializeField] private int qualityIndex = 2;
+    [SerializeField] private string[] qualityName;
 
     private void Start()
     {
+        DefaultSettings();
 
-        SetFullScreen(true);
         resolutions = Screen.resolutions;
 
-        List<string> options = new List<string>();
+        resolutionText.text = Screen.currentResolution.ToString();
 
-        foreach (Resolution resolution in resolutions)
+        resolutionID = resolutions.Length;
+    }
+
+    public void DefaultSettings()
+    {
+        // screen defaults
+        Screen.fullScreen = true;
+        screenTypeText.text = "Fullscreen";
+        QualitySettings.vSyncCount = 1;
+        vSyncText.text = "vSync On";
+
+        // graphics defaults
+        qualityIndex = 2;
+        QualitySettings.SetQualityLevel(qualityIndex);
+        qualityText.text = qualityName[qualityIndex];
+
+
+        particleText.text = "High";
+    }
+
+    public void ChangeResolutionLeft()
+    {
+        if (resolutionID == 0)
         {
-            options.Add(resolution.ToString());
+            return;
         }
-
-        resDropDown.AddOptions(options);
+        else
+        {
+            resolutionID -= 1;
+            ChangeResolution(resolutions[resolutionID]);
+        }
     }
 
-    public void SetFullScreen(bool isfullscreen)
+    public void ChangeResolutionRight()
     {
-        fullScreen.isOn = isfullscreen;
+        if(resolutionID == resolutions.Length)
+        {
+            return;
+        }
+        else
+        {
+            resolutionID += 1;
+            ChangeResolution(resolutions[resolutionID]);
+        }
     }
 
-    public void SetVSync(bool vsyncOn)
+    private void ChangeResolution(Resolution restoset)
     {
-        vSync.isOn = vsyncOn;
+        Screen.SetResolution(restoset.width, restoset.height, true);
+        resolutionText.text = Screen.currentResolution.ToString();
     }
 
-    public void ApplyGraphics()
+    public void ChangeFullscreen(bool set)
     {
+        Screen.fullScreen = set;
 
+        if(set == true)
+        {
+            screenTypeText.text = "Fullscreen";
+        }
+        else
+        {
+            screenTypeText.text = "Windowed";
+        }
+    }
+
+    public void ChangeVSync(bool set)
+    {
+        if(set == true)
+        {
+            QualitySettings.vSyncCount = 1;
+            vSyncText.text = "vSync On";
+        }
+        else
+        {
+            QualitySettings.vSyncCount = 0;
+            vSyncText.text = "vSync Off";
+        }
+    }
+
+    public void SetQualityLevelUp()
+    {
+        if (qualityIndex == 2)
+        {
+            return;
+        }
+        else
+        {
+            qualityIndex += 1;
+            QualitySettings.SetQualityLevel(qualityIndex);
+            qualityText.text = qualityName[qualityIndex];
+        }
+    }
+
+    public void SetQualityLevelDown()
+    {
+        if(qualityIndex == 0)
+        {
+            return;
+        }
+        else
+        {
+            qualityIndex -= 1;
+            QualitySettings.SetQualityLevel(qualityIndex);
+            qualityText.text = qualityName[qualityIndex];
+        }
     }
 }
 

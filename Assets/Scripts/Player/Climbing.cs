@@ -1,58 +1,75 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Climbing : MonoBehaviour
 {
-    private float vertical;
-    private float speed = 2;
-    private bool isClimable;
-    private bool isClimbing;
+    [SerializeField] private float distance;
+    [SerializeField] private float climbSpeed;
 
     private Rigidbody2D rb;
-    [SerializeField] private float gravity = 1;
+
+    private float inputVertical;
+
+    public bool isClimbing;
+    public bool ladderDetect;
+
+    [Header("LadderCheck")]
+    public Transform ladderCheck;
+    [SerializeField] private Vector2 ladderCheckSize = new Vector2(0.5f, 0.05f);
+    public LayerMask ladderMask;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
-        vertical = Input.GetAxis("Vertical");
+        LadderCheck();
+    }
 
-        if (isClimable && Mathf.Abs(vertical) > 0f)
+    private void FixedUpdate()
+    {
+        inputVertical = Input.GetAxisRaw("Vertical");
+
+        if (isClimbing && ladderDetect)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, inputVertical * climbSpeed);
+            rb.gravityScale = 0;
+        }
+        else
+        {
+            rb.gravityScale = 1;
+            isClimbing = false;
+        }
+    }
+
+    public void ClimbUp(InputAction.CallbackContext context)
+    {
+        if (context.performed && ladderCheck)
         {
             isClimbing = true;
         }
     }
 
-    private void FixedUpdate()
+    public void ClimbDown(InputAction.CallbackContext context)
     {
-        if (isClimbing)
+        if (context.performed && ladderCheck)
         {
-            rb.gravityScale = 0;
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, vertical * speed);
+            isClimbing = true;
+        }
+    }
+
+    private void LadderCheck()
+    {
+        if (Physics2D.OverlapBox(ladderCheck.position, ladderCheckSize, 0, ladderMask))
+        {
+            ladderDetect = true;
         }
         else
         {
-            rb.gravityScale = gravity;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("ClimableObject"))
-        {
-            isClimable = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("ClimableObject"))
-        {
-            isClimable = false;
-            isClimbing = false;
+            ladderDetect = false;
         }
     }
 }

@@ -30,14 +30,18 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
     [SerializeField] private Vector2 smallJumpCheckSize = new Vector2(0.5f, 2.5f);
     public LayerMask groundLayer;
+    public LayerMask grabObjectLayer;
 
     [Header("Gravity")]
     [Tooltip("Player base gravity value")]
-    [SerializeField] private float baseGravity = 2f;
+    [SerializeField] private float baseGravity = 1f;
     [Tooltip("The maximum value the fall speed will increase to")]
     [SerializeField] private float maxFallSpeed = 18f;
     [Tooltip("Increases the player fall speed")]
     [SerializeField] private float fallSpeedMultiplier = 2f;
+
+    [Header("ScriptRef")]
+    Climbing climb;
 
     float horizontalMovement;
 
@@ -45,6 +49,7 @@ public class PlayerMovement2D : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        climb = GetComponent<Climbing>();
         if(animator == null) { Debug.Log("Missing Player Animator"); }
     }
 
@@ -127,14 +132,14 @@ public class PlayerMovement2D : MonoBehaviour
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
                 jumpsRemaining--;
                 //if still nearish to ground then we've released early so small jump anim
-                if (Physics2D.OverlapBox(groundCheckPos.position, smallJumpCheckSize, 0, groundLayer)) { animator.SetTrigger("StartSmallJump"); }
+                if (Physics2D.OverlapBox(groundCheckPos.position, smallJumpCheckSize, 0, groundLayer) || Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grabObjectLayer)) { animator.SetTrigger("StartSmallJump"); }
             }
         }
     }
 
     private void GroundCheck()
     {
-        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) || Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grabObjectLayer))
         {
             //Grounded
             jumpsRemaining = maxJumps;
@@ -146,6 +151,11 @@ public class PlayerMovement2D : MonoBehaviour
         else
         {
             animator.SetBool("Air", true);
+        }
+
+        if (climb.isClimbing == true)
+        {
+            animator.SetBool("Air", false);
         }
     }
 
