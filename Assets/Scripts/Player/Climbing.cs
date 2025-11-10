@@ -12,7 +12,7 @@ public class Climbing : MonoBehaviour
     private float inputVertical;
 
     public bool isClimbing;
-    private bool ladderDetect;
+    public bool ladderDetect;
 
     [Header("LadderCheck")]
     public Transform ladderCheck;

@@ -69,7 +69,7 @@ Transform:
   m_GameObject: {fileID: 2837841556842433824}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 3435060127476956299}
   - component: {fileID: 5251389366431842224}
   - component: {fileID: 6388401789814718081}
+  - component: {fileID: 7239640233442701493}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -283,6 +284,34 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 92634936-be38-49a6-b73c-c91ac05d2747
     m_ActionName: 'Player/ClimbDown[/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7239640233442701493}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: OpenPauseMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7239640233442701493}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ClosePauseMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 755282fc-d1a6-4d24-b7c2-ba48b2c46d9d
+    m_ActionName: 'Player/PauseMenu[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -374,11 +403,24 @@ MonoBehaviour:
   distance: 5
   climbSpeed: 2
   isClimbing: 0
+  ladderDetect: 0
   ladderCheck: {fileID: 2546910653200728360}
   ladderCheckSize: {x: 0.5, y: 0.05}
   ladderMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &7239640233442701493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3101268727038175309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e9948e312aeba479f7dac6ffcb3946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3824243847252494995
 GameObject:
   m_ObjectHideFlags: 0
