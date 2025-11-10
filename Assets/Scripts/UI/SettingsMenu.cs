@@ -1,76 +1,137 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic;
 
 public class SettingsMenu : MonoBehaviour
 {
-    [Header("UI References:")]
+    [Header("Text References:")]
     [SerializeField] private TMP_Text resolutionText;
+    [SerializeField] private TMP_Text screenTypeText;
+    [SerializeField] private TMP_Text vSyncText;
+    [SerializeField] private TMP_Text qualityText;
+    [SerializeField] private TMP_Text particleText;
 
-    [SerializeField] private Toggle fullScreen;
-    [SerializeField] private Toggle vSync;
+    // resolution ID + array
+    private int resolutionID;
     Resolution[] resolutions;
 
-    private List<string> options = new List<string>();
+    [Header("Quality Settings:")]
+    [SerializeField] private int qualityIndex = 2;
+    [SerializeField] private string[] qualityName;
 
     private void Start()
     {
-        fullScreen.isOn = true;
-        QualitySettings.vSyncCount = 1;
+        DefaultSettings();
 
         resolutions = Screen.resolutions;
 
-        foreach (Resolution resolution in resolutions)
-        {
-            options.Add(resolution.ToString());
-        }
+        resolutionText.text = Screen.currentResolution.ToString();
 
+        resolutionID = resolutions.Length;
+    }
+
+    public void DefaultSettings()
+    {
+        // screen defaults
+        Screen.fullScreen = true;
+        screenTypeText.text = "Fullscreen";
+        QualitySettings.vSyncCount = 1;
+        vSyncText.text = "vSync On";
+
+        // graphics defaults
+        qualityIndex = 2;
+        QualitySettings.SetQualityLevel(qualityIndex);
+        qualityText.text = qualityName[qualityIndex];
+
+
+        particleText.text = "High";
+    }
+
+    public void ChangeResolutionLeft()
+    {
+        if (resolutionID == 0)
+        {
+            return;
+        }
+        else
+        {
+            resolutionID -= 1;
+            ChangeResolution(resolutions[resolutionID]);
+        }
+    }
+
+    public void ChangeResolutionRight()
+    {
+        if(resolutionID == resolutions.Length)
+        {
+            return;
+        }
+        else
+        {
+            resolutionID += 1;
+            ChangeResolution(resolutions[resolutionID]);
+        }
+    }
+
+    private void ChangeResolution(Resolution restoset)
+    {
+        Screen.SetResolution(restoset.width, restoset.height, true);
         resolutionText.text = Screen.currentResolution.ToString();
     }
 
-    public void ChangeResolutionLeft(int current)
+    public void ChangeFullscreen(bool set)
     {
-        if(Screen.currentResolution.ToString() == resolutions[options.Count].ToString())
+        Screen.fullScreen = set;
+
+        if(set == true)
         {
-            return;
+            screenTypeText.text = "Fullscreen";
         }
         else
         {
-            ChangeResolution(resolutions[options.Count - 1]);
+            screenTypeText.text = "Windowed";
         }
     }
 
-    public void ChangeResolutionRight(int current)
+    public void ChangeVSync(bool set)
     {
-        if (Screen.currentResolution.ToString() == resolutions[options.Count].ToString())
-        {
-            return;
-        }
-        else
-        {
-            ChangeResolution(resolutions[options.Count + 1]);
-        }
-    }
-
-    private static void ChangeResolution(Resolution restoset)
-    {
-        Screen.SetResolution(restoset.width, restoset.height, false);
-    }
-
-    public void ApplyGraphics()
-    {
-        if(fullScreen.isOn)
-        {
-            Screen.fullScreen = true;
-        }
-        else Screen.fullScreen = false;
-
-        if(vSync.isOn)
+        if(set == true)
         {
             QualitySettings.vSyncCount = 1;
+            vSyncText.text = "vSync On";
         }
-        else QualitySettings.vSyncCount = 0;
+        else
+        {
+            QualitySettings.vSyncCount = 0;
+            vSyncText.text = "vSync Off";
+        }
+    }
+
+    public void SetQualityLevelUp()
+    {
+        if (qualityIndex == 2)
+        {
+            return;
+        }
+        else
+        {
+            qualityIndex += 1;
+            QualitySettings.SetQualityLevel(qualityIndex);
+            qualityText.text = qualityName[qualityIndex];
+        }
+    }
+
+    public void SetQualityLevelDown()
+    {
+        if(qualityIndex == 0)
+        {
+            return;
+        }
+        else
+        {
+            qualityIndex -= 1;
+            QualitySettings.SetQualityLevel(qualityIndex);
+            qualityText.text = qualityName[qualityIndex];
+        }
     }
 }
 
