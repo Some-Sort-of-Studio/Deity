@@ -1,3 +1,5 @@
+using NUnit.Framework.Constraints;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +15,8 @@ public class Climbing : MonoBehaviour
 
     public bool isClimbing;
     public bool ladderDetect;
+    public bool tryingToClimbDown;
+    private GameObject TopOfLadder;
 
     [Header("LadderCheck")]
     public Transform ladderCheck;
@@ -55,6 +59,11 @@ public class Climbing : MonoBehaviour
 
     public void ClimbDown(InputAction.CallbackContext context)
     {
+        if (context.performed)
+        {
+            tryingToClimbDown = true;
+        }
+        
         if (context.performed && ladderCheck)
         {
             isClimbing = true;
@@ -70,6 +79,22 @@ public class Climbing : MonoBehaviour
         else
         {
             ladderDetect = false;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (tryingToClimbDown && collision.gameObject.CompareTag("TopOfLadder"))
+        {
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("TopOfLadder"))
+        {
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
 }

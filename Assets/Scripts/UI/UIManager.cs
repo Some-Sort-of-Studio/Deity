@@ -79,9 +79,6 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
         paused = true;
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
         TogglePlayerAbilities(false);
     }
 
@@ -92,9 +89,6 @@ public class UIManager : MonoBehaviour
         paused = false;
 
         Time.timeScale = 1f;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
 
         TogglePlayerAbilities(true);
     }

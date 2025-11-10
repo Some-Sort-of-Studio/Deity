@@ -82,11 +82,11 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 9f84303967f9cf8478bb9d4a90d81a48, type: 2}
     - target: {fileID: 2530003954449580818, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2530003954449580818, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -74
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2530003954449580818, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_LocalPosition.z
@@ -151,6 +151,14 @@ PrefabInstance:
     - target: {fileID: 5540263906027230079, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_Size.x
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7505553330427428839, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: baseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7505553330427428839, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: grabObjectLayer.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 8420093136281076505, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
