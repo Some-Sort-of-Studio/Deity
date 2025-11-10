@@ -9,6 +9,7 @@ TagManager:
   - SolidObject
   - IntangibleObject
   - SongAOE
+  - PauseMenu
   layers:
   - Default
   - TransparentFX
