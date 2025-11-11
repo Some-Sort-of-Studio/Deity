@@ -88,6 +88,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "TeleportToStart",
+                    "type": "Button",
+                    "id": "9aeba361-d877-4bba-93f6-e8c58691201e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "PauseMenu",
                     "type": "Button",
                     "id": "755282fc-d1a6-4d24-b7c2-ba48b2c46d9d",
@@ -227,6 +236,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f0557d4-d433-45bb-ab8d-c95a6a7f2823",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TeleportToStart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
