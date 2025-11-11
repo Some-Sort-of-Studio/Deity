@@ -79,6 +79,6 @@ public class CharacterManager : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(StartingLevel);
+        UIManager.Instance.StartGame();
     }
 }

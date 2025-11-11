@@ -5,7 +5,7 @@ public class MainMenuButtons : MonoBehaviour
 {
     public void StartGame()
     {
-        UIManager.Instance.StartGame();
+        UIManager.Instance.LoadPlayerSelect();
     }
 
     public void QuitGame()
