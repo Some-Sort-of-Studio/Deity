@@ -24,8 +24,8 @@ public class UIManager : MonoBehaviour
         }
 
         //for test scenes v
-        FindPauseMenu();
-        FindPlayerObject();
+        //FindPauseMenu();
+        //FindPlayerObject();
     }
 
     private void FindPauseMenu()
@@ -95,10 +95,18 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Character Selection");
+        SceneManager.LoadScene("Level_Tower");
 
         Invoke(nameof(FindPauseMenu), 0.1f);
         Invoke(nameof(FindPlayerObject), 0.1f);
+
+        //FindPauseMenu();
+        //FindPlayerObject();
+    }
+
+    public void LoadPlayerSelect()
+    {
+        SceneManager.LoadScene("Character Selection");
     }
 
     // takes the player back to main menu
