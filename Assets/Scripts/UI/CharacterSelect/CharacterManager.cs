@@ -9,7 +9,6 @@ public class CharacterManager : MonoBehaviour
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
-    public SpriteRenderer playerSprite;
     public TextMeshProUGUI ability1Text;
     public TextMeshProUGUI ability2Text;
 
@@ -60,7 +59,6 @@ public class CharacterManager : MonoBehaviour
     private void UpdatedCharacter(int selectedOption)
     {
         Character character = characterDB.GetCharacter(selectedOption);
-        playerSprite.sprite = character.characterSprite;
         nameText.text = character.characterName;
         descriptionText.text = character.characterDescription;
         ability1Text.text = character.characterAbility1;
