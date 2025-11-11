@@ -95,7 +95,7 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level_Tower");
+        SceneManager.LoadScene("Character Selection");
 
         Invoke(nameof(FindPauseMenu), 0.1f);
         Invoke(nameof(FindPlayerObject), 0.1f);
