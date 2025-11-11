@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabDetect: {fileID: 2082701991948431982}
-  grabDetectSize: {x: 0.5, y: 0.05}
+  grabDetectSize: {x: 3, y: 0.05}
   boxHolder: {fileID: 7652772698313718900}
   grabbableObjectLayer:
     serializedVersion: 2

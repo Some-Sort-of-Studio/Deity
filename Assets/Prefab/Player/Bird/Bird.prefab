@@ -80,6 +80,38 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 9f84303967f9cf8478bb9d4a90d81a48, type: 2}
+    - target: {fileID: 1017397140112193393, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017397140112193393, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017397140112193393, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017397140112193393, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661812781925414401, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661812781925414401, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661812781925414401, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661812781925414401, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2530003954449580818, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -131,6 +163,22 @@ PrefabInstance:
     - target: {fileID: 5039083541861565791, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: doubleJumpMutliplier
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243214054950692405, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243214054950692405, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243214054950692405, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243214054950692405, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5334779840620674496, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: jumpForce
@@ -271,6 +319,22 @@ PrefabInstance:
     - target: {fileID: 8420093136281076505, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539517078586509787, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539517078586509787, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539517078586509787, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539517078586509787, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8611422709855587059, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_LocalPosition.y

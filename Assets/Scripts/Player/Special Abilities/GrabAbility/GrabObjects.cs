@@ -12,7 +12,7 @@ public class GrabObjects : MonoBehaviour
     public LayerMask grabbableObjectLayer;
 
     bool objectInRange;
-    bool isPickingUp;
+    [HideInInspector] public bool isPickingUp;
     bool isZoomingIn;
     bool isZoomingOut;
 

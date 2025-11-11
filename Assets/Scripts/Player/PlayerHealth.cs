@@ -1,16 +1,22 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private bool dying;
+    private Animator animator;
 
     [Header("Lives")]
+    private bool dying;
     [SerializeField] private int health = 5;
 
     [Header("Checkpoints")]
     [SerializeField] private GameObject startingCheckpoint;
     private GameObject currentCheckpoint;
+
+    [Header("Teleportation")]
+    private bool teleporting;
+    [SerializeField] private float teleportToStartTime = 1;
 
     [Header("UI")]
     [SerializeField] private GameObject deathCanvas;
@@ -18,7 +24,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+
         dying = false;
+        teleporting = false;
 
         if (startingCheckpoint == null) { Debug.Log("Missing player start checkpoint"); }
         else { currentCheckpoint = startingCheckpoint; }
@@ -33,6 +42,35 @@ public class PlayerHealth : MonoBehaviour
     {
         startingCheckpoint = checkpoint;
         currentCheckpoint = checkpoint;
+    }
+
+    public void TeleportToStart(InputAction.CallbackContext context)
+    {
+        if (!teleporting && context.performed)
+        {
+            teleporting = true;
+            animator.SetBool("TeleportToStart", true);
+            StartCoroutine(nameof(Teleporting));
+        }
+
+        if (context.canceled)
+        {
+            teleporting = false;
+            animator.SetBool("TeleportToStart", false);
+        }
+    }
+
+    private IEnumerator Teleporting()
+    {
+        yield return new WaitForSeconds(teleportToStartTime);
+        if (teleporting) //if still teleporting after the time
+        {
+            health = 5;
+            transform.position = startingCheckpoint.transform.position;
+
+            teleporting = false;
+            animator.SetBool("TeleportToStart", false);
+        }
     }
 
     public IEnumerator Die()
