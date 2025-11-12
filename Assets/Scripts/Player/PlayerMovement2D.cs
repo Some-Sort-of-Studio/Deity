@@ -45,6 +45,8 @@ public class PlayerMovement2D : MonoBehaviour
 
     float horizontalMovement;
 
+    public bool movementEnabled = true;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -85,6 +87,8 @@ public class PlayerMovement2D : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (!movementEnabled) { return; }
+
         horizontalMovement = context.ReadValue<Vector2>().x;
         moveSpeed = walkSpeed;
 
@@ -105,6 +109,8 @@ public class PlayerMovement2D : MonoBehaviour
 
     public void Sprint(InputAction.CallbackContext context)
     {
+        if (!movementEnabled) { return; }
+
         if (context.performed)
         {
             isSprinting = true;
@@ -117,6 +123,8 @@ public class PlayerMovement2D : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (!movementEnabled) { return; }
+
         if (jumpsRemaining > 0)
         {
             if (context.performed)
