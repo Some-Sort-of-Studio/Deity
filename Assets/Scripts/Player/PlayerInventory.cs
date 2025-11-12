@@ -7,6 +7,9 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private TomeSet[] existingTomesets;
     private List<Tome> collectedTomes;
 
+    [SerializeField] private Canvas InventoryHolder;
+    [SerializeField] private GameObject SlotPrefab;
+
     private void Awake()
     {
         collectedTomes = new List<Tome>();
