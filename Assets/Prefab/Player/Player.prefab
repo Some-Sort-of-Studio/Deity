@@ -426,10 +426,11 @@ MonoBehaviour:
     m_Bits: 8
   grabObjectLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   baseGravity: 1
   maxFallSpeed: 18
   fallSpeedMultiplier: 2
+  movementEnabled: 1
 --- !u!114 &197972112907101038
 MonoBehaviour:
   m_ObjectHideFlags: 0

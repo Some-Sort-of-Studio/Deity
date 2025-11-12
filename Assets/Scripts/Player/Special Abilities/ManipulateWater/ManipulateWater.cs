@@ -44,17 +44,14 @@ public class ManipulateWater : MonoBehaviour
 
     private void DrawWater()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition = new Vector3(mousePosition.x, mousePosition.y, 0);
-
         GameObject closestWaterThing = lastPaintedWater != null ? lastPaintedWater : currentWater.gameObject;
 
-        float drainAmount = Vector3.Distance(closestWaterThing.transform.position, mousePosition) / currentWater.transform.localScale.x;
+        float drainAmount = Vector3.Distance(closestWaterThing.transform.position, transform.position) / currentWater.transform.localScale.x;
         currentWater.Drain(drainAmount);
 
         lastPaintedWater = Instantiate(waterPaintPrefab, closestWaterThing.transform.position, Quaternion.identity);
         WaterBlob lastPaintedWaterComp = lastPaintedWater.GetComponent<WaterBlob>();
-        lastPaintedWaterComp.destPosition = mousePosition;
+        lastPaintedWaterComp.destPosition = transform.position;
         lastPaintedWaterComp.waterSource = currentWater;
         lastPaintedWaterComp.drainAmount = drainAmount;
     }
