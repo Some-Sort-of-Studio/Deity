@@ -1,7 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -14,6 +12,8 @@ public class CharacterManager : MonoBehaviour
 
     private int selectedOption = 0;
 
+    private Animator animator;
+
     [SerializeField] private string StartingLevel;
 
     private void Start()
@@ -22,12 +22,10 @@ public class CharacterManager : MonoBehaviour
         {
             selectedOption = 0;
         }
-        else
-        {
-            Load();
-        }
 
         UpdatedCharacter(selectedOption);
+
+        animator = GetComponentInParent<Animator>();
     }
 
     public void NextOption()
@@ -40,6 +38,7 @@ public class CharacterManager : MonoBehaviour
         }
 
         UpdatedCharacter(selectedOption);
+        Rotate();
         Save();
     }
 
@@ -53,6 +52,7 @@ public class CharacterManager : MonoBehaviour
         }
 
         UpdatedCharacter(selectedOption);
+        Reverse();
         Save();
     }
 
@@ -65,11 +65,6 @@ public class CharacterManager : MonoBehaviour
         ability2Text.text = character.characterAbility2;
     }
 
-    private void Load()
-    {
-        selectedOption = PlayerPrefs.GetInt("selectedOption");
-    }
-
     private void Save()
     {
         PlayerPrefs.SetInt("selectedOption", selectedOption);
@@ -78,5 +73,41 @@ public class CharacterManager : MonoBehaviour
     public void PlayGame()
     {
         UIManager.Instance.StartGame();
+    }
+
+    private void Rotate()
+    {
+        if (selectedOption == 1)
+        {
+            animator.SetBool("Rotate(CtoO)", true);
+            animator.SetBool("Rotate(OtoC)", false);
+            animator.SetBool("Reverse(CtoO)", false);
+            animator.SetBool("Reverse(OtoC)", false);
+        }
+        else if (selectedOption == 0)
+        {
+            animator.SetBool("Rotate(CtoO)", false);
+            animator.SetBool("Rotate(OtoC)", true);
+            animator.SetBool("Reverse(CtoO)", false);
+            animator.SetBool("Reverse(OtoC)", false);
+        }
+    }
+
+    private void Reverse()
+    {
+        if (selectedOption == 1)
+        {
+            animator.SetBool("Rotate(CtoO)", false);
+            animator.SetBool("Rotate(OtoC)", false);
+            animator.SetBool("Reverse(CtoO)", true);
+            animator.SetBool("Reverse(OtoC)", false);
+        }
+        else if (selectedOption == 0)
+        {
+            animator.SetBool("Rotate(CtoO)", false);
+            animator.SetBool("Rotate(OtoC)", false);
+            animator.SetBool("Reverse(CtoO)", false);
+            animator.SetBool("Reverse(OtoC)", true);
+        }
     }
 }
