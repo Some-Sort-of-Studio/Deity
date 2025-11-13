@@ -15,10 +15,36 @@ public class PlayerInventory : MonoBehaviour
         collectedTomes = new List<Tome>();
     }
 
+    private void Start()
+    {
+        InventoryHolder.gameObject.SetActive(false);
+    }
+
     public void CollectTome(Tome tome)
     {
         collectedTomes.Add(tome);
         CheckForEndings();
+    }
+
+    public void OpenInventory()
+    {
+        InventoryHolder.gameObject.SetActive(true);
+
+        foreach(Tome tome in collectedTomes)
+        {
+            Instantiate(SlotPrefab, InventoryHolder.transform);
+            SlotPrefab.GetComponent<InventorySlot>().AddToSlot(tome);
+        }
+    }
+
+    public void CloseInventory()
+    {
+        foreach(Tome tome in collectedTomes)
+        {
+            Destroy(SlotPrefab);
+        }
+
+        InventoryHolder.gameObject.SetActive(false);
     }
 
     private void CheckForEndings()
