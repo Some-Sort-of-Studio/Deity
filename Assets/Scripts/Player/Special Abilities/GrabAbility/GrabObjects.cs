@@ -59,7 +59,7 @@ public class GrabObjects : MonoBehaviour
                 isPickingUp = true;
                 pickupObject = grabCheck.gameObject;
 
-                playerMovement.movementEnabled = false;
+                //playerMovement.movementEnabled = false;
 
                 pickupObject.transform.parent = boxHolder.transform;
                 pickupObject.GetComponent<Rigidbody2D>().gravityScale = 0;
@@ -72,11 +72,11 @@ public class GrabObjects : MonoBehaviour
             isTryingGrab = false;
             if (isPickingUp)
             {
-                playerMovement.movementEnabled = true;
+                //playerMovement.movementEnabled = true;
 
                 pickupObject.transform.parent = null;
                 pickupObject.GetComponent<Rigidbody2D>().gravityScale = 1;
-                pickupObject.GetComponent<Rigidbody2D>().mass = 1;
+                pickupObject.GetComponent<Rigidbody2D>().mass = 1000;
                 pickupObject.GetComponent<Rigidbody2D>().freezeRotation = false;
 
                 //reset box holder position
