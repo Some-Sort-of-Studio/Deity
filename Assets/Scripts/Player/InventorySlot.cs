@@ -5,7 +5,6 @@ public class InventorySlot : MonoBehaviour
     private UnityEngine.UI.Image IconSprite;
     public string TomeTitle;
     private Tome SlotTome;
-    [SerializeField] private GameObject TomeViewer;
 
     public void AddToSlot(Tome tome)
     {
@@ -16,6 +15,6 @@ public class InventorySlot : MonoBehaviour
 
     public void ViewTome()
     {
-        TomeViewer.SetActive(true);
+        gameObject.GetComponentInParent<PlayerInventory>().ReadTome(SlotTome);
     }
 }
