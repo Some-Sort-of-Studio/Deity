@@ -12,7 +12,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private GameObject SlotPrefab;
 
     [System.Serializable]
-    struct TomeCanvas
+    public struct TomeCanvas
     {
         public GameObject TomeViewer;
         public TextMeshPro TomeText;
@@ -21,7 +21,7 @@ public class PlayerInventory : MonoBehaviour
         public TextMeshPro TomeTextClean;
     }
 
-    TomeCanvas tomeCanvas;
+    [SerializeField] TomeCanvas tomeCanvas;
 
     private void Start()
     {
