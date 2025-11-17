@@ -114,11 +114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2530003954449580818, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3.51
       objectReference: {fileID: 0}
     - target: {fileID: 2530003954449580818, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 40.59
       objectReference: {fileID: 0}
     - target: {fileID: 2530003954449580818, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_LocalPosition.z
@@ -159,6 +159,14 @@ PrefabInstance:
     - target: {fileID: 3101268727038175309, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_Name
       value: Bird
+      objectReference: {fileID: 0}
+    - target: {fileID: 4009412418487736118, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4009412418487736118, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5039083541861565791, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: doubleJumpMutliplier

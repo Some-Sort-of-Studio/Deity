@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -8,27 +9,26 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private TomeSet[] existingTomesets;
     private List<Tome> collectedTomes = new List<Tome>();
 
-    [SerializeField] private Canvas InventoryHolder;
+    [SerializeField] private GameObject InventoryHolder;
     [SerializeField] private GameObject SlotPrefab;
 
     [System.Serializable]
     public struct TomeCanvas
     {
         public GameObject TomeViewer;
-        public TextMeshPro TomeText;
+        public TextMeshProUGUI TomeText;
 
         public GameObject TomeViewerClean;
-        public TextMeshPro TomeTextClean;
+        public TextMeshProUGUI TomeTextClean;
     }
 
     [SerializeField] TomeCanvas tomeCanvas;
 
     private void Start()
     {
-        InventoryHolder.gameObject.SetActive(false);
-
         tomeCanvas.TomeViewer.SetActive(false);
         tomeCanvas.TomeViewerClean.SetActive(false);
+        InventoryHolder.gameObject.SetActive(false);
     }
 
     public void CollectTome(Tome tome)
@@ -37,22 +37,31 @@ public class PlayerInventory : MonoBehaviour
         CheckForEndings();
     }
 
-    public void OpenInventory()
+    public void OpenInventory(InputAction.CallbackContext context)
     {
-        InventoryHolder.gameObject.SetActive(true);
 
-        foreach (Tome tome in collectedTomes)
+        if(context.performed)
         {
-            Instantiate(SlotPrefab, InventoryHolder.transform);
-            SlotPrefab.GetComponent<InventorySlot>().AddToSlot(tome);
+            InventoryHolder.gameObject.SetActive(true);
+
+            foreach (Tome tome in collectedTomes)
+            {
+                Instantiate(SlotPrefab, InventoryHolder.transform);
+                SlotPrefab.GetComponent<InventorySlot>().AddToSlot(tome);
+            }
+        }
+        
+        if(context.canceled)
+        {
+            CloseInventory();
         }
     }
 
     public void CloseInventory()
     {
-        foreach (Tome tome in collectedTomes)
+        foreach(Tome tome in collectedTomes)
         {
-            Destroy(SlotPrefab);
+            DestroyImmediate(SlotPrefab);
         }
 
         InventoryHolder.gameObject.SetActive(false);
