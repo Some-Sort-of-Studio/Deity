@@ -13,20 +13,28 @@ public class MovingPlatform : MonoBehaviour
     { 
         Automatic,
         Trigger,
-        Switch_Cycle,
-        Switch_Single
+        Puzzle_Cycle,
+        Puzzle_Single
     }
 
-    public PlatformType type;
+    public enum TriggerType
+    {
+        Switch,
+        Pressure_Plate
+    }
+
+    public PlatformType platform_type;
+    public TriggerType trigger_type;
 
     private bool isPlayerOnPlatform;
 
     public bool isSwitchOn;
+    public bool isPressurePlateActive;
 
 
     private void Start()
     {
-        if (type == PlatformType.Automatic || type == PlatformType.Switch_Cycle)
+        if (platform_type == PlatformType.Automatic || platform_type == PlatformType.Puzzle_Cycle)
         {
             nextPosition = pointB.position;
         }
@@ -34,7 +42,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void Update()
     {
-        if (type == PlatformType.Automatic)
+        if (platform_type == PlatformType.Automatic)
         {
             transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
 
@@ -44,7 +52,7 @@ public class MovingPlatform : MonoBehaviour
             }
         }
 
-        if (type == PlatformType.Trigger)
+        if (platform_type == PlatformType.Trigger)
         {
             if (isPlayerOnPlatform)
             {
@@ -58,7 +66,7 @@ public class MovingPlatform : MonoBehaviour
             }
         }
 
-        if (type == PlatformType.Switch_Cycle)
+        if (platform_type == PlatformType.Puzzle_Cycle)
         {
             if (isSwitchOn)
             {
@@ -71,42 +79,56 @@ public class MovingPlatform : MonoBehaviour
             }
         }
 
-        if (type == PlatformType.Switch_Single)
+        if (platform_type == PlatformType.Puzzle_Single)
         {
-            if (isSwitchOn)
+            if (trigger_type == TriggerType.Switch)
             {
-                nextPosition = pointB.position;
-                transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
+                if (isSwitchOn)
+                {
+                    nextPosition = pointB.position;
+                    transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
+                }
+                else if (!isSwitchOn)
+                {
+                    nextPosition = pointA.position;
+                    transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
+                }
             }
-            else if (!isSwitchOn)
+            
+            if (trigger_type == TriggerType.Pressure_Plate)
             {
-                nextPosition = pointA.position;
-                transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
+                if (isPressurePlateActive)
+                {
+                    nextPosition = pointB.position;
+                    transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
+                }
+                else if (!isPressurePlateActive)
+                {
+                    nextPosition = pointA.position;
+                    transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
+                }
             }
         }
     }
 
-    public void switchToggle()
+    public void switchToggleOn()
     {
-        if (type == PlatformType.Switch_Cycle)
-        {
-            if (!isSwitchOn)
-            {
-                isSwitchOn = true;
-            }
-        }
+        isSwitchOn = true;
+    }
 
-        if (type == PlatformType.Switch_Single)
-        {
-            if (isSwitchOn)
-            {
-                isSwitchOn = false;
-            }
-            else if (!isSwitchOn)
-            {
-                isSwitchOn = true;
-            }
-        }
+    public void switchToggleOff()
+    {
+        isSwitchOn = false;
+    }
+
+    public void pressurePlateToggleOn()
+    {
+        isPressurePlateActive = true;
+    }
+
+    public void pressurePlateToggleOff()
+    {
+        isPressurePlateActive = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -115,7 +137,7 @@ public class MovingPlatform : MonoBehaviour
         {
             collision.gameObject.transform.parent = transform;
 
-            if (type == PlatformType.Trigger)
+            if (platform_type == PlatformType.Trigger)
             {
                 isPlayerOnPlatform = true;
             }
@@ -128,7 +150,7 @@ public class MovingPlatform : MonoBehaviour
         {
             collision.gameObject.transform.parent = null;
 
-            if (type == PlatformType.Trigger)
+            if (platform_type == PlatformType.Trigger)
             {
                 isPlayerOnPlatform = false;
             }
