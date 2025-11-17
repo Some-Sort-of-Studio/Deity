@@ -4,7 +4,7 @@ public class InventorySlot : MonoBehaviour
 {
     public UnityEngine.UI.Image IconSprite;
     public string TomeTitle;
-    private Tome SlotTome;
+    private static Tome SlotTome;
 
     public void AddToSlot(Tome tome)
     {
@@ -13,8 +13,17 @@ public class InventorySlot : MonoBehaviour
         TomeTitle = tome.TomeName;
     }
 
+    public bool CheckTome(Tome tome)
+    {
+        if (SlotTome == null)
+            return true;
+        else return false;
+    }
+
     public void ViewTome()
     {
-        gameObject.GetComponentInParent<PlayerInventory>().ReadTome(SlotTome);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        player.GetComponent<PlayerInventory>().ReadTome(SlotTome);
     }
 }
