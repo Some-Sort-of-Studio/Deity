@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InventorySlot : MonoBehaviour
 {
-    private UnityEngine.UI.Image IconSprite;
+    public UnityEngine.UI.Image IconSprite;
     public string TomeTitle;
     private Tome SlotTome;
 
