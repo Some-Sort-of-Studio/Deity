@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
         playerObject = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void TogglePlayerAbilities(bool abilityEnabled)
+    public void TogglePlayerAbilities(bool abilityEnabled)
     {
         //try find player if not got a reference
         if (playerObject == null) { FindPlayerObject(); }

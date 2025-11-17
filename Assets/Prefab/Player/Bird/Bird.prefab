@@ -166,7 +166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4009412418487736118, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_ReferenceResolution.x
-      value: 1
+      value: 1980
       objectReference: {fileID: 0}
     - target: {fileID: 5039083541861565791, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: doubleJumpMutliplier

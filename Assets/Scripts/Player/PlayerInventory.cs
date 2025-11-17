@@ -9,8 +9,11 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private TomeSet[] existingTomesets;
     private List<Tome> collectedTomes = new List<Tome>();
 
+    // slot references
     [SerializeField] private GameObject InventoryHolder;
     [SerializeField] private GameObject SlotPrefab;
+
+    private bool opened = false;
 
     [System.Serializable]
     public struct TomeCanvas
@@ -39,29 +42,39 @@ public class PlayerInventory : MonoBehaviour
 
     public void OpenInventory(InputAction.CallbackContext context)
     {
-
-        if(context.performed)
+        if (context.performed)
         {
-            InventoryHolder.gameObject.SetActive(true);
-
-            foreach (Tome tome in collectedTomes)
+            if(!opened)
             {
-                Instantiate(SlotPrefab, InventoryHolder.transform);
-                SlotPrefab.GetComponent<InventorySlot>().AddToSlot(tome);
+                UIManager.Instance.TogglePlayerAbilities(false);
+                InventoryHolder.gameObject.SetActive(true);
+                UpdateInventory();
+                opened = true;
+            }
+            else
+            {
+                UIManager.Instance.TogglePlayerAbilities(true);
+                CloseInventory();
+                CloseTome();
+                opened = false;
             }
         }
-        
-        if(context.canceled)
+    }
+
+    private void UpdateInventory()
+    {
+        foreach (Tome tome in collectedTomes)
         {
-            CloseInventory();
+            Instantiate(SlotPrefab, InventoryHolder.transform);
+            SlotPrefab.GetComponent<InventorySlot>().AddToSlot(tome);
         }
     }
 
     public void CloseInventory()
     {
-        foreach(Tome tome in collectedTomes)
+        foreach (Transform children in InventoryHolder.transform)
         {
-            DestroyImmediate(SlotPrefab);
+            Destroy(children.gameObject);
         }
 
         InventoryHolder.gameObject.SetActive(false);
@@ -103,5 +116,14 @@ public class PlayerInventory : MonoBehaviour
             tomeCanvas.TomeViewerClean.SetActive(false);
             tomeCanvas.TomeTextClean.text = "";
         }
+    }
+
+    public void CloseTome()
+    {
+        tomeCanvas.TomeViewer.SetActive(false);
+        tomeCanvas.TomeText.text = "";
+
+        tomeCanvas.TomeViewerClean.SetActive(false);
+        tomeCanvas.TomeTextClean.text = "";
     }
 }
