@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -24,8 +23,12 @@ public class UIManager : MonoBehaviour
         }
 
         //for test scenes v
-        //FindPauseMenu();
-        //FindPlayerObject();
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.handle != SceneManager.sceneCountInBuildSettings)
+        {
+            FindPauseMenu();
+            FindPlayerObject();
+        }
     }
 
     private void FindPauseMenu()
@@ -41,8 +44,7 @@ public class UIManager : MonoBehaviour
         playerObject = GameObject.FindGameObjectWithTag("Player");
     }
 
-
-    private void TogglePlayerAbilities(bool abilityEnabled)
+    public void TogglePlayerAbilities(bool abilityEnabled)
     {
         //try find player if not got a reference
         if (playerObject == null) { FindPlayerObject(); }
@@ -99,9 +101,6 @@ public class UIManager : MonoBehaviour
 
         Invoke(nameof(FindPauseMenu), 0.1f);
         Invoke(nameof(FindPlayerObject), 0.1f);
-
-        //FindPauseMenu();
-        //FindPlayerObject();
     }
 
     public void LoadPlayerSelect()
