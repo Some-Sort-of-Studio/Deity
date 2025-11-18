@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  projectileTimer: 5
+  projectileTimer: 1
 --- !u!50 &-5606851310136667429
 Rigidbody2D:
   serializedVersion: 5
