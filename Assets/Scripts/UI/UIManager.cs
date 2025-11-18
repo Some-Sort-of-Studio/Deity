@@ -101,9 +101,6 @@ public class UIManager : MonoBehaviour
 
         Invoke(nameof(FindPauseMenu), 0.1f);
         Invoke(nameof(FindPlayerObject), 0.1f);
-
-        //FindPauseMenu();
-        //FindPlayerObject();
     }
 
     public void LoadPlayerSelect()

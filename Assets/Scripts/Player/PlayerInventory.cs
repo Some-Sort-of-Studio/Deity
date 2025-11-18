@@ -15,12 +15,15 @@ public class PlayerInventory : MonoBehaviour
 
     private bool opened = false;
 
+    // tome viewer struct
     [System.Serializable]
     public struct TomeCanvas
     {
+        // normal version
         public GameObject TomeViewer;
         public TextMeshProUGUI TomeText;
 
+        // clean version
         public GameObject TomeViewerClean;
         public TextMeshProUGUI TomeTextClean;
     }
