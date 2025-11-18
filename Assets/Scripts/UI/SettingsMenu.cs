@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEditor;
 
 public class SettingsMenu : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void Start()
     {
+        // sets everything to default on start
         DefaultSettings();
 
         resolutions = Screen.resolutions;
@@ -45,6 +47,11 @@ public class SettingsMenu : MonoBehaviour
 
         particleText.text = "High";
     }
+
+    //protected virtual void SetPrefs()
+    //{
+
+    //}
 
     public void ChangeResolutionLeft()
     {
