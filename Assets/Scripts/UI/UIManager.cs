@@ -99,8 +99,11 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Level_Tower");
 
-        Invoke(nameof(FindPauseMenu), 0.1f);
-        Invoke(nameof(FindPlayerObject), 0.1f);
+        if(pauseMenu != null && playerObject != null)
+        {
+            Invoke(nameof(FindPauseMenu), 0.2f);
+            Invoke(nameof(FindPlayerObject), 0.2f);
+        }
     }
 
     public void LoadPlayerSelect()
