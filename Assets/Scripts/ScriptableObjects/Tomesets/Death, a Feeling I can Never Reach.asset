@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0d7ac69d0362e42af5b30b197b698b, type: 3}
   m_Name: Death, a Feeling I can Never Reach
   m_EditorClassIdentifier: 
-  _name: 
-  tomes: []
+  _name: Death, a Feeling I can Never Reach
+  tomes:
+  - {fileID: 11400000, guid: b3cbea2c9a849824eac4166485978e50, type: 2}
+  - {fileID: 11400000, guid: 6fc77a6c1b05bf54eab7d1724cce6d1c, type: 2}
+  - {fileID: 11400000, guid: 212f14c9b2075b54bbe2d1b040c6b67d, type: 2}
   endingCanvas: {fileID: 0}

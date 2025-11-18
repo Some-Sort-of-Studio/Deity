@@ -12,7 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e0ecc19fb68794982a4c2797020fdd, type: 3}
   m_Name: Am I Deserving of Punishment
   m_EditorClassIdentifier: 
-  TomeName: 
-  TomeSprite: {fileID: 0}
-  TomeIcon: {fileID: 0}
-  TomeText: 
+  TomeName: Am I Deserving of Punishment?
+  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeText: 'I took a nap
+
+
+    At the top of a hill
+
+
+    And awoke in a frenzy,
+
+
+    Greeted
+    by a strange being.
+
+
+    They passed judgement
+
+
+    And before I could blink
+
+
+    I
+    was falling into the abyss.'

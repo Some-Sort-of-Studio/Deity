@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0d7ac69d0362e42af5b30b197b698b, type: 3}
   m_Name: Recounts of Struggling Souls
   m_EditorClassIdentifier: 
-  _name: 
-  tomes: []
+  _name: Recounts of Struggling Souls
+  tomes:
+  - {fileID: 11400000, guid: e7ccd034d9725444b962de9cca2494fa, type: 2}
+  - {fileID: 11400000, guid: 6ea68bffdeb01f940ac55f28066c300c, type: 2}
+  - {fileID: 11400000, guid: e3856b386a909cc41b8ce769a814480b, type: 2}
   endingCanvas: {fileID: 0}

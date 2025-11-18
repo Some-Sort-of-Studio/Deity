@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0d7ac69d0362e42af5b30b197b698b, type: 3}
   m_Name: Their Blood is Fuel
   m_EditorClassIdentifier: 
-  _name: 
-  tomes: []
+  _name: Their Blood is Fuel
+  tomes:
+  - {fileID: 11400000, guid: aa2dd1b9647db7241bd76e285dceebe1, type: 2}
+  - {fileID: 11400000, guid: 6fc77a6c1b05bf54eab7d1724cce6d1c, type: 2}
+  - {fileID: 11400000, guid: fedc1f5202437d94ba87b4c06f171291, type: 2}
   endingCanvas: {fileID: 0}

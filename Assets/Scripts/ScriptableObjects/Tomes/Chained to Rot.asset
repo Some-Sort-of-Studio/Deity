@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e0ecc19fb68794982a4c2797020fdd, type: 3}
   m_Name: Chained to Rot
   m_EditorClassIdentifier: 
-  TomeName: 
-  TomeSprite: {fileID: 0}
-  TomeIcon: {fileID: 0}
-  TomeText: 
+  TomeName: Chained to Rot
+  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeText: "How many years have I spent in this\n\nDark, dank, decomposing tower\n\nSuffering,
+    suffering, suffering,\_\n\nsuffering, SUFFERING, SUFFERING,\_\n\nSUFFERING, SUFFERING
+    SUFFERING\_\n\nSUFFERING"

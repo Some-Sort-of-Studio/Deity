@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e0ecc19fb68794982a4c2797020fdd, type: 3}
   m_Name: "An Anthropologist\u2019s Journal"
   m_EditorClassIdentifier: 
-  TomeName: 
-  TomeSprite: {fileID: 0}
-  TomeIcon: {fileID: 0}
-  TomeText: 
+  TomeName: "An Anthropologist\u2019s Journal"
+  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeText: "I fear these may be the last words I write. I find myself lost in this
+    damnable place. The fabled Gehenna. I find myself unable to recall how I came
+    to be here, to which I must conclude, I am dead. What a shameful act, for I could
+    study the secrets of this land forever.\_\_"

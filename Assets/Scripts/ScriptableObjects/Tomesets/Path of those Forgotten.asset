@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0d7ac69d0362e42af5b30b197b698b, type: 3}
   m_Name: Path of those Forgotten
   m_EditorClassIdentifier: 
-  _name: 
-  tomes: []
+  _name: Path of those Forgotten
+  tomes:
+  - {fileID: 11400000, guid: 51bd96c4c851765469b721244bc59994, type: 2}
+  - {fileID: 11400000, guid: b55941f873a9db14290e738a6c6b60f0, type: 2}
+  - {fileID: 11400000, guid: a4bd409cc30b3c24089e2df7a33722dd, type: 2}
   endingCanvas: {fileID: 0}

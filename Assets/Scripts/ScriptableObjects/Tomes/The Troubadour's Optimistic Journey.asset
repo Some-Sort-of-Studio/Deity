@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e0ecc19fb68794982a4c2797020fdd, type: 3}
   m_Name: The Troubadour's Optimistic Journey
   m_EditorClassIdentifier: 
-  TomeName: 
-  TomeSprite: {fileID: 0}
-  TomeIcon: {fileID: 0}
-  TomeText: 
+  TomeName: "The Troubadour's Optimistic Journey\_"
+  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeText: "Maybe I shouldn't have joined that party in the woods.. but the wine,
+    the food and the women were exquisite. Oh, I danced and drank as the panpipes
+    played; tasted the delights of both feast and flesh, but I remember little now.
+    After that last taplash we downed together.\_\n\nNow the music is silenced, and
+    I am cold and hungry. Was I a sacrifice or just a fool?\_\n\nIt matters little.
+    If I keep moving and singing, maybe I will find a way out of here. Maybe....\_"

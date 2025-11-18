@@ -12,7 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e0ecc19fb68794982a4c2797020fdd, type: 3}
   m_Name: Flesh Ripped Apart from the Inside
   m_EditorClassIdentifier: 
-  TomeName: 
-  TomeSprite: {fileID: 0}
-  TomeIcon: {fileID: 0}
-  TomeText: 
+  TomeName: Flesh Ripped Apart from the Inside
+  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeText: 'Something claws its way
+
+
+    Down my throat
+
+
+    Into my insides.
+
+
+    The
+    pale underbelly
+
+
+    Of my frail form
+
+
+    Is churned up by
+
+
+    Its flesh
+    eating pincers.'

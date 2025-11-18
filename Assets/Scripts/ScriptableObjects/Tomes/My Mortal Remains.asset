@@ -12,7 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e0ecc19fb68794982a4c2797020fdd, type: 3}
   m_Name: My Mortal Remains
   m_EditorClassIdentifier: 
-  TomeName: 
-  TomeSprite: {fileID: 0}
-  TomeIcon: {fileID: 0}
-  TomeText: 
+  TomeName: My Mortal Remains
+  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeText: 'The entirety of my carcass
+
+
+    Being ground into pulp.
+
+
+    My being
+    exists,
+
+
+    And then it does not.
+
+
+    I become a husk.
+
+
+    For you who
+    knows not of it,
+
+
+    This is what death feels like.'

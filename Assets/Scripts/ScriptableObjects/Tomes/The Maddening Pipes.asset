@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e0ecc19fb68794982a4c2797020fdd, type: 3}
   m_Name: The Maddening Pipes
   m_EditorClassIdentifier: 
-  TomeName: 
-  TomeSprite: {fileID: 0}
-  TomeIcon: {fileID: 0}
-  TomeText: 
+  TomeName: "The Maddening Pipes\_"
+  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeText: "Too many pipes and paths..\n\nNo matter which I choose, they always
+    return to here, this churning palace of rot.\_\n\nI cannot dive again. The grasping,
+    pale, pallid hands.\_\n\nI felt them clutching me.\_\n\nI saw their empty, sallow
+    eyes watching me from below.\_\n\nI dare not dive again. I know I will die here.
+    I will not join those wretched ghouls beneath the surface\u2026"
