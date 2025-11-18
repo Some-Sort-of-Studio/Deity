@@ -4,90 +4,89 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerMovement2D))]
 public class GrabObjects : MonoBehaviour
 {
-    public Transform grabDetect;
-    [SerializeField] private Vector2 grabDetectSize = new Vector2(0.5f, 0.05f);
-
     public Transform boxHolder;
+    [SerializeField] private Vector2 grabDetectSize = new Vector2(1.5f, 0.05f);
 
     public LayerMask grabbableObjectLayer;
 
-    bool objectInRange;
-    bool isPickingUp;
-    bool isZoomingIn;
-    bool isZoomingOut;
+    [HideInInspector] public bool isTryingGrab;
+    [HideInInspector] public bool isPickingUp;
+    private GameObject pickupObject;
 
     [Header("Distance")]
     [SerializeField] private float maxZoomSpeed;
     [SerializeField] private float maxDistance = 5f;
     [SerializeField] private float minDistance = 1f;
-    private float distance = 1f;
+    const float defaultDistance = 1.5f;
+    private float distance = 1.5f;
 
-    FirePoint firePoint;
+    GrabPoint grabPoint;
 
     private PlayerMovement2D playerMovement;
 
     private void Start()
     {
-        firePoint = GetComponentInChildren<FirePoint>();
+        grabPoint = GetComponentInChildren<GrabPoint>();
         playerMovement = GetComponent<PlayerMovement2D>();
     }
 
     private void Update()
     {
-        Collider2D grabCheck = Physics2D.OverlapBox(grabDetect.position, grabDetectSize, 0, grabbableObjectLayer);
-
-        if (Physics2D.OverlapBox(grabDetect.position, grabDetectSize, 0, grabbableObjectLayer))
+        if (isTryingGrab)
         {
-            objectInRange = true;
+            grabPoint.SetupGrabbing();
         }
-        else
+        if (isPickingUp)
         {
-            objectInRange = false;
+            pickupObject.transform.localPosition = Vector3.zero;
+
+            Mathf.Clamp(distance, minDistance, maxDistance);
+
+            boxHolder.transform.position = boxHolder.transform.parent.position + boxHolder.transform.up * distance * maxZoomSpeed;
         }
-
-        firePoint.SetupFiring();
-
-        if (grabCheck != null)
-        {
-            if (isPickingUp)
-            {
-                playerMovement.enabled = false;
-
-                grabCheck.gameObject.transform.parent = boxHolder.transform;
-                grabCheck.gameObject.transform.localPosition = Vector3.zero;
-                grabCheck.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-                grabCheck.gameObject.GetComponent<Rigidbody2D>().mass = 0;
-                grabCheck.gameObject.GetComponent<Rigidbody2D>().freezeRotation = true;
-            }
-            else
-            {
-                playerMovement.enabled = true;
-
-                grabCheck.gameObject.transform.parent = null;
-                grabCheck.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
-                grabCheck.gameObject.GetComponent<Rigidbody2D>().mass = 1;
-                grabCheck.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
-            }
-        }
-
-        Mathf.Clamp(distance, minDistance, maxDistance);
-
-        boxHolder.transform.position = boxHolder.transform.parent.position + boxHolder.transform.up * distance * maxZoomSpeed;
-        grabDetect.transform.position = grabDetect.transform.parent.position + grabDetect.transform.right + grabDetect.transform.right * distance * maxZoomSpeed;
     }
 
     public void GrabAbility(InputAction.CallbackContext context)
     {
+        grabPoint.SetupGrabbing();
+        Collider2D grabCheck = Physics2D.OverlapBox(boxHolder.position, grabDetectSize, 0, grabbableObjectLayer);
+
         if (context.performed)
         {
-            if (objectInRange)
+            isTryingGrab = true;
+            if (grabCheck != null)
             {
                 isPickingUp = true;
+                pickupObject = grabCheck.gameObject;
+
+                //playerMovement.movementEnabled = false;
+
+                pickupObject.transform.parent = boxHolder.transform;
+                pickupObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+                pickupObject.GetComponent<Rigidbody2D>().mass = 0;
+                pickupObject.GetComponent<Rigidbody2D>().freezeRotation = true;
             }
         }
         else if (context.canceled)
         {
-            isPickingUp = false;
+            isTryingGrab = false;
+            if (isPickingUp)
+            {
+                //playerMovement.movementEnabled = true;
+
+                pickupObject.transform.parent = null;
+                pickupObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                pickupObject.GetComponent<Rigidbody2D>().mass = 1000;
+                pickupObject.GetComponent<Rigidbody2D>().freezeRotation = false;
+
+                //reset box holder position
+                distance = defaultDistance;
+                boxHolder.transform.position = boxHolder.transform.parent.position + boxHolder.transform.up * distance * maxZoomSpeed;
+
+                //remove references and not longer ispickingup
+                pickupObject = null;
+                isPickingUp = false;
+            }
         }
     }
 
@@ -116,7 +115,7 @@ public class GrabObjects : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
-        Gizmos.DrawWireCube(grabDetect.position, grabDetectSize);
+        Gizmos.DrawWireCube(boxHolder.position, grabDetectSize);
     }
 
 }
