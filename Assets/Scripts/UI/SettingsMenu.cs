@@ -48,10 +48,10 @@ public class SettingsMenu : MonoBehaviour
         particleText.text = "High";
     }
 
-    //protected virtual void SetPrefs()
-    //{
-
-    //}
+    protected virtual void SetPrefs()
+    {
+        // set all default values
+    }
 
     public void ChangeResolutionLeft()
     {
