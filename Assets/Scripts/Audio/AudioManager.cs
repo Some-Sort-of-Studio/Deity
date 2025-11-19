@@ -35,6 +35,15 @@ namespace AudioSystem
             }
         }
 
+        public void StopAudio(AudioSource audioSource)
+        {
+            audioSource.clip = null;
+            audioSource.outputAudioMixerGroup = null;
+            audioSource.loop = false;
+
+            audioSource.Stop();
+        }
+
         static void SetAudioData(AudioData data, AudioSource source)
         {
             source.clip = data.Clip;
