@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0d7ac69d0362e42af5b30b197b698b, type: 3}
+  m_Name: Trapped in this Land
+  m_EditorClassIdentifier: 
+  _name: Trapped in this Land
+  tomes:
+  - {fileID: 11400000, guid: b84ec7c376e9cd647b9098cded7918a1, type: 2}
+  - {fileID: 11400000, guid: 51bd96c4c851765469b721244bc59994, type: 2}
+  - {fileID: 11400000, guid: e7ccd034d9725444b962de9cca2494fa, type: 2}
+  endingCanvas: {fileID: 0}
