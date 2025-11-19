@@ -11,6 +11,7 @@ TagManager:
   - SongAOE
   - PauseMenu
   - TopOfLadder
+  - Arrow
   layers:
   - Default
   - TransparentFX

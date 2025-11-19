@@ -1,3 +1,4 @@
+using AudioSystem;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,6 +13,9 @@ public class PlayerMovement2D : MonoBehaviour
     public float moveSpeed;
     [Tooltip("This variable controls how fast the player moves")]
     [SerializeField] private float walkSpeed = 5f;
+    float horizontalMovement;
+    public bool movementEnabled = true;
+    private bool isMoving;
 
     [Header("Sprint")]
     [Tooltip("This variable controls how fast the player moves while sprinting")]
@@ -31,6 +35,7 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private Vector2 smallJumpCheckSize = new Vector2(0.5f, 2.5f);
     public LayerMask groundLayer;
     public LayerMask grabObjectLayer;
+    private bool isGrounded;
 
     [Header("Gravity")]
     [Tooltip("Player base gravity value")]
@@ -43,9 +48,18 @@ public class PlayerMovement2D : MonoBehaviour
     [Header("ScriptRef")]
     Climbing climb;
 
-    float horizontalMovement;
+    private AudioSource audioSource;
+    [SerializeField] private float walkStepInterval = 0.5f;
+    [SerializeField] private float sprintStepInterval = 0.3f;
+    [SerializeField] private float velocityThreshold;
+    private float nextStepTime;
 
-    public bool movementEnabled = true;
+    public enum PlayerType
+    {
+        Bird,
+        Octopus
+    }
+    public PlayerType playerType;
 
     private void Awake()
     {
@@ -53,6 +67,8 @@ public class PlayerMovement2D : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         climb = GetComponent<Climbing>();
         if(animator == null) { Debug.Log("Missing Player Animator"); }
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     void Update()
@@ -69,6 +85,7 @@ public class PlayerMovement2D : MonoBehaviour
         rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocity.y);
 
         GroundCheck();
+        HandleFootsteps();
         Gravity();
     }
 
@@ -94,6 +111,8 @@ public class PlayerMovement2D : MonoBehaviour
 
         animator.SetBool("Walking", false);
         animator.SetBool("Sprinting", false);
+
+        isMoving = horizontalMovement != 0;
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -133,6 +152,7 @@ public class PlayerMovement2D : MonoBehaviour
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
                 jumpsRemaining--;
                 animator.SetTrigger(animator.GetBool("Air") ? "StartDoubleJump" : "StartJump");
+                PlayJumpSounds();
             }
             else if (context.canceled)
             {
@@ -151,6 +171,7 @@ public class PlayerMovement2D : MonoBehaviour
         {
             //Grounded
             jumpsRemaining = maxJumps;
+            isGrounded = true;
 
             //if was in air and have just landed, trigger endjump
             if(animator.GetBool("Air") == true) { animator.SetTrigger("EndJump"); }
@@ -159,6 +180,7 @@ public class PlayerMovement2D : MonoBehaviour
         else
         {
             animator.SetBool("Air", true);
+            isGrounded = false;
         }
 
         if (climb.isClimbing == true)
@@ -184,5 +206,42 @@ public class PlayerMovement2D : MonoBehaviour
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(groundCheckPos.position, smallJumpCheckSize);
+    }
+
+    void HandleFootsteps()
+    {
+        float currentStepInterval = isSprinting ? sprintStepInterval : walkStepInterval;
+
+        if (isGrounded && isMoving && Time.time > nextStepTime)
+        {
+            PlayFootstepSounds();
+            nextStepTime = Time.time + currentStepInterval;
+        }
+    }
+
+    void PlayFootstepSounds()
+    {
+        if (playerType == PlayerType.Bird)
+        {
+            AudioManager.Instance.PlayAudio("Bird_Walk", audioSource);
+        }
+        
+        if (playerType == PlayerType.Octopus)
+        {
+            AudioManager.Instance.PlayAudio("Octopus_Walk", audioSource);
+        }
+    }
+
+    void PlayJumpSounds()
+    {
+        if (playerType == PlayerType.Bird)
+        {
+            AudioManager.Instance.PlayAudio("Bird_Jump", audioSource);
+        }
+
+        if (playerType == PlayerType.Octopus)
+        {
+            AudioManager.Instance.PlayAudio("Octopus_Jump", audioSource);
+        }
     }
 }
