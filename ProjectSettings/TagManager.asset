@@ -58,20 +58,20 @@ TagManager:
   - name: background near
     uniqueID: 3325735065
     locked: 0
-  - name: 'props '
-    uniqueID: 2408232955
+  - name: water
+    uniqueID: 2298286849
+    locked: 0
+  - name: tiles
+    uniqueID: 2487089077
     locked: 0
   - name: doors
     uniqueID: 633235597
     locked: 0
-  - name: water
-    uniqueID: 2298286849
+  - name: 'props '
+    uniqueID: 2408232955
     locked: 0
   - name: hazards
     uniqueID: 3927621181
-    locked: 0
-  - name: tiles
-    uniqueID: 2487089077
     locked: 0
   - name: interactibles
     uniqueID: 500657889
