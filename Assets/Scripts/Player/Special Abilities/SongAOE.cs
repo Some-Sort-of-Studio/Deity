@@ -13,7 +13,7 @@ public class SongAOE : MonoBehaviour
     void Start()
     {
         AOE.SetActive(false);
-        audioSource = GetComponent<AudioSource>();
+        audioSource = AOE.GetComponent<AudioSource>();
     }
 
     public void SongAOEAbility(InputAction.CallbackContext context)
@@ -26,6 +26,7 @@ public class SongAOE : MonoBehaviour
         else if(context.canceled)
         {
             AOE.SetActive(false);
+            AudioManager.Instance.StopAudio(audioSource);
         }
     }
 }
