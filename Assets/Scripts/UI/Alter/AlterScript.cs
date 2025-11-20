@@ -1,14 +1,18 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class AlterScript : MonoBehaviour
+public class AlterScript : PlayerInventory
 {
     [Header("References")]
     [SerializeField] private GameObject AlterCanvas;
-    [SerializeField] private GameObject Player;
 
     [Header("Lists and Arrays")]
     [Tooltip("This var should include all potential sets in the game")]
     [SerializeField] private TomeSet[] existingTomesets;
+
+    [HideInInspector] public List<Tome> TomesInAlter = new List<Tome>();
+
 
     private void Start()
     {
@@ -18,28 +22,48 @@ public class AlterScript : MonoBehaviour
     public void OnAlterEnable()
     {
         AlterCanvas.SetActive(true);
-
-        if (Player == null) Player = GameObject.FindGameObjectWithTag("Player");
+        AlterOpen();
     }
 
-    private void CheckForEndings()
+    public void OnAlterDisable()
     {
-    //    foreach (TomeSet tomeSet in existingTomesets)
-    //    {
-    //        bool hasSet = true;
+        AlterCanvas.SetActive(false);
+        CloseInventory();
+        AlterOpen(false);
+    }
 
-    //        foreach (Tome tome in tomeSet.tomes)
-    //        {
-    //            //if cant find one of the tomes then dont have set
-    //            if (!collectedTomes.Contains(tome)) { hasSet = false; }
-    //        }
+    public void Pray()
+    {
+        OnAlterDisable();
+        CheckForEndings();
+    }
 
-    //        //if has whole set show ending for that tomeset
-    //        if (hasSet)
-    //        {
-    //            Instantiate(tomeSet.endingCanvas, null);
-    //            return;
-    //        }
-    //    }
+    public void AddtoAlter(Tome tome)
+    {
+        //TomesInAlter.Add(tome);
+    }
+
+    public void CheckForEndings()
+    {
+        foreach (TomeSet tomeSet in existingTomesets)
+        {
+            bool hasSet = true;
+
+            foreach (Tome tome in tomeSet.tomes)
+            {
+                //if cant find one of the tomes then dont have set
+                if (!TomesInAlter.Contains(tome))
+                {
+                    hasSet = false; 
+                }
+            }
+
+            //if has whole set show ending for that tomeset
+            if (hasSet)
+            {
+                //Instantiate(tomeSet.endingCanvas, null);
+                return;
+            }
+        }
     }
 }

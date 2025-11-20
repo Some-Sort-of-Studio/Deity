@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InventorySlot : MonoBehaviour
+public class InventorySlot : PlayerInventory
 {
     public UnityEngine.UI.Image IconSprite;
     public string TomeTitle;
@@ -24,6 +24,16 @@ public class InventorySlot : MonoBehaviour
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        player.GetComponent<PlayerInventory>().ReadTome(SlotTome);
+        if (!AlterOpen())
+            ReadTome(SlotTome);
+
+        if (AlterOpen())
+        {
+            if(selectedTome = null)
+            {
+                selectedTome = SlotTome;
+            }
+            else selectedTome = null;
+        }
     }
 }
