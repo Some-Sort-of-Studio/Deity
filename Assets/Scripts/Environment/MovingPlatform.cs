@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using AudioSystem;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
@@ -8,6 +9,8 @@ public class MovingPlatform : MonoBehaviour
     public float moveSpeed = 2f;
 
     private Vector3 nextPosition;
+
+    private AudioSource audioSource;
 
     public enum PlatformType
     { 
@@ -38,6 +41,8 @@ public class MovingPlatform : MonoBehaviour
         {
             nextPosition = pointB.position;
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -49,6 +54,7 @@ public class MovingPlatform : MonoBehaviour
             if (transform.position == nextPosition)
             {
                 nextPosition = (nextPosition == pointA.position) ? pointB.position : pointA.position;
+                AudioManager.Instance.PlayAudio("MovingPlatforms", audioSource);
             }
         }
 
@@ -75,6 +81,7 @@ public class MovingPlatform : MonoBehaviour
                 if (transform.position == nextPosition)
                 {
                     nextPosition = (nextPosition == pointA.position) ? pointB.position : pointA.position;
+                    AudioManager.Instance.PlayAudio("MovingPlatforms", audioSource);
                 }
             }
         }
@@ -114,21 +121,25 @@ public class MovingPlatform : MonoBehaviour
     public void switchToggleOn()
     {
         isSwitchOn = true;
+        AudioManager.Instance.PlayAudio("MovingPlatforms", audioSource);
     }
 
     public void switchToggleOff()
     {
         isSwitchOn = false;
+        AudioManager.Instance.StopAudio(audioSource);
     }
 
     public void pressurePlateToggleOn()
     {
         isPressurePlateActive = true;
+        AudioManager.Instance.PlayAudio("MovingPlatforms", audioSource);
     }
 
     public void pressurePlateToggleOff()
     {
         isPressurePlateActive = false;
+        AudioManager.Instance.StopAudio(audioSource);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -136,6 +147,8 @@ public class MovingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.parent = transform;
+            collision.gameObject.GetComponent<AudioSource>().enabled = false;
+            AudioManager.Instance.PlayAudio("MovingPlatforms", audioSource);
 
             if (platform_type == PlatformType.Trigger)
             {
@@ -149,6 +162,8 @@ public class MovingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.parent = null;
+            collision.gameObject.GetComponent<AudioSource>().enabled = true;
+            AudioManager.Instance.StopAudio(audioSource);
 
             if (platform_type == PlatformType.Trigger)
             {

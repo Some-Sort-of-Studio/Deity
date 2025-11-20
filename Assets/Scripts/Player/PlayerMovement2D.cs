@@ -49,10 +49,13 @@ public class PlayerMovement2D : MonoBehaviour
     Climbing climb;
 
     private AudioSource audioSource;
+
     [SerializeField] private float walkStepInterval = 0.5f;
     [SerializeField] private float sprintStepInterval = 0.3f;
     [SerializeField] private float velocityThreshold;
     private float nextStepTime;
+
+    [SerializeField] private float climbStepInterval = 0.5f;
 
     public enum PlayerType
     {
@@ -186,6 +189,7 @@ public class PlayerMovement2D : MonoBehaviour
         if (climb.isClimbing == true)
         {
             animator.SetBool("Air", false);
+            HandleClimbing();
         }
     }
 
@@ -242,6 +246,30 @@ public class PlayerMovement2D : MonoBehaviour
         if (playerType == PlayerType.Octopus)
         {
             AudioManager.Instance.PlayAudio("Octopus_Jump", audioSource);
+        }
+    }
+
+    void HandleClimbing()
+    {
+        float currentStepInterval = climbStepInterval;
+
+        if (!isGrounded && climb.isClimbing && Time.time > nextStepTime)
+        {
+            ClimbingSounds();
+            nextStepTime = Time.time + currentStepInterval;
+        }
+    }
+
+    void ClimbingSounds()
+    {
+        if (playerType == PlayerType.Bird)
+        {
+            AudioManager.Instance.PlayAudio("Bird_Climb", audioSource);
+        }
+
+        if (playerType == PlayerType.Octopus)
+        {
+            AudioManager.Instance.PlayAudio("Octopus_Climb", audioSource);
         }
     }
 }
