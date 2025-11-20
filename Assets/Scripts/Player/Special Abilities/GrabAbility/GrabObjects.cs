@@ -12,6 +12,7 @@ public class GrabObjects : MonoBehaviour
     [HideInInspector] public bool isTryingGrab;
     [HideInInspector] public bool isPickingUp;
     private GameObject pickupObject;
+    private MoveableObjectLimit pickupObjectLimiter;
 
     [Header("Distance")]
     [SerializeField] private float maxZoomSpeed;
@@ -38,6 +39,7 @@ public class GrabObjects : MonoBehaviour
         }
         if (isPickingUp)
         {
+            if (pickupObjectLimiter.outsideMaxDistance) { DropObject(); }
             pickupObject.transform.localPosition = Vector3.zero;
 
             Mathf.Clamp(distance, minDistance, maxDistance);
@@ -58,6 +60,7 @@ public class GrabObjects : MonoBehaviour
             {
                 isPickingUp = true;
                 pickupObject = grabCheck.gameObject;
+                pickupObjectLimiter = pickupObject.GetComponent<MoveableObjectLimit>();
 
                 //playerMovement.movementEnabled = false;
 
@@ -69,26 +72,32 @@ public class GrabObjects : MonoBehaviour
         }
         else if (context.canceled)
         {
-            isTryingGrab = false;
-            if (isPickingUp)
-            {
-                //playerMovement.movementEnabled = true;
-
-                pickupObject.transform.parent = null;
-                pickupObject.GetComponent<Rigidbody2D>().gravityScale = 1;
-                pickupObject.GetComponent<Rigidbody2D>().mass = 1000;
-                pickupObject.GetComponent<Rigidbody2D>().freezeRotation = false;
-
-                //reset box holder position
-                distance = defaultDistance;
-                boxHolder.transform.position = boxHolder.transform.parent.position + boxHolder.transform.up * distance * maxZoomSpeed;
-
-                //remove references and not longer ispickingup
-                pickupObject = null;
-                isPickingUp = false;
-            }
+            DropObject();
         }
     }
+
+    public void DropObject()
+    {
+        isTryingGrab = false;
+        if (isPickingUp)
+        {
+            //playerMovement.movementEnabled = true;
+
+            pickupObject.transform.parent = null;
+            pickupObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+            pickupObject.GetComponent<Rigidbody2D>().mass = 1000;
+            pickupObject.GetComponent<Rigidbody2D>().freezeRotation = false;
+
+            //reset box holder position
+            distance = defaultDistance;
+            boxHolder.transform.position = boxHolder.transform.parent.position + boxHolder.transform.up * distance * maxZoomSpeed;
+
+            //remove references and not longer ispickingup
+            pickupObject = null;
+            isPickingUp = false;
+        }
+    }
+
 
     public void ZoomIn(InputAction.CallbackContext context)
     {
@@ -111,6 +120,7 @@ public class GrabObjects : MonoBehaviour
             }
         }
     }
+
 
     private void OnDrawGizmosSelected()
     {
