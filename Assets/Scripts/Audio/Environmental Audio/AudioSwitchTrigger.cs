@@ -1,14 +1,20 @@
 using AudioSystem;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioSwitchTrigger : MonoBehaviour
 {
     AudioSource audioSource;
+    public GameObject firstAudio;
+    public GameObject secondAudio;
+
+    private void Start()
+    {
+        audioSource = firstAudio.GetComponent<AudioSource>();
+        AudioManager.Instance.PlayAudio("Underground", audioSource);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        audioSource = collision.gameObject.GetComponent<AudioSource>();       
+    {   
 
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -18,7 +24,7 @@ public class AudioSwitchTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        audioSource = collision.gameObject.GetComponent<AudioSource>();
+        audioSource = secondAudio.GetComponent<AudioSource>();
 
         if (collision.gameObject.CompareTag("Player"))
         {
