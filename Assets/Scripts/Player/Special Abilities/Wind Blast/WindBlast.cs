@@ -18,7 +18,7 @@ public class WindBlast : MonoBehaviour
         if (firePoint == null || projectile == null) { Destroy(this); Debug.Log("Missing references for " + this); }
 
         hasFired = false;
-        audioSource = GetComponent<AudioSource>();
+        audioSource = projectile.GetComponent<AudioSource>();
     }
 
     public void WindBlastAbility(InputAction.CallbackContext context)

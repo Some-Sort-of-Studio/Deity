@@ -19,7 +19,7 @@ public class ManipulateWater : MonoBehaviour
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = waterPaintPrefab.GetComponent<AudioSource>();
     }
 
     public void ManipulateWaterAbility(InputAction.CallbackContext context)
