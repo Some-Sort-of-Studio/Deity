@@ -26,6 +26,7 @@ public class Climbing : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        isClimbing = false;
     }
 
     private void Update()
@@ -51,7 +52,7 @@ public class Climbing : MonoBehaviour
 
     public void ClimbUp(InputAction.CallbackContext context)
     {
-        if (context.performed && ladderCheck)
+        if (context.performed && ladderDetect)
         {
             isClimbing = true;
         }
@@ -64,7 +65,7 @@ public class Climbing : MonoBehaviour
             tryingToClimbDown = true;
         }
         
-        if (context.performed && ladderCheck)
+        if (context.performed && ladderDetect)
         {
             isClimbing = true;
         }
