@@ -21,12 +21,12 @@ public class AlterScript : MonoBehaviour
         AlterCanvas.SetActive(false);
         playerOverlapping = false;
 
-        playerInv = GameObject.Find("Player").GetComponent<PlayerInventory>();
+        playerInv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.W) && playerOverlapping)
+        if (Input.GetKeyUp(KeyCode.W) && playerOverlapping && !playerInv.AlterOpen())
         {
             OnAlterEnable();
         }
@@ -60,14 +60,14 @@ public class AlterScript : MonoBehaviour
     public void OnAlterEnable()
     {
         AlterCanvas.SetActive(true);
-        playerInv.AlterOpen();
+        playerInv.AlterOpen(true);
     }
 
     public void OnAlterDisable()
     {
         AlterCanvas.SetActive(false);
         playerInv.CloseInventory();
-        playerInv.AlterOpen();
+        playerInv.AlterOpen(false);
     }
 
     public void Pray()
