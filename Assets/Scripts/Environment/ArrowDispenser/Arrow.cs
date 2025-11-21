@@ -21,21 +21,26 @@ public class Arrow : MonoBehaviour
 
     public void Update()
     {
-        if (isActive)
+        if (!hasFired && isActive)
         {
             Invoke("SpawnObject", spawnTimer);
+            hasFired = true;
         }
     }
 
     private void SpawnObject()
     {
         Instantiate(projectile, firePoint.transform.position, firePoint.transform.rotation);
+        hasFired = false;
         Invoke("DelayShot", delayTimer);
     }
 
     private void DelayShot()
     {
-        Invoke("SpawnObject", spawnTimer);
+        if (!hasFired && isActive)
+        {
+            Invoke("SpawnObject", spawnTimer);
+        }
     }
 
     public void On()
@@ -52,7 +57,7 @@ public class Arrow : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            isActive = true;
+            On();
         }
     }
 
@@ -60,7 +65,7 @@ public class Arrow : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            isActive = false;
+            Off();
         }
     }
 }
