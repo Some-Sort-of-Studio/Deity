@@ -747,6 +747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   walkSpeed: 5
+  movementEnabled: 1
   sprintSpeed: 7
   isSprinting: 0
   jumpPower: 6.25
@@ -763,7 +764,10 @@ MonoBehaviour:
   baseGravity: 1
   maxFallSpeed: 18
   fallSpeedMultiplier: 2
-  movementEnabled: 1
+  walkStepInterval: 0.5
+  sprintStepInterval: 0.3
+  velocityThreshold: 0
+  playerType: 0
 --- !u!114 &197972112907101038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,7 +831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a34d2ba8e7a1e4bb3951dde2c30b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  existingTomesets: []
   InventoryHolder: {fileID: 8629111592512107033}
   SlotPrefab: {fileID: 8830184095511892467, guid: e702c23a870eaf8429a392c662cb5a8c, type: 3}
   tomeCanvas:
@@ -1173,7 +1176,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 0}
+  m_BackGroundColor: {r: 0.047058824, g: 0.047058824, b: 0.047058824, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1373,7 +1376,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 945359677
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 1
   m_Sprite: {fileID: -461368726, guid: a230e5310920bf04ca54c1805e380c3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
