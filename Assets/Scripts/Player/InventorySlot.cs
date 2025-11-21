@@ -1,17 +1,10 @@
 using UnityEngine;
 
-public class InventorySlot : PlayerInventory
+public class InventorySlot : MonoBehaviour
 {
     public UnityEngine.UI.Image IconSprite;
     public string TomeTitle;
-    private static Tome SlotTome;
-
-    private void Start()
-    {
-        SlotTome = null;
-        IconSprite.sprite = null;
-        TomeTitle = null;
-    }
+    private Tome SlotTome;
 
     public void AddToSlot(Tome tome)
     {
@@ -30,17 +23,18 @@ public class InventorySlot : PlayerInventory
     public void ViewTome()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        PlayerInventory playerInv = player.GetComponent<PlayerInventory>();
 
-        if (!AlterOpen())
-            base.ReadTome(SlotTome);
+        if (!playerInv.AlterOpen())
+            playerInv.ReadTome(SlotTome);
 
-        if (AlterOpen())
+        if (playerInv.AlterOpen())
         {
-            if(selectedTome = null)
+            if(playerInv.selectedTome = null)
             {
-                selectedTome = SlotTome;
+                playerInv.selectedTome = SlotTome;
             }
-            else selectedTome = null;
+            else playerInv.selectedTome = null;
         }
     }
 }

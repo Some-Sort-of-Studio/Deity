@@ -52,7 +52,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (context.performed)
         {
-            if (!opened)
+            if (!opened && !AlterOpen())
             {
                 UIManager.Instance.TogglePlayerAbilities(false);
                 InventoryHolder.gameObject.SetActive(true);
@@ -69,18 +69,23 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public bool AlterOpen()
+    public bool AlterOpen(bool isopen = false)
     {
-        //if (!opened)
-        //{
-        //    UIManager.Instance.TogglePlayerAbilities(false);
-        //    InventoryHolder.gameObject.SetActive(true);
-        //    UpdateInventory();
-        //    return true;
-        //}
-        //else return false;
-
-        return false;
+        if(isopen)
+        {
+            UIManager.Instance.TogglePlayerAbilities(false);
+            InventoryHolder.gameObject.SetActive(true);
+            UpdateInventory();
+            opened = isopen;
+            return isopen;
+        }
+        else
+        {
+            UIManager.Instance.TogglePlayerAbilities(true);
+            CloseInventory();
+            opened = isopen;
+            return isopen;
+        }
     }
 
     private void UpdateInventory()
@@ -103,7 +108,7 @@ public class PlayerInventory : MonoBehaviour
     }
 
     // makes tome viewer readable
-    public virtual void ReadTome(Tome tome)
+    public void ReadTome(Tome tome)
     {
         tomeCanvas.TomeViewer.SetActive(true);
         tomeCanvas.TomeText.text = tome.TomeText;
@@ -122,7 +127,7 @@ public class PlayerInventory : MonoBehaviour
     }
 
     // closes the tome viewer
-    public virtual void CloseTome()
+    public void CloseTome()
     {
         tomeCanvas.TomeViewer.SetActive(false);
         tomeCanvas.TomeText.text = "";
