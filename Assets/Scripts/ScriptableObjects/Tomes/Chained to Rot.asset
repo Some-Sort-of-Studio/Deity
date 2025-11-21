@@ -15,6 +15,7 @@ MonoBehaviour:
   TomeName: Chained to Rot
   TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
   TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
-  TomeText: "How many years have I spent in this\n\nDark, dank, decomposing tower\n\nSuffering,
-    suffering, suffering,\_\n\nsuffering, SUFFERING, SUFFERING,\_\n\nSUFFERING, SUFFERING
-    SUFFERING\_\n\nSUFFERING"
+  TomeText: "How many years have I spent in this\n\nDark, dank, decomposing tower?\n\nDrip,
+    drip, drip,\n\nI hear it echoing around me for days.\n\nDrip, drip, drip,\n\nCrimson
+    drips off my chin.\n\nDrip, drip drip,\n\nAll that\u2019s left is suffering.\n\nSuffering,
+    suffering, suffering,\n\nSuffering\u2026\n\nSu\u2026."
