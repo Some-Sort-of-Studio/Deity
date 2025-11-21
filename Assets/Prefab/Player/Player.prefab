@@ -728,6 +728,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d53f070c-9078-458d-872e-7f03354363f6
     m_ActionName: 'Player/OpenInventory[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a8a49c7e-e578-459d-b264-f70cb188becc
+    m_ActionName: 'Player/Interact[/Keyboard/w]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -838,6 +842,7 @@ MonoBehaviour:
     TomeText: {fileID: 9101841022647806256}
     TomeViewerClean: {fileID: 6613186673265138484}
     TomeTextClean: {fileID: 8582272997820302232}
+  selectedTome: {fileID: 0}
 --- !u!1 &3392915431852195534
 GameObject:
   m_ObjectHideFlags: 0

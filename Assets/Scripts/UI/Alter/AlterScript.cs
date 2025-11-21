@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AlterScript : PlayerInventory
 {
@@ -13,11 +13,46 @@ public class AlterScript : PlayerInventory
 
     [HideInInspector] public List<Tome> TomesInAlter = new List<Tome>();
 
+    private bool playerOverlapping = false;
 
     private void Start()
     {
         AlterCanvas.SetActive(false);
+        playerOverlapping = false;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.W) && playerOverlapping)
+        {
+            OnAlterEnable();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerOverlapping = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerOverlapping = false;
+        }
+    }
+
+    //public void InteractionWithAlter(InputAction.CallbackContext context)
+    //{
+    //    if (playerOverlapping && context.performed)
+    //    {
+    //        OnAlterEnable();
+    //    }
+    //}
+
 
     public void OnAlterEnable()
     {
@@ -29,7 +64,7 @@ public class AlterScript : PlayerInventory
     {
         AlterCanvas.SetActive(false);
         CloseInventory();
-        AlterOpen(false);
+        AlterOpen();
     }
 
     public void Pray()
@@ -54,7 +89,7 @@ public class AlterScript : PlayerInventory
                 //if cant find one of the tomes then dont have set
                 if (!TomesInAlter.Contains(tome))
                 {
-                    hasSet = false; 
+                    hasSet = false;
                 }
             }
 

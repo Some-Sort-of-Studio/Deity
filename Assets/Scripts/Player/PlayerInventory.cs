@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private List<Tome> collectedTomes = new List<Tome>();
+    [SerializeField] private List<Tome> collectedTomes = new List<Tome>();
     private bool opened = false;
 
     #region TomeViewer
     [Header("Inventory References:")]
-    [SerializeField] private GameObject InventoryHolder;
-    [SerializeField] private GameObject SlotPrefab;
+    [SerializeField] protected GameObject InventoryHolder;
+    [SerializeField] protected GameObject SlotPrefab;
 
     // tome viewer struct
     [System.Serializable]
@@ -27,7 +27,7 @@ public class PlayerInventory : MonoBehaviour
     }
 
     [Header("Tome Viewer")]
-    [SerializeField] TomeCanvas tomeCanvas;
+    [SerializeField] protected TomeCanvas tomeCanvas;
     #endregion
 
     protected AlterScript alterScript;
@@ -50,9 +50,9 @@ public class PlayerInventory : MonoBehaviour
 
     public void OpenInventory(InputAction.CallbackContext context)
     {
-        if (context.performed && !AlterOpen())
+        if (context.performed)
         {
-            if (!opened)
+            if (!opened && !AlterOpen())
             {
                 UIManager.Instance.TogglePlayerAbilities(false);
                 InventoryHolder.gameObject.SetActive(true);
@@ -69,16 +69,18 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public bool AlterOpen(bool isopen = false)
+    public bool AlterOpen()
     {
-        if (!isopen)
-        {
-            UIManager.Instance.TogglePlayerAbilities(false);
-            InventoryHolder.gameObject.SetActive(true);
-            UpdateInventory();
-            return isopen;
-        }
-        else return false;
+        //if (!opened)
+        //{
+        //    UIManager.Instance.TogglePlayerAbilities(false);
+        //    InventoryHolder.gameObject.SetActive(true);
+        //    UpdateInventory();
+        //    return true;
+        //}
+        //else return false;
+
+        return false;
     }
 
     private void UpdateInventory()

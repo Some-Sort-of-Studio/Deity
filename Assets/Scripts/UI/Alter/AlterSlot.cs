@@ -8,6 +8,12 @@ public class AlterSlot : PlayerInventory
 
     [SerializeField] private Tome TomeInSlot;
 
+    private void Start()
+    {
+        SlotImage = null;
+        SlotName = "";
+    }
+
     public void AddToSlot()
     {
         // if no tome selected then nothing happens
