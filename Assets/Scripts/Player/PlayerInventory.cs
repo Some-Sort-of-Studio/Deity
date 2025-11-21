@@ -27,12 +27,12 @@ public class PlayerInventory : MonoBehaviour
     }
 
     [Header("Tome Viewer")]
-    [SerializeField] protected TomeCanvas tomeCanvas;
+    [SerializeField] private TomeCanvas tomeCanvas;
     #endregion
 
     protected AlterScript alterScript;
 
-    [SerializeField] protected Tome selectedTome;
+    public Tome selectedTome;
 
     private void Start()
     {
@@ -52,7 +52,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (context.performed)
         {
-            if (!opened && !AlterOpen())
+            if (!opened)
             {
                 UIManager.Instance.TogglePlayerAbilities(false);
                 InventoryHolder.gameObject.SetActive(true);
@@ -103,7 +103,7 @@ public class PlayerInventory : MonoBehaviour
     }
 
     // makes tome viewer readable
-    public void ReadTome(Tome tome)
+    public virtual void ReadTome(Tome tome)
     {
         tomeCanvas.TomeViewer.SetActive(true);
         tomeCanvas.TomeText.text = tome.TomeText;
@@ -122,7 +122,7 @@ public class PlayerInventory : MonoBehaviour
     }
 
     // closes the tome viewer
-    public void CloseTome()
+    public virtual void CloseTome()
     {
         tomeCanvas.TomeViewer.SetActive(false);
         tomeCanvas.TomeText.text = "";

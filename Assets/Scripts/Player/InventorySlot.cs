@@ -32,7 +32,7 @@ public class InventorySlot : PlayerInventory
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         if (!AlterOpen())
-            ReadTome(SlotTome);
+            base.ReadTome(SlotTome);
 
         if (AlterOpen())
         {
