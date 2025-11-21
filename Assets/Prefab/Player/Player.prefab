@@ -728,6 +728,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d53f070c-9078-458d-872e-7f03354363f6
     m_ActionName: 'Player/OpenInventory[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a8a49c7e-e578-459d-b264-f70cb188becc
+    m_ActionName: 'Player/Interact[/Keyboard/w]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -747,6 +751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   walkSpeed: 5
+  movementEnabled: 1
   sprintSpeed: 7
   isSprinting: 0
   jumpPower: 6.25
@@ -763,7 +768,10 @@ MonoBehaviour:
   baseGravity: 1
   maxFallSpeed: 18
   fallSpeedMultiplier: 2
-  movementEnabled: 1
+  walkStepInterval: 0.5
+  sprintStepInterval: 0.3
+  velocityThreshold: 0
+  playerType: 0
 --- !u!114 &197972112907101038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,7 +835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a34d2ba8e7a1e4bb3951dde2c30b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  existingTomesets: []
   InventoryHolder: {fileID: 8629111592512107033}
   SlotPrefab: {fileID: 8830184095511892467, guid: e702c23a870eaf8429a392c662cb5a8c, type: 3}
   tomeCanvas:
@@ -835,6 +842,7 @@ MonoBehaviour:
     TomeText: {fileID: 9101841022647806256}
     TomeViewerClean: {fileID: 6613186673265138484}
     TomeTextClean: {fileID: 8582272997820302232}
+  selectedTome: {fileID: 0}
 --- !u!1 &3392915431852195534
 GameObject:
   m_ObjectHideFlags: 0

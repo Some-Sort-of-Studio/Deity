@@ -6,6 +6,13 @@ public class InventorySlot : PlayerInventory
     public string TomeTitle;
     private static Tome SlotTome;
 
+    private void Start()
+    {
+        SlotTome = null;
+        IconSprite.sprite = null;
+        TomeTitle = null;
+    }
+
     public void AddToSlot(Tome tome)
     {
         SlotTome = tome;

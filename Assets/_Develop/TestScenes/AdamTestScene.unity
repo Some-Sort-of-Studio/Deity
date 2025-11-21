@@ -397,7 +397,6 @@ GameObject:
   - component: {fileID: 305878774}
   - component: {fileID: 305878773}
   - component: {fileID: 305878775}
-  - component: {fileID: 305878776}
   m_Layer: 5
   m_Name: Slot3
   m_TagString: Untagged
@@ -506,29 +505,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &305878776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305878771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f9cc14341925f4585d10afee655ea4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InventoryHolder: {fileID: 0}
-  SlotPrefab: {fileID: 0}
-  tomeCanvas:
-    TomeViewer: {fileID: 0}
-    TomeText: {fileID: 0}
-    TomeViewerClean: {fileID: 0}
-    TomeTextClean: {fileID: 0}
-  selectedTome: {fileID: 0}
-  SlotImage: {fileID: 0}
-  SlotName: 
-  TomeInSlot: {fileID: 0}
 --- !u!1 &316994597
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,7 +517,6 @@ GameObject:
   - component: {fileID: 316994600}
   - component: {fileID: 316994599}
   - component: {fileID: 316994601}
-  - component: {fileID: 316994602}
   m_Layer: 5
   m_Name: Slot2
   m_TagString: Untagged
@@ -650,29 +625,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &316994602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316994597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f9cc14341925f4585d10afee655ea4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InventoryHolder: {fileID: 0}
-  SlotPrefab: {fileID: 0}
-  tomeCanvas:
-    TomeViewer: {fileID: 0}
-    TomeText: {fileID: 0}
-    TomeViewerClean: {fileID: 0}
-    TomeTextClean: {fileID: 0}
-  selectedTome: {fileID: 0}
-  SlotImage: {fileID: 0}
-  SlotName: 
-  TomeInSlot: {fileID: 0}
 --- !u!1 &343068895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1014,7 @@ GameObject:
   - component: {fileID: 932835486}
   - component: {fileID: 932835485}
   - component: {fileID: 932835487}
+  - component: {fileID: 932835488}
   m_Layer: 0
   m_Name: Alter
   m_TagString: Untagged
@@ -1163,6 +1116,52 @@ MonoBehaviour:
   AlterCanvas: {fileID: 1080262152}
   existingTomesets: []
   TomesInAlter: []
+--- !u!61 &932835488
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932835484}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1032907290
 GameObject:
   m_ObjectHideFlags: 0

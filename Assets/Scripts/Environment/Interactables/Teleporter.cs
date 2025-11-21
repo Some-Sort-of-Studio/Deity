@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Teleporter : MonoBehaviour
 {
@@ -25,6 +26,15 @@ public class Teleporter : MonoBehaviour
             Invoke("Teleport", teleportAnimationTime);
         }
     }
+
+    //public void Interaction(InputAction.CallbackContext context)
+    //{
+    //    if (playerOverlapping && context.performed)
+    //    {
+    //        playerAnimator.SetBool("Door", true);
+    //        Invoke("Teleport", teleportAnimationTime);
+    //    }
+    //}
 
     private void Teleport()
     {
