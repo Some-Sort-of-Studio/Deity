@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AlterSlot : PlayerInventory
+public class AlterSlot : AlterScript
 {
     [SerializeField] private Image SlotImage;
     [SerializeField] private string SlotName;
@@ -17,33 +17,33 @@ public class AlterSlot : PlayerInventory
     public void AddToSlot()
     {
         // if no tome selected then nothing happens
-        if (selectedTome == null)
+        if (playerInv.selectedTome == null)
         {
             return;
         }
         // if no there is a tome and theres a selected tome
-        else if (TomeInSlot != null && selectedTome != null)
+        else if (TomeInSlot != null && playerInv.selectedTome != null)
         {
-            TomeInSlot = selectedTome;
-            RemovedFromInventory(selectedTome);
-            CollectTome(TomeInSlot);
-            selectedTome = null;
+            TomeInSlot = playerInv.selectedTome;
+            playerInv.RemovedFromInventory(playerInv.selectedTome);
+            playerInv.CollectTome(TomeInSlot);
+            playerInv.selectedTome = null;
 
             SlotChange();
         }
         // is theres a tome in slot and no selected tome
-        else if (TomeInSlot != null && selectedTome == null)
+        else if (TomeInSlot != null && playerInv.selectedTome == null)
         {
-            CollectTome(TomeInSlot);
+            playerInv.CollectTome(TomeInSlot);
             TomeInSlot = null;
             SlotChange();
         }
         // other
         else
         {
-            TomeInSlot = selectedTome;
-            RemovedFromInventory(TomeInSlot);
-            selectedTome = null;
+            TomeInSlot = playerInv.selectedTome;
+            playerInv.RemovedFromInventory(TomeInSlot);
+            playerInv.selectedTome = null;
             SlotChange();
         }
     }

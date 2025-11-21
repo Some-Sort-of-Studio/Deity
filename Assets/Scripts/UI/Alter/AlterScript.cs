@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class AlterScript : PlayerInventory
+public class AlterScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject AlterCanvas;
@@ -13,12 +12,16 @@ public class AlterScript : PlayerInventory
 
     [HideInInspector] public List<Tome> TomesInAlter = new List<Tome>();
 
+    [SerializeField] protected PlayerInventory playerInv;
+
     private bool playerOverlapping = false;
 
     private void Start()
     {
         AlterCanvas.SetActive(false);
         playerOverlapping = false;
+
+        playerInv = GameObject.Find("Player").GetComponent<PlayerInventory>();
     }
 
     private void Update()
@@ -57,14 +60,14 @@ public class AlterScript : PlayerInventory
     public void OnAlterEnable()
     {
         AlterCanvas.SetActive(true);
-        AlterOpen();
+        playerInv.AlterOpen();
     }
 
     public void OnAlterDisable()
     {
         AlterCanvas.SetActive(false);
-        CloseInventory();
-        AlterOpen();
+        playerInv.CloseInventory();
+        playerInv.AlterOpen();
     }
 
     public void Pray()
