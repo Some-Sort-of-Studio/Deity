@@ -5,15 +5,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [Tooltip("This var should include all potential sets in the game")]
-    [SerializeField] private TomeSet[] existingTomesets;
-    private List<Tome> collectedTomes = new List<Tome>();
-
-    // slot references
-    [SerializeField] private GameObject InventoryHolder;
-    [SerializeField] private GameObject SlotPrefab;
-
+    [SerializeField] private List<Tome> collectedTomes = new List<Tome>();
     private bool opened = false;
+    [HideInInspector] public bool alteropened = false;
+
+    #region TomeViewer
+    [Header("Inventory References:")]
+    [SerializeField] protected GameObject InventoryHolder;
+    [SerializeField] protected GameObject SlotPrefab;
 
     // tome viewer struct
     [System.Serializable]
@@ -28,29 +27,36 @@ public class PlayerInventory : MonoBehaviour
         public TextMeshProUGUI TomeTextClean;
     }
 
-    [SerializeField] TomeCanvas tomeCanvas;
+    [Header("Tome Viewer")]
+    [SerializeField] private TomeCanvas tomeCanvas;
+    #endregion
+
+    private AlterScript alterScript;
+
+    public Tome selectedTome;
 
     private void Start()
     {
         tomeCanvas.TomeViewer.SetActive(false);
         tomeCanvas.TomeViewerClean.SetActive(false);
-        InventoryHolder.gameObject.SetActive(false);
+        InventoryHolder.SetActive(false);
+
+        alterScript = GameObject.Find("Alter").GetComponent<AlterScript>();
     }
 
     public void CollectTome(Tome tome)
     {
         collectedTomes.Add(tome);
-        CheckForEndings();
     }
 
     public void OpenInventory(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            if(!opened)
+            if (!opened && !AlterOpen())
             {
                 UIManager.Instance.TogglePlayerAbilities(false);
-                InventoryHolder.gameObject.SetActive(true);
+                InventoryHolder.SetActive(true);
                 UpdateInventory();
                 opened = true;
             }
@@ -64,7 +70,27 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    private void UpdateInventory()
+    // toggles the inventory for the alter
+    public bool AlterOpen(bool isopen = false)
+    {
+        if(isopen == true)
+        {
+            UIManager.Instance.TogglePlayerAbilities(false);
+            InventoryHolder.SetActive(true);
+            UpdateInventory();
+            alteropened = isopen;
+            return isopen;
+        }
+        else
+        {
+            UIManager.Instance.TogglePlayerAbilities(true);
+            CloseInventory();
+            alteropened = isopen;
+            return isopen;
+        }
+    }
+
+    public void UpdateInventory()
     {
         foreach (Tome tome in collectedTomes)
         {
@@ -80,53 +106,48 @@ public class PlayerInventory : MonoBehaviour
             Destroy(children.gameObject);
         }
 
-        InventoryHolder.gameObject.SetActive(false);
+        InventoryHolder.SetActive(false);
     }
 
-    private void CheckForEndings()
-    {
-        foreach (TomeSet tomeSet in existingTomesets)
-        {
-            bool hasSet = true;
-
-            foreach (Tome tome in tomeSet.tomes)
-            {
-                //if cant find one of the tomes then dont have set
-                if (!collectedTomes.Contains(tome)) { hasSet = false; }
-            }
-
-            //if has whole set show ending for that tomeset
-            if (hasSet)
-            {
-                Instantiate(tomeSet.endingCanvas, null);
-                return;
-            }
-        }
-    }
-
+    // makes tome viewer readable
     public void ReadTome(Tome tome)
     {
         tomeCanvas.TomeViewer.SetActive(true);
         tomeCanvas.TomeText.text = tome.TomeText;
 
-        if (tomeCanvas.TomeViewer.activeSelf && Input.GetKey(KeyCode.Tab))
-        {
-            tomeCanvas.TomeViewerClean.SetActive(true);
-            tomeCanvas.TomeTextClean.text = tome.TomeText;
-        }
-        else
-        {
-            tomeCanvas.TomeViewerClean.SetActive(false);
-            tomeCanvas.TomeTextClean.text = "";
-        }
+        //// TODO: REWORKKKK
+        //if (tomeCanvas.TomeViewer.activeSelf && Input.GetKey(KeyCode.Tab))
+        //{
+        //    tomeCanvas.TomeViewerClean.SetActive(true);
+        //    tomeCanvas.TomeTextClean.text = tome.TomeText;
+        //}
+        //else
+        //{
+        //    tomeCanvas.TomeViewerClean.SetActive(false);
+        //    tomeCanvas.TomeTextClean.text = "";
+        //}
     }
 
+    // closes the tome viewer
     public void CloseTome()
     {
         tomeCanvas.TomeViewer.SetActive(false);
         tomeCanvas.TomeText.text = "";
 
-        tomeCanvas.TomeViewerClean.SetActive(false);
-        tomeCanvas.TomeTextClean.text = "";
+        //tomeCanvas.TomeViewerClean.SetActive(false);
+        //tomeCanvas.TomeTextClean.text = "";
+    }
+
+    public void RemovedFromInventory(Tome tometoremove)
+    {
+        collectedTomes.Remove(tometoremove);
+
+        foreach (Transform children in InventoryHolder.transform)
+        {
+            if(children.GetComponent<InventorySlot>().SlotTome == tometoremove)
+            {
+                Destroy(children.gameObject);
+            }
+        }
     }
 }

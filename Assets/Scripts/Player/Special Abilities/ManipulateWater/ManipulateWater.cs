@@ -1,4 +1,5 @@
 using System.Collections;
+using AudioSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -13,6 +14,13 @@ public class ManipulateWater : MonoBehaviour
 
     private Water currentWater;
     private GameObject lastPaintedWater;
+
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = waterPaintPrefab.GetComponent<AudioSource>();
+    }
 
     public void ManipulateWaterAbility(InputAction.CallbackContext context)
     {
@@ -37,6 +45,7 @@ public class ManipulateWater : MonoBehaviour
             while (painting && !currentWater.empty)
             {
                 DrawWater();
+                AudioManager.Instance.PlayAudio("WaterMoving", audioSource);
                 yield return new WaitForSeconds(delayBetweenPainting);
             }
         }

@@ -13,15 +13,38 @@ MonoBehaviour:
   m_Name: New Character Database
   m_EditorClassIdentifier: 
   character:
-  - characterName: Corvus
-    characterDescription: 
-    characterSprite: {fileID: 394363948, guid: c8dfb21645886234eab7b08c9876b6e2, type: 3}
+  - characterName: Corvus, Ruler of Corvids
+    characterDescription: "During times of ancient war, the march of men and machines
+      would ring out a call to the carrion overlord. In the aftermath of a battle\u2019s
+      devastation, the flock would come; black velvet corvids would peck and feast
+      upon the corpses. These blood-drenched creatures consumed the flesh, upon which
+      these errant souls would receive a blessing in their next life.  Corvus would
+      judge each soul offered by his servants, with only the true and strong being
+      granted passage to rebirth; those judged unworthy were enslaved as corvid,
+      cursed to earn redemption.\_  However, the great wars of brutal battle have
+      ended, and a long peace stills the pottersfield. Starved of its supply of souls,
+      this era of peace has rendered it obsolete. Now powerless, it has been cast
+      away to wallow in the darkness."
     playerObject: {fileID: 1095281449741805334, guid: 3dd5ceb800899c9498ce714e41d5dda8, type: 3}
-    characterAbility1: 
-    characterAbility2: 
-  - characterName: "\xD8rvatha"
-    characterDescription: 
-    characterSprite: {fileID: 2114205131, guid: 982ef1fc80af2534caa491ef50ecf72d, type: 3}
+    characterAbility1: Wind Blast - Shoot a wind projectile towards the mouse position.
+      (LMB)
+    characterAbility2: Bird Song - Use to change the tangibilty of objects around
+      you, phasing them in or out of reality. (RMB)
+  - characterName: "\xD8rvatha, Monarch of Trenches  "
+    characterDescription: "Back in the day, when the world was big and the maps still
+      blank, fearful sailors would pray and give sacrifice to it in hopes of a safe
+      journey. Its sheer size and majesty would not go unnoticed by terrified men,
+      their flimsy vessels of wood and cloth ignored in return. As to such a being,
+      these tiny morsels were insignificant, nary even worth a bite, nor sometimes
+      even acknowledgement.\_  It was only as the world became smaller, and boats
+      were constructed of metal and steam, did its power fade. Then the words of
+      caution and fear were seen as the ramblings of old sea dogs cooked by years
+      of sun, scurvy and rum.   As they hunted its food and cared less for its majesty,
+      \xD8rvatha starved and shrank and withered. It was as the last of the old breed
+      of sailors died, did \xD8rvatha fall from the depths of the dark ocean to a
+      depth far worse\u2026  "
     playerObject: {fileID: 1359130775214588326, guid: 75ceb3dc9c8609f4f949ba8b15940b59, type: 3}
-    characterAbility1: 
-    characterAbility2: 
+    characterAbility1: Tentacle Grab - Grab objects with your tentacles, move them
+      around (Scroll Wheel). Place or move then where you want. (RMB)
+    characterAbility2: Water Control - Move water to your will, create spouts of
+      water that follow you around and help assist your exploration. (LMB)

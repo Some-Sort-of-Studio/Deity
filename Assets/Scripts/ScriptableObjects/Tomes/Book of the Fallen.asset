@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e0ecc19fb68794982a4c2797020fdd, type: 3}
+  m_Name: Book of the Fallen
+  m_EditorClassIdentifier: 
+  TomeName: Book of the Fallen
+  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeText: 'A place to discard
+
+
+    Those who are long forgotten
+
+
+    Left to
+    bask in a pile of
+
+
+    Stinking bones
+
+
+    This is truly hell.'

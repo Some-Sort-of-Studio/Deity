@@ -1,4 +1,6 @@
+using AudioSystem;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Teleporter : MonoBehaviour
 {
@@ -9,12 +11,14 @@ public class Teleporter : MonoBehaviour
     [SerializeField] private KeyCode interactKey = KeyCode.W;
     [SerializeField] private GameObject objectToTeleportTo;
     [SerializeField] private float teleportAnimationTime = 0.5f;
+    private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if(interactKey == 0) { Debug.Log("Missing keybind for " + this); }
         if(objectToTeleportTo == null) { Debug.Log("Missing references for " + this); }
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -23,8 +27,18 @@ public class Teleporter : MonoBehaviour
         {
             playerAnimator.SetBool("Door", true);
             Invoke("Teleport", teleportAnimationTime);
+            AudioManager.Instance.PlayAudio("Door", audioSource);
         }
     }
+
+    //public void Interaction(InputAction.CallbackContext context)
+    //{
+    //    if (playerOverlapping && context.performed)
+    //    {
+    //        playerAnimator.SetBool("Door", true);
+    //        Invoke("Teleport", teleportAnimationTime);
+    //    }
+    //}
 
     private void Teleport()
     {

@@ -14,7 +14,7 @@ public class ArrowMovement : MonoBehaviour
 
         rb.AddForce(transform.right * speed, ForceMode2D.Impulse);
 
-        Invoke("DestroyObject", projectileTimer);
+        Invoke("DestoryObject", projectileTimer);
     }
 
     public void DestoryObject()
