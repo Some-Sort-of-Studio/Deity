@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClipName: Wind_Shot
   Clip: {fileID: 8300000, guid: a5b93ff3dd2cbe74aa5bcb07e726a934, type: 3}
-  MixerGroup: {fileID: 24300002, guid: 7006dbb7944c13547b5045dffe2b86bd, type: 2}
+  MixerGroup: {fileID: -4400440644286048968, guid: aab63b6c9a1139d4a86321042df5e964, type: 2}
   IsLooping: 0

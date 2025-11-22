@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClipName: Bird_Jump
   Clip: {fileID: 8300000, guid: 122ea6470c53c04458df958950204439, type: 3}
-  MixerGroup: {fileID: 24300002, guid: aab63b6c9a1139d4a86321042df5e964, type: 2}
+  MixerGroup: {fileID: -4400440644286048968, guid: aab63b6c9a1139d4a86321042df5e964, type: 2}
   IsLooping: 0

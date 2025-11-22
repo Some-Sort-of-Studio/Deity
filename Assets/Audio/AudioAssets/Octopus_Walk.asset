@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClipName: Octopus_Walk
   Clip: {fileID: 8300000, guid: 5b53de41e691e324790e6218c3d20cd4, type: 3}
-  MixerGroup: {fileID: 24300002, guid: 208cc4dcc5b6acd40bd057dff14ea750, type: 2}
+  MixerGroup: {fileID: -4400440644286048968, guid: aab63b6c9a1139d4a86321042df5e964, type: 2}
   IsLooping: 0

@@ -835,6 +835,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a34d2ba8e7a1e4bb3951dde2c30b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectedTomes: []
+  alteropened: 0
   InventoryHolder: {fileID: 8629111592512107033}
   SlotPrefab: {fileID: 8830184095511892467, guid: e702c23a870eaf8429a392c662cb5a8c, type: 3}
   tomeCanvas:
@@ -1716,7 +1718,7 @@ GameObject:
   - component: {fileID: 3502674108180080055}
   - component: {fileID: 8044290690897873748}
   - component: {fileID: 2556851510789107363}
-  - component: {fileID: 840972426573949053}
+  - component: {fileID: 2076622343138085638}
   m_Layer: 5
   m_Name: InventoryHolder
   m_TagString: Untagged
@@ -1781,7 +1783,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &840972426573949053
+--- !u!114 &2076622343138085638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1790,16 +1792,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8629111592512107033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 50
+    m_Left: 0
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 0
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
