@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClipName: WaterMoving
   Clip: {fileID: 8300000, guid: 4c20bcdaa4a6a9c4793372584dc45a77, type: 3}
-  MixerGroup: {fileID: 24300002, guid: d7828195a10783e4889508b9c8af52fe, type: 2}
+  MixerGroup: {fileID: -4400440644286048968, guid: aab63b6c9a1139d4a86321042df5e964, type: 2}
   IsLooping: 0

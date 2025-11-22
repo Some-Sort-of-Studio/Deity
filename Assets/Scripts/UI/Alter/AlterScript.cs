@@ -5,19 +5,22 @@ public class AlterScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject AlterCanvas;
+    [SerializeField] private GameObject PrayButton;
+
 
     [Header("Lists and Arrays")]
     [Tooltip("This var should include all potential sets in the game")]
     [SerializeField] private TomeSet[] existingTomesets;
 
-    [HideInInspector] public List<Tome> TomesInAlter = new List<Tome>();
+    private List<Tome> TomesInAlter = new List<Tome>();
 
-    [SerializeField] protected PlayerInventory playerInv;
+    public static PlayerInventory playerInv;
 
     private bool playerOverlapping = false;
 
     private void Start()
     {
+        PrayButton.SetActive(false);
         AlterCanvas.SetActive(false);
         playerOverlapping = false;
 
@@ -26,9 +29,16 @@ public class AlterScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.W) && playerOverlapping && !playerInv.AlterOpen())
+        if (Input.GetKeyUp(KeyCode.W) && playerOverlapping)
         {
-            OnAlterEnable();
+            if(AlterCanvas.activeSelf)
+            {
+                OnAlterDisable();
+            }
+            else
+            {
+                OnAlterEnable();
+            }
         }
     }
 
@@ -48,15 +58,6 @@ public class AlterScript : MonoBehaviour
         }
     }
 
-    //public void InteractionWithAlter(InputAction.CallbackContext context)
-    //{
-    //    if (playerOverlapping && context.performed)
-    //    {
-    //        OnAlterEnable();
-    //    }
-    //}
-
-
     public void OnAlterEnable()
     {
         AlterCanvas.SetActive(true);
@@ -73,12 +74,29 @@ public class AlterScript : MonoBehaviour
     public void Pray()
     {
         OnAlterDisable();
-        CheckForEndings();
+
+        if(TomesInAlter.Count == 3)
+        {
+            CheckForEndings();
+        }
     }
 
-    public void AddtoAlter(Tome tome)
+    public void AddtoAlter(Tome tome, bool remove = false)
     {
-        //TomesInAlter.Add(tome);
+        if (remove)
+        {
+            TomesInAlter.Remove(tome);
+        }
+        else
+        {
+            TomesInAlter.Add(tome);
+        }
+
+        if (TomesInAlter.Capacity == 3)
+        {
+            PrayButton.SetActive(true);
+        }
+        else PrayButton.SetActive(true);
     }
 
     public void CheckForEndings()

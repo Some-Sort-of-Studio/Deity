@@ -7,6 +7,7 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private List<Tome> collectedTomes = new List<Tome>();
     private bool opened = false;
+    [HideInInspector] public bool alteropened = false;
 
     #region TomeViewer
     [Header("Inventory References:")]
@@ -30,7 +31,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private TomeCanvas tomeCanvas;
     #endregion
 
-    protected AlterScript alterScript;
+    private AlterScript alterScript;
 
     public Tome selectedTome;
 
@@ -38,7 +39,7 @@ public class PlayerInventory : MonoBehaviour
     {
         tomeCanvas.TomeViewer.SetActive(false);
         tomeCanvas.TomeViewerClean.SetActive(false);
-        InventoryHolder.gameObject.SetActive(false);
+        InventoryHolder.SetActive(false);
 
         alterScript = GameObject.Find("Alter").GetComponent<AlterScript>();
     }
@@ -55,7 +56,7 @@ public class PlayerInventory : MonoBehaviour
             if (!opened && !AlterOpen())
             {
                 UIManager.Instance.TogglePlayerAbilities(false);
-                InventoryHolder.gameObject.SetActive(true);
+                InventoryHolder.SetActive(true);
                 UpdateInventory();
                 opened = true;
             }
@@ -69,26 +70,27 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    // toggles the inventory for the alter
     public bool AlterOpen(bool isopen = false)
     {
-        if(isopen)
+        if(isopen == true)
         {
             UIManager.Instance.TogglePlayerAbilities(false);
-            InventoryHolder.gameObject.SetActive(true);
+            InventoryHolder.SetActive(true);
             UpdateInventory();
-            opened = isopen;
+            alteropened = isopen;
             return isopen;
         }
         else
         {
             UIManager.Instance.TogglePlayerAbilities(true);
             CloseInventory();
-            opened = isopen;
+            alteropened = isopen;
             return isopen;
         }
     }
 
-    private void UpdateInventory()
+    public void UpdateInventory()
     {
         foreach (Tome tome in collectedTomes)
         {
@@ -104,7 +106,7 @@ public class PlayerInventory : MonoBehaviour
             Destroy(children.gameObject);
         }
 
-        InventoryHolder.gameObject.SetActive(false);
+        InventoryHolder.SetActive(false);
     }
 
     // makes tome viewer readable
@@ -113,17 +115,17 @@ public class PlayerInventory : MonoBehaviour
         tomeCanvas.TomeViewer.SetActive(true);
         tomeCanvas.TomeText.text = tome.TomeText;
 
-        // TODO: REWORKKKK
-        if (tomeCanvas.TomeViewer.activeSelf && Input.GetKey(KeyCode.Tab))
-        {
-            tomeCanvas.TomeViewerClean.SetActive(true);
-            tomeCanvas.TomeTextClean.text = tome.TomeText;
-        }
-        else
-        {
-            tomeCanvas.TomeViewerClean.SetActive(false);
-            tomeCanvas.TomeTextClean.text = "";
-        }
+        //// TODO: REWORKKKK
+        //if (tomeCanvas.TomeViewer.activeSelf && Input.GetKey(KeyCode.Tab))
+        //{
+        //    tomeCanvas.TomeViewerClean.SetActive(true);
+        //    tomeCanvas.TomeTextClean.text = tome.TomeText;
+        //}
+        //else
+        //{
+        //    tomeCanvas.TomeViewerClean.SetActive(false);
+        //    tomeCanvas.TomeTextClean.text = "";
+        //}
     }
 
     // closes the tome viewer
@@ -132,17 +134,19 @@ public class PlayerInventory : MonoBehaviour
         tomeCanvas.TomeViewer.SetActive(false);
         tomeCanvas.TomeText.text = "";
 
-        tomeCanvas.TomeViewerClean.SetActive(false);
-        tomeCanvas.TomeTextClean.text = "";
+        //tomeCanvas.TomeViewerClean.SetActive(false);
+        //tomeCanvas.TomeTextClean.text = "";
     }
 
     public void RemovedFromInventory(Tome tometoremove)
     {
-        foreach(Tome tome in collectedTomes)
+        collectedTomes.Remove(tometoremove);
+
+        foreach (Transform children in InventoryHolder.transform)
         {
-            if(tome == tometoremove)
+            if(children.GetComponent<InventorySlot>().SlotTome == tometoremove)
             {
-                collectedTomes.Remove(tome);
+                Destroy(children.gameObject);
             }
         }
     }
