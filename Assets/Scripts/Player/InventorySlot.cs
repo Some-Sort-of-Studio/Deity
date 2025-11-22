@@ -1,10 +1,11 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class InventorySlot : MonoBehaviour
 {
     public UnityEngine.UI.Image IconSprite;
     public string TomeTitle;
-    private static Tome SlotTome;
+    public Tome SlotTome;
 
     public void AddToSlot(Tome tome)
     {
@@ -13,17 +14,22 @@ public class InventorySlot : MonoBehaviour
         TomeTitle = tome.TomeName;
     }
 
-    public bool CheckTome(Tome tome)
-    {
-        if (SlotTome == null)
-            return true;
-        else return false;
-    }
-
+    // view the tome or select the tome
     public void ViewTome()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        PlayerInventory playerInv = player.GetComponent<PlayerInventory>();
 
-        player.GetComponent<PlayerInventory>().ReadTome(SlotTome);
+        // for alter selection
+        if (playerInv.alteropened)
+        {
+            playerInv.selectedTome = SlotTome;
+        }
+
+        // for reading tome
+        if (!playerInv.alteropened)
+        {
+            playerInv.ReadTome(SlotTome);
+        }
     }
 }

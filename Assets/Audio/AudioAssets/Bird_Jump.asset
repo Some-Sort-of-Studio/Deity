@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 118506c44f3bcee478926359b33aa0aa, type: 3}
-  m_Name: Song_AOE
+  m_Name: Bird_Jump
   m_EditorClassIdentifier: 
-  ClipName: Song_AOE
-  Clip: {fileID: 8300000, guid: ac25eaab01a358641b8ad1f078dba40d, type: 3}
-  MixerGroup: {fileID: 24300002, guid: 88d7b9de6c083254c9be25a1a6e08024, type: 2}
-  IsLooping: 1
+  ClipName: Bird_Jump
+  Clip: {fileID: 8300000, guid: 122ea6470c53c04458df958950204439, type: 3}
+  MixerGroup: {fileID: -4400440644286048968, guid: aab63b6c9a1139d4a86321042df5e964, type: 2}
+  IsLooping: 0

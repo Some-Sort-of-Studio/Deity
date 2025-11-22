@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 118506c44f3bcee478926359b33aa0aa, type: 3}
-  m_Name: Octopus_Walk
+  m_Name: Song_AOE
   m_EditorClassIdentifier: 
-  ClipName: Octopus_Walk
-  Clip: {fileID: 8300000, guid: 5b53de41e691e324790e6218c3d20cd4, type: 3}
-  MixerGroup: {fileID: 24300002, guid: 208cc4dcc5b6acd40bd057dff14ea750, type: 2}
-  IsLooping: 0
+  ClipName: Song_AOE
+  Clip: {fileID: 8300000, guid: ac25eaab01a358641b8ad1f078dba40d, type: 3}
+  MixerGroup: {fileID: -4400440644286048968, guid: aab63b6c9a1139d4a86321042df5e964, type: 2}
+  IsLooping: 1

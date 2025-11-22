@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 118506c44f3bcee478926359b33aa0aa, type: 3}
-  m_Name: Octopus_Jump
+  m_Name: Bird_Walking
   m_EditorClassIdentifier: 
-  ClipName: Octopus_Jump
-  Clip: {fileID: 8300000, guid: b3288114bae22ee45bf84f584948b16e, type: 3}
-  MixerGroup: {fileID: 24300002, guid: 0a976360924628d4f9c688dcf2e0ce84, type: 2}
+  ClipName: Bird_Walk
+  Clip: {fileID: 8300000, guid: 08de12322815cbc4787d10b205ac37a2, type: 3}
+  MixerGroup: {fileID: -4400440644286048968, guid: aab63b6c9a1139d4a86321042df5e964, type: 2}
   IsLooping: 0
