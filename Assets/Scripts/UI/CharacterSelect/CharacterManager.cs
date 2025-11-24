@@ -18,10 +18,8 @@ public class CharacterManager : MonoBehaviour
 
     private void Start()
     {
-        if (!PlayerPrefs.HasKey("selectedOption"))
-        {
-            selectedOption = 0;
-        }
+        selectedOption = 0;
+        Save();
 
         UpdatedCharacter(selectedOption);
 
