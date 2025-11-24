@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 2765799238473370260, guid: 14c6969357dd0ed4e9065f773010abec, type: 3}
       propertyPath: BoundingShape2D
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5816693531882281177}
     - target: {fileID: 4928429680333763685, guid: 14c6969357dd0ed4e9065f773010abec, type: 3}
       propertyPath: m_Name
       value: CameraPoly
