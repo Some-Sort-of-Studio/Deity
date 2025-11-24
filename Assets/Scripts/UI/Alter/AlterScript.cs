@@ -5,7 +5,7 @@ public class AlterScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject AlterCanvas;
-    [SerializeField] private GameObject PrayButton;
+    [SerializeField] protected GameObject PrayButton;
 
 
     [Header("Lists and Arrays")]
@@ -92,11 +92,11 @@ public class AlterScript : MonoBehaviour
             TomesInAlter.Add(tome);
         }
 
-        if (TomesInAlter.Capacity == 3)
+        if (TomesInAlter.Count == 3)
         {
             PrayButton.SetActive(true);
         }
-        else PrayButton.SetActive(true);
+        else PrayButton.SetActive(false);
     }
 
     public void CheckForEndings()
