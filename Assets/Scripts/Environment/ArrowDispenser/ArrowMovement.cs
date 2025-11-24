@@ -4,17 +4,9 @@ public class ArrowMovement : MonoBehaviour
 {
     public float speed;
 
-    public float projectileTimer;
-
-    Rigidbody2D rb;
-
-    private void Awake()
+    private void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
-
-        rb.AddForce(transform.right * speed, ForceMode2D.Impulse);
-
-        Invoke("DestoryObject", projectileTimer);
+        transform.position += transform.right * Time.deltaTime * speed;
     }
 
     public void DestoryObject()
