@@ -8,28 +8,16 @@ public class Arrow : MonoBehaviour
 
     public bool hasFired;
     public bool isActive;
+    public bool isOn;
 
     public float spawnTimer;
     public float delayTimer;
 
-    public enum States
-    {
-        On,
-        Off
-    }
-
-    public States state;
-
     private void Start()
     {
-        if (state == States.On)
+        if (isOn)
         {
             On();
-        }
-
-        if (state == States.Off)
-        {
-            Off();
         }
     }
 
