@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e0ecc19fb68794982a4c2797020fdd, type: 3}
   m_Name: The Maddening Pipes
   m_EditorClassIdentifier: 
-  TomeName: "The Maddening Pipes\_"
+  TomeName: The Maddening Pipes
   TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
   TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
   TomeText: "Too many pipes and paths..\n\nNo matter which I choose, they always

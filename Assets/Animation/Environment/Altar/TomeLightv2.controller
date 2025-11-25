@@ -68,7 +68,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -8431622847505047824}
-    m_Position: {x: 240, y: 30, z: 0}
+    m_Position: {x: 230, y: 30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3061728770551986577}
     m_Position: {x: 275, y: 95, z: 0}
@@ -103,7 +103,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Flesh Ripped Apart from the Inside
+    m_ConditionEvent: Flesh Ripped Apart
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2742510785155604582}
@@ -286,7 +286,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Flesh Ripped Apart from the Inside
+  - m_Name: Flesh Ripped Apart
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -330,7 +330,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Flesh Ripped Apart from the Inside
+  m_Name: Flesh Ripped Apart
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

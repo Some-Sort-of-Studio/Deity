@@ -7,17 +7,23 @@ public class AlterRoom : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        foreach(GameObject star in Stars)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            star.GetComponent<AlterStars>().CheckforTome(collision.gameObject);
+            foreach (GameObject star in Stars)
+            {
+                star.GetComponent<AlterStars>().CheckforTome(collision.gameObject);
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        foreach (GameObject star in Stars)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            star.GetComponent<AlterStars>().StopAnim();
+            foreach (GameObject star in Stars)
+            {
+                star.GetComponent<AlterStars>().StopAnim();
+            }
         }
     }
 }

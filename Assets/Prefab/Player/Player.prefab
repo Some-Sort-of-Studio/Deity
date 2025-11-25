@@ -771,6 +771,7 @@ MonoBehaviour:
   walkStepInterval: 0.5
   sprintStepInterval: 0.3
   velocityThreshold: 0
+  climbStepInterval: 0.5
   playerType: 0
 --- !u!114 &197972112907101038
 MonoBehaviour:
@@ -837,6 +838,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectedTomes: []
   alteropened: 0
+  existingTomesets:
+  - {fileID: 11400000, guid: 600ed2fbaf3fa0b44a2be0a8df12b426, type: 2}
+  - {fileID: 11400000, guid: 690fe47de9a3fed4782d7ad96ee6cd55, type: 2}
+  - {fileID: 11400000, guid: 3678866a401ff7c42949ea6566de4ebf, type: 2}
+  - {fileID: 11400000, guid: 9d73cab7d0c172848b233b978bd48266, type: 2}
+  - {fileID: 11400000, guid: 482abaa523e7f2745a84b62db71710c1, type: 2}
+  - {fileID: 11400000, guid: 17148a8caec455440857362f456552ca, type: 2}
   InventoryHolder: {fileID: 8629111592512107033}
   SlotPrefab: {fileID: 8830184095511892467, guid: e702c23a870eaf8429a392c662cb5a8c, type: 3}
   tomeCanvas:
@@ -1383,7 +1391,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 945359677
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: 1
   m_Sprite: {fileID: -461368726, guid: a230e5310920bf04ca54c1805e380c3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

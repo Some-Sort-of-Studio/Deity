@@ -497,7 +497,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AlterCanvas: {fileID: 542273459213747307}
   PrayButton: {fileID: 7815836244777240131}
-  existingTomesets: []
+  existingTomesets:
+  - {fileID: 11400000, guid: 600ed2fbaf3fa0b44a2be0a8df12b426, type: 2}
+  - {fileID: 11400000, guid: 690fe47de9a3fed4782d7ad96ee6cd55, type: 2}
+  - {fileID: 11400000, guid: 3678866a401ff7c42949ea6566de4ebf, type: 2}
+  - {fileID: 11400000, guid: 9d73cab7d0c172848b233b978bd48266, type: 2}
+  - {fileID: 11400000, guid: 482abaa523e7f2745a84b62db71710c1, type: 2}
+  - {fileID: 11400000, guid: 17148a8caec455440857362f456552ca, type: 2}
 --- !u!61 &6884974229418286337
 BoxCollider2D:
   m_ObjectHideFlags: 0

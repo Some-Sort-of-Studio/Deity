@@ -24,11 +24,16 @@ public class AlterScript : MonoBehaviour
         AlterCanvas.SetActive(false);
         playerOverlapping = false;
 
-        playerInv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
+        playerInv = GameObject.FindFirstObjectByType<PlayerInventory>();
     }
 
     private void Update()
     {
+        if(playerInv == null)
+        {
+            playerInv = GameObject.FindFirstObjectByType<PlayerInventory>();
+        }
+
         if (Input.GetKeyUp(KeyCode.W) && playerOverlapping)
         {
             if(AlterCanvas.activeSelf)
