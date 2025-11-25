@@ -9,6 +9,7 @@ public class Arrow : MonoBehaviour
     public bool hasFired;
     public bool isActive;
 
+    public float spawnTimer;
     public float delayTimer;
 
     public enum States
@@ -35,17 +36,17 @@ public class Arrow : MonoBehaviour
     private void SpawnObject()
     {
         Instantiate(projectile, firePoint.position, transform.rotation);
-        StartCoroutine(Delay());
+        StartCoroutine(Spawn());
     }
 
     public void On()
     {
-        StartCoroutine(Delay());
+        StartCoroutine(Spawn());
     }
 
     public void Off()
     {
-        StopCoroutine(Delay());
+        StopAllCoroutines();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,6 +63,12 @@ public class Arrow : MonoBehaviour
         {
             Off();
         }
+    }
+
+    private IEnumerator Spawn()
+    {
+        yield return new WaitForSeconds(spawnTimer);
+        StartCoroutine(Delay());
     }
 
     private IEnumerator Delay()
