@@ -11,9 +11,4 @@ public class AlterStars : MonoBehaviour
             animator.SetTrigger(tome.TomeName);
         }
     }
-
-    public void StopAnim()
-    {
-        animator.SetTrigger(tome.TomeName);
-    }
 }
