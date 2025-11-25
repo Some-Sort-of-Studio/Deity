@@ -483,7 +483,6 @@ GameObject:
   - component: {fileID: 8420093136281076505}
   - component: {fileID: 7505553330427428839}
   - component: {fileID: 197972112907101038}
-  - component: {fileID: 5251389366431842224}
   - component: {fileID: 6388401789814718081}
   - component: {fileID: 6752625784827998916}
   m_Layer: 0
@@ -790,18 +789,6 @@ MonoBehaviour:
   teleportToStartTime: 1
   deathCanvas: {fileID: 8844597493642198650, guid: 32e6d63b8d7686b48880e2c3b0bed669, type: 3}
   deathTime: 1
---- !u!114 &5251389366431842224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3101268727038175309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af3b1d7f092ee81488c30cae79298a99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6388401789814718081
 MonoBehaviour:
   m_ObjectHideFlags: 0
