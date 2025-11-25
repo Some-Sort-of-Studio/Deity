@@ -34,7 +34,7 @@ public class SettingsMenu : MonoBehaviour
     public void DefaultSettings()
     {
         // screen defaults
-        Screen.fullScreen = true;
+        ChangeFullscreen(true);
         screenTypeText.text = "Fullscreen";
         QualitySettings.vSyncCount = 1;
         vSyncText.text = "vSync On";
@@ -46,11 +46,13 @@ public class SettingsMenu : MonoBehaviour
 
 
         particleText.text = "High";
+
+        SetPrefs();
     }
 
-    protected virtual void SetPrefs()
+    private void SetPrefs()
     {
-        // set all default values
+        //PlayerPrefs.
     }
 
     public void ChangeResolutionLeft()
@@ -81,21 +83,23 @@ public class SettingsMenu : MonoBehaviour
 
     private void ChangeResolution(Resolution restoset)
     {
-        Screen.SetResolution(restoset.width, restoset.height, true);
+        Screen.SetResolution(restoset.width, restoset.height, ChangeFullscreen());
         resolutionText.text = Screen.currentResolution.ToString();
     }
 
-    public void ChangeFullscreen(bool set)
+    public bool ChangeFullscreen(bool set = false)
     {
         Screen.fullScreen = set;
 
         if(set == true)
         {
             screenTypeText.text = "Fullscreen";
+            return true;
         }
         else
         {
             screenTypeText.text = "Windowed";
+            return false;
         }
     }
 
