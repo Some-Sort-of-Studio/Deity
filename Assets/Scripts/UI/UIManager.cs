@@ -52,22 +52,22 @@ public class UIManager : MonoBehaviour
         //if player reference then toggle all potential abilities
         if (playerObject != null)
         {
-            playerObject.GetComponent<PlayerMovement2D>().enabled = abilityEnabled;
+            playerObject.GetComponent<PlayerMovement2D>().movementEnabled = abilityEnabled;
 
             Climbing climbing = playerObject.GetComponent<Climbing>();
-            if (climbing != null) { climbing.enabled = abilityEnabled; }
+            if (climbing != null) { climbing.climbingEnabled = abilityEnabled; }
 
             WindBlast windBlast = playerObject.GetComponent<WindBlast>();
-            if (windBlast != null) { windBlast.enabled = abilityEnabled; }
+            if (windBlast != null) { windBlast.windBlastEnabled = abilityEnabled; }
 
             SongAOE songAOE = playerObject.GetComponent<SongAOE>();
-            if (songAOE != null) { songAOE.enabled = abilityEnabled; }
+            if (songAOE != null) { songAOE.songAOEEnabled = abilityEnabled; }
 
             ManipulateWater manipulateWater = playerObject.GetComponent<ManipulateWater>();
-            if (manipulateWater != null) { manipulateWater.enabled = abilityEnabled; }
+            if (manipulateWater != null) { manipulateWater.manipulateWaterEnabled = abilityEnabled; }
 
             GrabObjects grabObjects = playerObject.GetComponent<GrabObjects>();
-            if (grabObjects != null) { grabObjects.enabled = abilityEnabled; }
+            if (grabObjects != null) { grabObjects.grabObjectsEnabled = abilityEnabled; }
         }
     }
 

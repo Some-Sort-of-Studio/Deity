@@ -6,8 +6,9 @@ using UnityEngine.InputSystem;
 
 public class SongAOE : MonoBehaviour
 {
-    public GameObject AOE;
+    public bool songAOEEnabled = true;
 
+    public GameObject AOE;
     private AudioSource audioSource;
 
     void Start()
@@ -18,6 +19,8 @@ public class SongAOE : MonoBehaviour
 
     public void SongAOEAbility(InputAction.CallbackContext context)
     {
+        if (!songAOEEnabled) return;
+
         if (context.performed)
         {
             AOE.SetActive(true);

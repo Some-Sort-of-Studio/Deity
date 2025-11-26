@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class WindBlast : MonoBehaviour
 {
+    public bool windBlastEnabled = true;
+
     public FirePoint firePoint;
     public GameObject projectile;
 
@@ -23,6 +25,8 @@ public class WindBlast : MonoBehaviour
 
     public void WindBlastAbility(InputAction.CallbackContext context)
     {
+        if (!windBlastEnabled) return;
+
         if (context.performed)
         {
             firePoint.SetupFiring();

@@ -20,6 +20,8 @@ public class TentacleGrabber : MonoBehaviour
 
     private void Update()
     {
+        if (!grabObjects.grabObjectsEnabled) return;
+
         if (grabObjects.isTryingGrab)
         {
             float grabberDistance = Vector3.Distance(playerObject.transform.position, boxHolder.transform.position);
