@@ -114,6 +114,13 @@ public class UIManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         SceneManager.LoadScene("MainMenu");
+
+        //close menus
+        ClosePauseMenu();
+
+        //unload all levels
+        SceneManager.UnloadSceneAsync("Level_Tower");
+        SceneManager.UnloadSceneAsync("Level_Aviary");
     }
 
     // quits game
