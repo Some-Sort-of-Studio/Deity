@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerMovement2D))]
 public class GrabObjects : MonoBehaviour
 {
+    public bool grabObjectsEnabled = true;
+
     public Transform boxHolder;
     [SerializeField] private Vector2 grabDetectSize = new Vector2(1.5f, 0.05f);
 
@@ -33,6 +35,8 @@ public class GrabObjects : MonoBehaviour
 
     private void Update()
     {
+        if (!grabObjectsEnabled) return;
+
         if (isTryingGrab)
         {
             grabPoint.SetupGrabbing();
