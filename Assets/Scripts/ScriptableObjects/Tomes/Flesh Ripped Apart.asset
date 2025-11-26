@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07e0ecc19fb68794982a4c2797020fdd, type: 3}
-  m_Name: Flesh Ripped Apart from the Inside
+  m_Name: Flesh Ripped Apart
   m_EditorClassIdentifier: 
-  TomeName: Flesh Ripped Apart from the Inside
+  TomeName: Flesh Ripped Apart
   TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
   TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
   TomeText: 'Something claws its way

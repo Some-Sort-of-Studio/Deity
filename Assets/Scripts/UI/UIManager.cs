@@ -52,22 +52,22 @@ public class UIManager : MonoBehaviour
         //if player reference then toggle all potential abilities
         if (playerObject != null)
         {
-            playerObject.GetComponent<PlayerMovement2D>().enabled = abilityEnabled;
+            playerObject.GetComponent<PlayerMovement2D>().movementEnabled = abilityEnabled;
 
             Climbing climbing = playerObject.GetComponent<Climbing>();
-            if (climbing != null) { climbing.enabled = abilityEnabled; }
+            if (climbing != null) { climbing.climbingEnabled = abilityEnabled; }
 
             WindBlast windBlast = playerObject.GetComponent<WindBlast>();
-            if (windBlast != null) { windBlast.enabled = abilityEnabled; }
+            if (windBlast != null) { windBlast.windBlastEnabled = abilityEnabled; }
 
             SongAOE songAOE = playerObject.GetComponent<SongAOE>();
-            if (songAOE != null) { songAOE.enabled = abilityEnabled; }
+            if (songAOE != null) { songAOE.songAOEEnabled = abilityEnabled; }
 
             ManipulateWater manipulateWater = playerObject.GetComponent<ManipulateWater>();
-            if (manipulateWater != null) { manipulateWater.enabled = abilityEnabled; }
+            if (manipulateWater != null) { manipulateWater.manipulateWaterEnabled = abilityEnabled; }
 
             GrabObjects grabObjects = playerObject.GetComponent<GrabObjects>();
-            if (grabObjects != null) { grabObjects.enabled = abilityEnabled; }
+            if (grabObjects != null) { grabObjects.grabObjectsEnabled = abilityEnabled; }
         }
     }
 
@@ -98,6 +98,7 @@ public class UIManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Level_Tower");
+        SceneManager.UnloadSceneAsync("Character Selection");
 
         if (pauseMenu == null) { Invoke(nameof(FindPauseMenu), 0.2f); } 
         if (playerObject == null) { Invoke(nameof(FindPlayerObject), 0.2f); }
@@ -113,6 +114,13 @@ public class UIManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         SceneManager.LoadScene("MainMenu");
+
+        //close menus
+        ClosePauseMenu();
+
+        //unload all levels
+        SceneManager.UnloadSceneAsync("Level_Tower");
+        SceneManager.UnloadSceneAsync("Level_Aviary");
     }
 
     // quits game

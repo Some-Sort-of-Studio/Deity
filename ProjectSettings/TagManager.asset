@@ -67,6 +67,9 @@ TagManager:
   - name: doors
     uniqueID: 633235597
     locked: 0
+  - name: props behind
+    uniqueID: 944636209
+    locked: 0
   - name: 'props '
     uniqueID: 2408232955
     locked: 0

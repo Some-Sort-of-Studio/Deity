@@ -12,6 +12,12 @@ public class MovingPlatform : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private SpriteRenderer sprite;
+    public Sprite on;
+    public Sprite off;
+    public Sprite trigger;
+    public Sprite automatic;
+
     public enum PlatformType
     { 
         Automatic,
@@ -42,6 +48,17 @@ public class MovingPlatform : MonoBehaviour
             nextPosition = pointB.position;
         }
 
+        if (platform_type == PlatformType.Automatic)
+        {
+            sprite.sprite = automatic;
+        }
+
+        if (platform_type == PlatformType.Trigger)
+        {
+            sprite.sprite = trigger;
+        }
+
+        sprite = GetComponentInChildren<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -122,24 +139,28 @@ public class MovingPlatform : MonoBehaviour
     {
         isSwitchOn = true;
         AudioManager.Instance.PlayAudio("MovingPlatforms", audioSource);
+        sprite.sprite = on;
     }
 
     public void switchToggleOff()
     {
         isSwitchOn = false;
         AudioManager.Instance.StopAudio(audioSource);
+        sprite.sprite = off;
     }
 
     public void pressurePlateToggleOn()
     {
         isPressurePlateActive = true;
         AudioManager.Instance.PlayAudio("MovingPlatforms", audioSource);
+        sprite.sprite = on;
     }
 
     public void pressurePlateToggleOff()
     {
         isPressurePlateActive = false;
         AudioManager.Instance.StopAudio(audioSource);
+        sprite.sprite = off;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

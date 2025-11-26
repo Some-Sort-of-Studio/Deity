@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +9,10 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private List<Tome> collectedTomes = new List<Tome>();
     private bool opened = false;
     [HideInInspector] public bool alteropened = false;
+
+    [Header("Lists and Arrays")]
+    [Tooltip("This var should include all potential sets in the game")]
+    [SerializeField] private TomeSet[] existingTomesets;
 
     #region TomeViewer
     [Header("Inventory References:")]
@@ -149,5 +154,18 @@ public class PlayerInventory : MonoBehaviour
                 Destroy(children.gameObject);
             }
         }
+    }
+
+    public bool CheckInventory(Tome startome)
+    {
+        foreach(Tome tome in collectedTomes)
+        {
+            if(startome == tome)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

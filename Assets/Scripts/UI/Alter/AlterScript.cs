@@ -5,7 +5,7 @@ public class AlterScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject AlterCanvas;
-    [SerializeField] private GameObject PrayButton;
+    [SerializeField] protected GameObject PrayButton;
 
 
     [Header("Lists and Arrays")]
@@ -24,11 +24,16 @@ public class AlterScript : MonoBehaviour
         AlterCanvas.SetActive(false);
         playerOverlapping = false;
 
-        playerInv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
+        playerInv = GameObject.FindFirstObjectByType<PlayerInventory>();
     }
 
     private void Update()
     {
+        if(playerInv == null)
+        {
+            playerInv = GameObject.FindFirstObjectByType<PlayerInventory>();
+        }
+
         if (Input.GetKeyUp(KeyCode.W) && playerOverlapping)
         {
             if(AlterCanvas.activeSelf)
@@ -92,11 +97,11 @@ public class AlterScript : MonoBehaviour
             TomesInAlter.Add(tome);
         }
 
-        if (TomesInAlter.Capacity == 3)
+        if (TomesInAlter.Count == 3)
         {
             PrayButton.SetActive(true);
         }
-        else PrayButton.SetActive(true);
+        else PrayButton.SetActive(false);
     }
 
     public void CheckForEndings()

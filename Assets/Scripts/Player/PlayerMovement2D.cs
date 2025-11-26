@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement2D : MonoBehaviour
 {
+    public bool movementEnabled = true;
+
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -14,7 +16,6 @@ public class PlayerMovement2D : MonoBehaviour
     [Tooltip("This variable controls how fast the player moves")]
     [SerializeField] private float walkSpeed = 5f;
     float horizontalMovement;
-    public bool movementEnabled = true;
     private bool isMoving;
 
     [Header("Sprint")]

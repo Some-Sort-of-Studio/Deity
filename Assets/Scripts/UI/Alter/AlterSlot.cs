@@ -16,7 +16,7 @@ public class AlterSlot : AlterScript
 
     private void Start()
     {
-        playerInv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
+        playerInv = GameObject.FindFirstObjectByType<PlayerInventory>();
 
         state = SlotState.empty;
     }

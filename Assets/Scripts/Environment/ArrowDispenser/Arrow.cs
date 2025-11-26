@@ -1,56 +1,40 @@
+using System.Collections;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public GameObject firePoint;
+    public Transform firePoint;
     public GameObject projectile;
 
     public bool hasFired;
     public bool isActive;
+    public bool isOn;
 
     public float spawnTimer;
     public float delayTimer;
 
-    public enum States
+    private void Start()
     {
-        On,
-        Off
-    }
-
-    public States state;
-
-    public void Update()
-    {
-        if (!hasFired && isActive)
+        if (isOn)
         {
-            Invoke("SpawnObject", spawnTimer);
-            hasFired = true;
+            On();
         }
     }
 
     private void SpawnObject()
     {
-        Instantiate(projectile, firePoint.transform.position, firePoint.transform.rotation);
-        hasFired = false;
-        Invoke("DelayShot", delayTimer);
-    }
-
-    private void DelayShot()
-    {
-        if (!hasFired && isActive)
-        {
-            Invoke("SpawnObject", spawnTimer);
-        }
+        Instantiate(projectile, firePoint.position, transform.rotation);
+        StartCoroutine(Spawn());
     }
 
     public void On()
     {
-        isActive = true;
+        StartCoroutine(Spawn());
     }
 
     public void Off()
     {
-        isActive = false;
+        StopAllCoroutines();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -67,5 +51,17 @@ public class Arrow : MonoBehaviour
         {
             Off();
         }
+    }
+
+    private IEnumerator Spawn()
+    {
+        yield return new WaitForSeconds(spawnTimer);
+        StartCoroutine(Delay());
+    }
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(delayTimer);
+        SpawnObject();
     }
 }

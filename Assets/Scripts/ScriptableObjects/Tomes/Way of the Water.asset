@@ -12,10 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e0ecc19fb68794982a4c2797020fdd, type: 3}
   m_Name: Way of the Water
   m_EditorClassIdentifier: 
-  TomeName: The Caged Book
+  TomeName: Way of the Water
   TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
   TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
-  TomeText: "I reach out beyond\n\nBut brass bars restrict me.\n\nWhy does this land
-    cage me so?\n\nIt\u2019s rusting with me\n\nDecaying inside this\n\nCramped hunk
-    of metal.\n\nMy bones are being crushed\n\nAnd my feathers torn;\n\nThese wings
-    are useless."
+  TomeText: 'I thrive where these beings struggle.
+
+
+    They move in slow motion.
+
+
+    Get
+    out of my domain,
+
+
+    My only peace, my only privacy
+
+
+    Lost to these four
+    legged
+
+
+    Inferior beings.
+
+
+    I thrive in your peril.'

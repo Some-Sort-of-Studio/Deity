@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 
 public class ManipulateWater : MonoBehaviour
 {
+    public bool manipulateWaterEnabled = true;
+
     [SerializeField] private float delayBetweenPainting = 1;
     [SerializeField] private float maxPaintDistance = 8;
     [SerializeField] private GameObject waterPaintPrefab;
@@ -24,6 +26,8 @@ public class ManipulateWater : MonoBehaviour
 
     public void ManipulateWaterAbility(InputAction.CallbackContext context)
     {
+        if (!manipulateWaterEnabled) return;
+
         if (context.performed)
         {
             painting = true;

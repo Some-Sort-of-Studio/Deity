@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Climbing : MonoBehaviour
 {
+    public bool climbingEnabled = true;
+
     [SerializeField] private float distance;
     [SerializeField] private float climbSpeed;
 
@@ -52,6 +54,8 @@ public class Climbing : MonoBehaviour
 
     public void ClimbUp(InputAction.CallbackContext context)
     {
+        if(!climbingEnabled) return;
+
         if (context.performed && ladderDetect)
         {
             isClimbing = true;
@@ -60,6 +64,8 @@ public class Climbing : MonoBehaviour
 
     public void ClimbDown(InputAction.CallbackContext context)
     {
+        if (!climbingEnabled) return;
+
         if (context.performed)
         {
             tryingToClimbDown = true;
