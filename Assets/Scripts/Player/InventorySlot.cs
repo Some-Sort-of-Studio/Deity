@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class InventorySlot : MonoBehaviour
@@ -7,22 +6,12 @@ public class InventorySlot : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Image Icon;
     [SerializeField] private Tome tomeInSlot;
 
-    public void EmptySlot()
-    {
-        Icon.enabled = false;
-    }
-
     public void CreateSlot(Tome WhatItem)
     {
-        if (WhatItem == null)
-        {
-            EmptySlot();
-            return;
-        }
-
-        Icon.enabled = true;
-
         Icon.sprite = WhatItem.TomeIcon;
+        tomeInSlot = WhatItem;
+
+        Debug.Log("Created slot:" +  WhatItem.TomeName);
     }
 
     // view the tome or select the tome

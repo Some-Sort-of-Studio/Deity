@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -73,12 +72,12 @@ public class PlayerInventory : MonoBehaviour
 
             if (!opened && !alteropened)
             {
-                OpenInventory();
+                Invoke(nameof(OpenInventory), 0.5f);
                 opened = true;
             }
             else if (!alteropened)
             {
-                CloseInventory();
+                Invoke(nameof(CloseInventory), 0.5f);
                 opened = false;
             }
         }
@@ -89,12 +88,12 @@ public class PlayerInventory : MonoBehaviour
     {
         if (isopen == true)
         {
-            OpenInventory();
+            Invoke(nameof(OpenInventory), 0.2f);
             alteropened = isopen;
         }
         else
         {
-            CloseInventory();
+            Invoke(nameof(CloseInventory), 0.2f);
             alteropened = isopen;
         }
     }
@@ -160,6 +159,7 @@ public class PlayerInventory : MonoBehaviour
         collectedTomes.Add(tome);
         UpdateInventory();
     }
+
     public bool CheckInventory(Tome startome)
     {
         foreach (Tome tome in collectedTomes)
@@ -169,7 +169,6 @@ public class PlayerInventory : MonoBehaviour
                 return true;
             }
         }
-
         return false;
     }
 }

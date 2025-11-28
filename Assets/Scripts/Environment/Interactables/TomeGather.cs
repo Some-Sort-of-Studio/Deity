@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TomeGather : MonoBehaviour
 {
-    // event which uses the pickups SO and add it to the inventory
-    public static event Action<Tome> AddToInventory;
     [SerializeField] private Tome tome;
 
     private void Awake()
@@ -23,7 +21,7 @@ public class TomeGather : MonoBehaviour
         PlayerInventory playerInventory = collision.GetComponent<PlayerInventory>();
         if (playerInventory != null && !playerInventory.hasPickedUp)
         {
-            AddToInventory?.Invoke(tome);
+            playerInventory.CollectTome(tome);
             Destroy(gameObject);
         }
     }

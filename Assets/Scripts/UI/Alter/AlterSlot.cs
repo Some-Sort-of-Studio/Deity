@@ -1,11 +1,12 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AlterSlot : AlterScript
+public class AlterSlot : MonoBehaviour
 {
     // state of the slot
     private enum SlotState { holding, empty }
+
+    private PlayerInventory playerInv;
     private SlotState state;
 
     [Header("References:")]
@@ -43,10 +44,8 @@ public class AlterSlot : AlterScript
     {
         if (playerInv.selectedTome != null)
         {
-            StartCoroutine(ButtonDelay());
             TomeInSlot = playerInv.selectedTome;
             playerInv.RemovedFromInventory(TomeInSlot);
-            AddtoAlter(TomeInSlot);
             playerInv.SetTome(null);
 
             state = SlotState.holding;
@@ -55,19 +54,12 @@ public class AlterSlot : AlterScript
 
     private void TakeFromAlter()
     {
-        StartCoroutine(ButtonDelay());
         if (playerInv.selectedTome != null) playerInv.SetTome(null);
 
         playerInv.AddToInventory(TomeInSlot);
-        RemoveFromAlter(TomeInSlot);
         TomeInSlot = null;
 
         state = SlotState.empty;
-    }
-
-    IEnumerator ButtonDelay()
-    {
-        yield return new WaitForSecondsRealtime(0.05f);
     }
 
     private void SlotChange()

@@ -14,6 +14,8 @@ public class AlterScript : MonoBehaviour
 
     [SerializeField] private List<Tome> TomesInAlter = new List<Tome>();
 
+    [SerializeField]
+
     public static PlayerInventory playerInv;
 
     private bool playerOverlapping = false;
@@ -29,14 +31,14 @@ public class AlterScript : MonoBehaviour
 
     private void Update()
     {
-        if(playerInv == null)
+        if (playerInv == null)
         {
             playerInv = GameObject.FindFirstObjectByType<PlayerInventory>();
         }
 
         if (Input.GetKeyUp(KeyCode.W) && playerOverlapping)
         {
-            if(AlterCanvas.activeSelf)
+            if (AlterCanvas.activeSelf)
             {
                 OnAlterDisable();
             }
@@ -80,7 +82,7 @@ public class AlterScript : MonoBehaviour
     {
         OnAlterDisable();
 
-        if(TomesInAlter.Count == 3)
+        if (TomesInAlter.Count == 3)
         {
             CheckForEndings();
         }
