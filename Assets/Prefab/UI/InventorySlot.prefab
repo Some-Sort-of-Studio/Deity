@@ -221,5 +221,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f99cdef08ec974c8266be1274861fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IconSprite: {fileID: 2854962992372759806}
-  TomeTitle: 
+  Icon: {fileID: 2854962992372759806}
+  tomeInSlot: {fileID: 0}

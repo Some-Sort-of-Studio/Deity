@@ -1,17 +1,28 @@
-using JetBrains.Annotations;
+using TMPro;
 using UnityEngine;
 
 public class InventorySlot : MonoBehaviour
 {
-    public UnityEngine.UI.Image IconSprite;
-    public string TomeTitle;
-    public Tome SlotTome;
+    [Header("References")]
+    [SerializeField] private UnityEngine.UI.Image Icon;
+    [SerializeField] private Tome tomeInSlot;
 
-    public void AddToSlot(Tome tome)
+    public void EmptySlot()
     {
-        SlotTome = tome;
-        IconSprite.sprite = tome.TomeIcon;
-        TomeTitle = tome.TomeName;
+        Icon.enabled = false;
+    }
+
+    public void CreateSlot(Tome WhatItem)
+    {
+        if (WhatItem == null)
+        {
+            EmptySlot();
+            return;
+        }
+
+        Icon.enabled = true;
+
+        Icon.sprite = WhatItem.TomeIcon;
     }
 
     // view the tome or select the tome
@@ -23,13 +34,13 @@ public class InventorySlot : MonoBehaviour
         // for alter selection
         if (playerInv.alteropened)
         {
-            playerInv.selectedTome = SlotTome;
+            playerInv.SetTome(tomeInSlot);
         }
 
         // for reading tome
         if (!playerInv.alteropened)
         {
-            playerInv.ReadTome(SlotTome);
+            playerInv.ReadTome(tomeInSlot);
         }
     }
 }
