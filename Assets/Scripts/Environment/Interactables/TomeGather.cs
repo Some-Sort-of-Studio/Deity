@@ -1,7 +1,11 @@
+using Mono.Cecil.Cil;
+using System;
 using UnityEngine;
 
 public class TomeGather : MonoBehaviour
 {
+    // event which uses the pickups SO and add it to the inventory
+    public static event Action<Tome> AddToInventory;
     [SerializeField] private Tome tome;
 
     private void Awake()
@@ -17,9 +21,9 @@ public class TomeGather : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerInventory playerInventory = collision.GetComponent<PlayerInventory>();
-        if (playerInventory != null)
+        if (playerInventory != null && !playerInventory.hasPickedUp)
         {
-            playerInventory.CollectTome(tome);
+            AddToInventory?.Invoke(tome);
             Destroy(gameObject);
         }
     }

@@ -12,7 +12,7 @@ public class AlterScript : MonoBehaviour
     [Tooltip("This var should include all potential sets in the game")]
     [SerializeField] private TomeSet[] existingTomesets;
 
-    private List<Tome> TomesInAlter = new List<Tome>();
+    [SerializeField] private List<Tome> TomesInAlter = new List<Tome>();
 
     public static PlayerInventory playerInv;
 
@@ -86,16 +86,11 @@ public class AlterScript : MonoBehaviour
         }
     }
 
-    public void AddtoAlter(Tome tome, bool remove = false)
+    public void RemoveFromAlter(Tome tome) { TomesInAlter.Remove(tome); }
+
+    public void AddtoAlter(Tome tome)
     {
-        if (remove)
-        {
-            TomesInAlter.Remove(tome);
-        }
-        else
-        {
-            TomesInAlter.Add(tome);
-        }
+        TomesInAlter.Add(tome);
 
         if (TomesInAlter.Count == 3)
         {
