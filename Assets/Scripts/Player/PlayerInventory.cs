@@ -72,12 +72,12 @@ public class PlayerInventory : MonoBehaviour
 
             if (!opened && !alteropened)
             {
-                Invoke(nameof(OpenInventory), 0.5f);
+                OpenInventory();
                 opened = true;
             }
             else if (!alteropened)
             {
-                Invoke(nameof(CloseInventory), 0.5f);
+                CloseInventory();
                 opened = false;
             }
         }
@@ -88,19 +88,19 @@ public class PlayerInventory : MonoBehaviour
     {
         if (isopen == true)
         {
-            Invoke(nameof(OpenInventory), 0.2f);
+            OpenInventory();
             alteropened = isopen;
         }
         else
         {
-            Invoke(nameof(CloseInventory), 0.2f);
+            CloseInventory();
             alteropened = isopen;
         }
     }
 
     public void OpenInventory()
     {
-        UpdateInventory();
+        Invoke(nameof(UpdateInventory), 0.2f);
         UIManager.Instance.TogglePlayerAbilities(false);
         InventoryHolder.SetActive(true);
     }
@@ -151,13 +151,13 @@ public class PlayerInventory : MonoBehaviour
     public void RemovedFromInventory(Tome tometoremove)
     {
         collectedTomes.Remove(tometoremove);
-        UpdateInventory();
+        Invoke(nameof(UpdateInventory), 0.2f);
     }
 
     public void AddToInventory(Tome tome)
     {
         collectedTomes.Add(tome);
-        UpdateInventory();
+        Invoke(nameof(UpdateInventory), 0.2f);
     }
 
     public bool CheckInventory(Tome startome)
