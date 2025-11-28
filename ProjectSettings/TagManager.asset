@@ -12,6 +12,8 @@ TagManager:
   - PauseMenu
   - TopOfLadder
   - Arrow
+  - MovingPlatform
+  - GrabbableObject
   layers:
   - Default
   - TransparentFX
@@ -49,8 +51,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: background very far
+    uniqueID: 4049336837
+    locked: 0
   - name: background far
     uniqueID: 94784021
+    locked: 0
+  - name: ackground far ish
+    uniqueID: 2890728571
     locked: 0
   - name: background mid
     uniqueID: 580779311
