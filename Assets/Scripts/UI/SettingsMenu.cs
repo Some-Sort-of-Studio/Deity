@@ -83,22 +83,32 @@ public class SettingsMenu : MonoBehaviour
 
     private void ChangeResolution(Resolution restoset)
     {
-        Screen.SetResolution(restoset.width, restoset.height, ChangeFullscreen());
+        Screen.SetResolution(restoset.width, restoset.height, GetFullScreen());
         resolutionText.text = Screen.currentResolution.ToString();
     }
 
-    public bool ChangeFullscreen(bool set = false)
+    public void ChangeFullscreen(bool set)
     {
         Screen.fullScreen = set;
 
         if(set == true)
         {
             screenTypeText.text = "Fullscreen";
-            return true;
         }
         else
         {
             screenTypeText.text = "Windowed";
+        }
+    }
+
+    private bool GetFullScreen()
+    {
+        if(Screen.fullScreen)
+        {
+            return true;
+        }
+        else
+        {
             return false;
         }
     }
