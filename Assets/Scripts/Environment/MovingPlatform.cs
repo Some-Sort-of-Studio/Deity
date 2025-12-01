@@ -43,20 +43,20 @@ public class MovingPlatform : MonoBehaviour
 
     private void Start()
     {
-        if (platform_type == PlatformType.Automatic || platform_type == PlatformType.Puzzle_Cycle)
-        {
-            nextPosition = pointB.position;
-        }
+        //if (platform_type == PlatformType.Automatic || platform_type == PlatformType.Puzzle_Cycle)
+        //{
+        //    nextPosition = pointB.position;
+        //}
 
-        if (platform_type == PlatformType.Automatic)
-        {
-            sprite.sprite = automatic;
-        }
+        //if (platform_type == PlatformType.Automatic)
+        //{
+        //    sprite.sprite = automatic;
+        //}
 
-        if (platform_type == PlatformType.Trigger)
-        {
-            sprite.sprite = trigger;
-        }
+        //if (platform_type == PlatformType.Trigger)
+        //{
+        //    sprite.sprite = trigger;
+        //}
 
         sprite = GetComponentInChildren<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
