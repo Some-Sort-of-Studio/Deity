@@ -1,5 +1,3 @@
-using Mono.Cecil.Cil;
-using System;
 using UnityEngine;
 
 public class TomeGather : MonoBehaviour
@@ -8,7 +6,7 @@ public class TomeGather : MonoBehaviour
 
     private void Awake()
     {
-        if(tome == null) {Debug.Log("Missing Tome SO reference for", this); Destroy(gameObject); }
+        if (tome == null) { Debug.Log("Missing Tome SO reference for", this); Destroy(gameObject); }
     }
 
     //private void Update()
