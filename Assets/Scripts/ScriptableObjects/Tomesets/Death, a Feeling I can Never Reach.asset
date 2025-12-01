@@ -17,4 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b3cbea2c9a849824eac4166485978e50, type: 2}
   - {fileID: 11400000, guid: 6fc77a6c1b05bf54eab7d1724cce6d1c, type: 2}
   - {fileID: 11400000, guid: 212f14c9b2075b54bbe2d1b040c6b67d, type: 2}
-  endingCanvas: {fileID: 0}
+  endingCanvas: {fileID: 7579108875875408654, guid: bf075521d82c74c40a4a1893660c41c2, type: 3}

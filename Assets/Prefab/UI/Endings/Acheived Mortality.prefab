@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 6778596002741131112}
   - component: {fileID: 3524613056010761610}
   m_Layer: 5
-  m_Name: SampleEndingCanvas
+  m_Name: Acheived Mortality
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,9 +324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ending
-
-'
+  m_text: acheived Mortality
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce8b44c684c4bab4caf8651d52331ab9, type: 2}
   m_sharedMaterial: {fileID: -6890863986438587418, guid: ce8b44c684c4bab4caf8651d52331ab9, type: 2}
