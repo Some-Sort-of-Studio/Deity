@@ -1876,6 +1876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1179911827}
   - component: {fileID: 1179911826}
+  - component: {fileID: 1179911828}
   m_Layer: 0
   m_Name: CharacterManager
   m_TagString: Untagged
@@ -1918,6 +1919,120 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1179911828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179911825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: ecb4bb7ce2fa95948ae40c85c918ac3e, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4fce3875-ab78-45b1-a5a7-de84c4072578
+    m_ActionName: 'Player/Move[/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3f74d18d-1e68-4754-b496-ffa0964256ea
+    m_ActionName: 'Player/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2699ebe6-7a3f-4b08-8ef3-6814064376f0
+    m_ActionName: 'Player/Sprint[/Keyboard/leftShift]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1488f2a8-7326-4097-bcaf-7e7f78526d5c
+    m_ActionName: 'Player/Ability1[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 51555601-f96e-4f25-960c-933bfa9dea33
+    m_ActionName: 'Player/Ability2[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 579b7c7b-8bfc-45c3-ad19-db5875c07514
+    m_ActionName: 'Player/ZoomOut[/Mouse/scroll/up]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e845bcff-2ec7-404e-97fb-61c810861918
+    m_ActionName: 'Player/ZoomIn[/Mouse/scroll/down]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b2f161d1-b630-417e-91d0-669e63bd88f4
+    m_ActionName: 'Player/ClimbUp[/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 92634936-be38-49a6-b73c-c91ac05d2747
+    m_ActionName: 'Player/ClimbDown[/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9aeba361-d877-4bba-93f6-e8c58691201e
+    m_ActionName: 'Player/TeleportToStart[/Keyboard/b]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 755282fc-d1a6-4d24-b7c2-ba48b2c46d9d
+    m_ActionName: 'Player/PauseMenu[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d53f070c-9078-458d-872e-7f03354363f6
+    m_ActionName: 'Player/OpenInventory[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a8a49c7e-e578-459d-b264-f70cb188becc
+    m_ActionName: 'Player/Interact[/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1179911826}
+        m_TargetAssemblyTypeName: CharacterManager, Assembly-CSharp
+        m_MethodName: HandleNextInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 62c9316d-fa05-40ec-98a7-29b1c23b2454
+    m_ActionName: 'CharacterSelect/Next[/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1179911826}
+        m_TargetAssemblyTypeName: CharacterManager, Assembly-CSharp
+        m_MethodName: HandleBackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8d7f9b1a-153f-42e5-844b-7112d5b92420
+    m_ActionName: 'CharacterSelect/Back[/Keyboard/a,/Keyboard/leftArrow]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: CharacterSelect
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1222129172
 GameObject:
   m_ObjectHideFlags: 0
