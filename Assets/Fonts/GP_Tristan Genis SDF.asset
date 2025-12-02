@@ -231,6 +231,55 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
+<<<<<<< Updated upstream
+=======
+      m_Width: 27
+  - m_Index: 9
+    m_Metrics:
+      m_Width: 27
+      m_Height: 45
+      m_HorizontalBearingX: 9
+      m_HorizontalBearingY: -153
+      m_HorizontalAdvance: 90
+    m_GlyphRect:
+      m_X: 10
+      m_Y: 960
+      m_Width: 27
+      m_Height: 45
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 10
+    m_Metrics:
+      m_Width: 108
+      m_Height: 27
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: -126
+      m_HorizontalAdvance: 162
+    m_GlyphRect:
+      m_X: 400
+      m_Y: 924
+      m_Width: 108
+      m_Height: 27
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 11
+    m_Metrics:
+      m_Width: 27
+      m_Height: 27
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: -153
+      m_HorizontalAdvance: 81
+    m_GlyphRect:
+      m_X: 980
+      m_Y: 10
+      m_Width: 27
+      m_Height: 27
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+>>>>>>> Stashed changes
   - m_Index: 16
     m_Metrics:
       m_Width: 108

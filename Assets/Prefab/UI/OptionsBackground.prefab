@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 5148562901890089981}
   - component: {fileID: 1063490266940648525}
   m_Layer: 5
-  m_Name: TXT_Tbd
+  m_Name: TXT_ZoomINOUT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -594,9 +594,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-'
+  m_text: Scroll Wheel
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6db31c31671e60b43a3768307479ead0, type: 2}
   m_sharedMaterial: {fileID: 4977576073464862756, guid: 6db31c31671e60b43a3768307479ead0, type: 2}
@@ -950,7 +948,7 @@ GameObject:
   - component: {fileID: 434762806695653707}
   - component: {fileID: 6915227568908391810}
   m_Layer: 5
-  m_Name: TXT_Tbd
+  m_Name: TXT_Climb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1003,7 +1001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: b
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6db31c31671e60b43a3768307479ead0, type: 2}
   m_sharedMaterial: {fileID: 4977576073464862756, guid: 6db31c31671e60b43a3768307479ead0, type: 2}
@@ -2618,7 +2616,7 @@ GameObject:
   - component: {fileID: 957002027663810026}
   - component: {fileID: 7928584213190304632}
   m_Layer: 5
-  m_Name: TXT_Tbd
+  m_Name: TXT_OpenInv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2671,7 +2669,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: i
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6db31c31671e60b43a3768307479ead0, type: 2}
   m_sharedMaterial: {fileID: 4977576073464862756, guid: 6db31c31671e60b43a3768307479ead0, type: 2}
@@ -4283,7 +4281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5496481593510389604
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4525,6 +4523,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2091339097034566819}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2287488776772858096
 GameObject:
   m_ObjectHideFlags: 0
@@ -4537,7 +4547,7 @@ GameObject:
   - component: {fileID: 3348449623014644415}
   - component: {fileID: 697898068739552690}
   m_Layer: 5
-  m_Name: TXT_Tbd
+  m_Name: TXT_TPStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4590,9 +4600,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'TBD
-
-'
+  m_text: TP to start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6db31c31671e60b43a3768307479ead0, type: 2}
   m_sharedMaterial: {fileID: 4977576073464862756, guid: 6db31c31671e60b43a3768307479ead0, type: 2}
@@ -5113,7 +5121,7 @@ GameObject:
   - component: {fileID: 8852412592781473069}
   - component: {fileID: 2013135993601176807}
   m_Layer: 5
-  m_Name: TXT_Tbd
+  m_Name: TXT_Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5166,7 +5174,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: W
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6db31c31671e60b43a3768307479ead0, type: 2}
   m_sharedMaterial: {fileID: 4977576073464862756, guid: 6db31c31671e60b43a3768307479ead0, type: 2}
@@ -7833,7 +7841,7 @@ GameObject:
   - component: {fileID: 1686389550898139825}
   - component: {fileID: 1890411939723873118}
   m_Layer: 5
-  m_Name: TXT_Tbd
+  m_Name: TXT_ZoomINOUT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7886,9 +7894,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'TBD
-
-'
+  m_text: Zoom in / Out
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6db31c31671e60b43a3768307479ead0, type: 2}
   m_sharedMaterial: {fileID: 4977576073464862756, guid: 6db31c31671e60b43a3768307479ead0, type: 2}
@@ -12537,7 +12543,7 @@ GameObject:
   - component: {fileID: 6554916978398551816}
   - component: {fileID: 2519150514616360712}
   m_Layer: 5
-  m_Name: TXT_Tbd
+  m_Name: TXT_OpenInv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12590,7 +12596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'TBD
+  m_text: 'Open Invetory
 
 '
   m_isRightToLeft: 0
@@ -13530,7 +13536,7 @@ GameObject:
   - component: {fileID: 6677608314297721246}
   - component: {fileID: 7325349013725632579}
   m_Layer: 5
-  m_Name: TXT_Tbd
+  m_Name: TXT_Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13583,7 +13589,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'TBD
+  m_text: 'Interact
 
 '
   m_isRightToLeft: 0
