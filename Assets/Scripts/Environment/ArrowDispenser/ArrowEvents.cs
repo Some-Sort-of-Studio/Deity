@@ -11,7 +11,7 @@ public class ArrowEvents : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("SongAOE"))
+        if (!collision.gameObject.CompareTag("Player"))
         {
             movement.DestoryObject();
         }
@@ -19,7 +19,7 @@ public class ArrowEvents : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player"))
+        if (!collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Player"))
         {
             movement.DestoryObject();
         }
