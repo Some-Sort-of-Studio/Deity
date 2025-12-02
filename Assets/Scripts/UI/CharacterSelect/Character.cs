@@ -4,6 +4,7 @@ using UnityEngine;
 public class Character
 {
     public string characterName;
+    public string characterTitle;
     public string characterDescription;
     public GameObject playerObject;
     public string characterAbility1;

@@ -13,18 +13,20 @@ MonoBehaviour:
   m_Name: New Character Database
   m_EditorClassIdentifier: 
   character:
-  - characterName: Corvus, Ruler of Corvids
+  - characterName: Corvus
+    characterTitle: Ruler of Corvids
     characterDescription: "Within the aftermath of a battle\u2019s devastation, corvids
       would peck and feast upon the corpses. In consuming their flesh, Corvus would
       bless these souls in their next life.   The great wars of brutal battle are
       now long gone, with this era of peace rendering it obsolete. Now powerless,
       it has been cast away to wallow in the darkness."
     playerObject: {fileID: 1095281449741805334, guid: 3dd5ceb800899c9498ce714e41d5dda8, type: 3}
-    characterAbility1: Wind Blast - Shoot a wind projectile towards the mouse position.
-      (LMB)
-    characterAbility2: Bird Song - Use to change the tangibilty of objects around
-      you, phasing them in or out of reality. (RMB)
-  - characterName: "\xD8rvatha, Monarch of Trenches  "
+    characterAbility1: 'Wind Blast - Shoot a wind projectile that can break and manipulate
+      objects. '
+    characterAbility2: Bird Song - Change the tangibility of platforms made from
+      your crow minions.
+  - characterName: "\xD8rvatha"
+    characterTitle: Monarch of the Trenches
     characterDescription: "When the world was big and the maps still blank, fearful
       sailors would give sacrifice to it in hopes of a safe journey.   When maps
       were filled out, and boats constructed of metal and steam, its power faded
@@ -32,7 +34,7 @@ MonoBehaviour:
       and shrank and withered. Then did it fall from the dark ocean to a depth far
       worse\u2026"
     playerObject: {fileID: 1359130775214588326, guid: 75ceb3dc9c8609f4f949ba8b15940b59, type: 3}
-    characterAbility1: Tentacle Grab - Grab objects with your tentacles, move them
-      around (Scroll Wheel). Place or move then where you want. (RMB)
-    characterAbility2: Water Control - Move water to your will, create spouts of
-      water that follow you around and help assist your exploration. (LMB)
+    characterAbility1: Water Control - Move water to your will, creating spouts of
+      water that you can walk upon.
+    characterAbility2: Tentacle Grab - Grab surrounding objects with your tentacles,
+      move them around (Scroll Wheel). Place or move then where you want.
