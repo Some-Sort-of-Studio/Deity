@@ -1,5 +1,7 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -105,6 +107,22 @@ public class CharacterManager : MonoBehaviour
             animator.SetBool("Rotate(OtoC)", false);
             animator.SetBool("Reverse(CtoO)", false);
             animator.SetBool("Reverse(OtoC)", true);
+        }
+    }
+
+    public void HandleNextInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            NextOption();
+        }
+    }
+
+    public void HandleBackInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            BackOption();
         }
     }
 }
