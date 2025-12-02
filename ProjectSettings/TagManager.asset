@@ -14,6 +14,7 @@ TagManager:
   - Arrow
   - MovingPlatform
   - GrabbableObject
+  - TooltipTextOverlay
   layers:
   - Default
   - TransparentFX
