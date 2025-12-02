@@ -119,7 +119,7 @@ public class AlterScript : MonoBehaviour
             //if has whole set show ending for that tomeset
             if (hasSet)
             {
-                //Instantiate(tomeSet.endingCanvas, null);
+                Instantiate(tomeSet.endingCanvas, null);
                 return;
             }
         }
