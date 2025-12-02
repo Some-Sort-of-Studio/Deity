@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    public CharacterDatabase characterDB;
+    [SerializeField] private CharacterDatabase characterDB;
 
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI descriptionText;
-    public TextMeshProUGUI ability1Text;
-    public TextMeshProUGUI ability2Text;
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private TextMeshProUGUI ability1Text;
+    [SerializeField] private TextMeshProUGUI ability2Text;
 
     private int selectedOption = 0;
 
-    private Animator animator;
-
+    [SerializeField] private Animator animator;
     [SerializeField] private string StartingLevel;
 
     private void Start()
@@ -22,8 +22,6 @@ public class CharacterManager : MonoBehaviour
         Save();
 
         UpdatedCharacter(selectedOption);
-
-        animator = GetComponentInParent<Animator>();
     }
 
     public void NextOption()
@@ -58,6 +56,7 @@ public class CharacterManager : MonoBehaviour
     {
         Character character = characterDB.GetCharacter(selectedOption);
         nameText.text = character.characterName;
+        titleText.text = character.characterTitle;
         descriptionText.text = character.characterDescription;
         ability1Text.text = character.characterAbility1;
         ability2Text.text = character.characterAbility2;
