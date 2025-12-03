@@ -1,12 +1,15 @@
 using UnityEngine;
+using System.Collections;
 
 public class ArrowEvents : MonoBehaviour
 {
     private ArrowMovement movement;
+    public float destroyTimer;
 
     private void Awake()
     {
         movement = GetComponentInParent<ArrowMovement>();
+        StartCoroutine(DestoryObject());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,5 +26,11 @@ public class ArrowEvents : MonoBehaviour
         {
             movement.DestoryObject();
         }
+    }
+
+    private IEnumerator DestoryObject()
+    {
+        yield return new WaitForSeconds(destroyTimer);
+        Destroy(this.gameObject);
     }
 }
