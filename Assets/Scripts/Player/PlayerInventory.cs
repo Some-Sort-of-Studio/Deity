@@ -100,7 +100,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void OpenInventory()
     {
-        Invoke(nameof(UpdateInventory), 0.2f);
+        UpdateInventory();
         UIManager.Instance.TogglePlayerAbilities(false);
         InventoryHolder.SetActive(true);
     }
@@ -116,8 +116,8 @@ public class PlayerInventory : MonoBehaviour
 
         foreach (Tome tome in collectedTomes)
         {
-            Instantiate(SlotPrefab, InventoryHolder.transform);
-            SlotPrefab.GetComponent<InventorySlot>().CreateSlot(tome);
+            GameObject slot = Instantiate(SlotPrefab, InventoryHolder.transform);
+            slot.GetComponent<InventorySlot>().CreateSlot(tome);
         }
     }
 
@@ -151,13 +151,13 @@ public class PlayerInventory : MonoBehaviour
     public void RemovedFromInventory(Tome tometoremove)
     {
         collectedTomes.Remove(tometoremove);
-        Invoke(nameof(UpdateInventory), 0.2f);
+        UpdateInventory();
     }
 
     public void AddToInventory(Tome tome)
     {
         collectedTomes.Add(tome);
-        Invoke(nameof(UpdateInventory), 0.2f);
+        UpdateInventory();
     }
 
     public bool CheckInventory(Tome startome)
