@@ -15,6 +15,7 @@ TagManager:
   - MovingPlatform
   - GrabbableObject
   - TooltipTextOverlay
+  - Solid-Intangible
   layers:
   - Default
   - TransparentFX
