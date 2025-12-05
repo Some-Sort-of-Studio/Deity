@@ -7,6 +7,7 @@ public class TriggerTooltip : MonoBehaviour
     private enum TextShowType
     {
         TriggerArea,
+        TriggerAreaAndDestroy,
         Manual
     }
 
@@ -54,6 +55,6 @@ public class TriggerTooltip : MonoBehaviour
         yield return new WaitForSeconds(1f); //disable time
 
         daText.enabled = false;
-        Destroy(gameObject);
+        if(textShowType == TextShowType.TriggerAreaAndDestroy) { Destroy(gameObject); }
     }
 }

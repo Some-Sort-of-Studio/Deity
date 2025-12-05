@@ -357,7 +357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Escaped the Cage
+  m_text: escaped the cage
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce8b44c684c4bab4caf8651d52331ab9, type: 2}
   m_sharedMaterial: {fileID: -6890863986438587418, guid: ce8b44c684c4bab4caf8651d52331ab9, type: 2}
