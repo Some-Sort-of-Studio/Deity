@@ -13,6 +13,13 @@ public class PlayerInventory : MonoBehaviour
     [Tooltip("This var should include all potential sets in the game")]
     [SerializeField] private TomeSet[] existingTomesets;
 
+    #region Tooltips
+
+    [SerializeField] private GameObject openInventoryTooltip;
+    [SerializeField] private GameObject viewTomeTooltip;
+
+    #endregion
+
     #region TomeViewer
     [Header("Inventory References:")]
     [SerializeField] private GameObject InventoryHolder;
@@ -47,6 +54,9 @@ public class PlayerInventory : MonoBehaviour
         tomeCanvas.TomeViewerClean.SetActive(false);
         InventoryHolder.SetActive(false);
 
+        openInventoryTooltip.SetActive(false);
+        viewTomeTooltip.SetActive(false);
+
         alterScript = GameObject.Find("Alter").GetComponent<AlterScript>();
     }
 
@@ -63,13 +73,14 @@ public class PlayerInventory : MonoBehaviour
     public void CollectTome(Tome tome)
     {
         collectedTomes.Add(tome);
+
+        if (openInventoryTooltip != null) { openInventoryTooltip.SetActive(true); }
     }
 
     public void OpenInventory(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-
             if (!opened && !alteropened)
             {
                 OpenInventory();
@@ -103,6 +114,9 @@ public class PlayerInventory : MonoBehaviour
         UpdateInventory();
         UIManager.Instance.TogglePlayerAbilities(false);
         InventoryHolder.SetActive(true);
+
+        if (openInventoryTooltip != null) { Destroy(openInventoryTooltip); }
+        if(viewTomeTooltip != null) { viewTomeTooltip.SetActive(true); }
     }
 
     public void UpdateInventory()
@@ -131,6 +145,8 @@ public class PlayerInventory : MonoBehaviour
             Destroy(children.gameObject);
         }
 
+        if (viewTomeTooltip != null) { viewTomeTooltip.SetActive(false); }
+
         InventoryHolder.SetActive(false);
     }
 
@@ -139,6 +155,8 @@ public class PlayerInventory : MonoBehaviour
     {
         tomeCanvas.TomeViewer.SetActive(true);
         tomeCanvas.TomeText.text = tome.TomeText;
+
+        if(viewTomeTooltip != null) { Destroy(viewTomeTooltip); }
     }
 
     // closes the tome viewer
