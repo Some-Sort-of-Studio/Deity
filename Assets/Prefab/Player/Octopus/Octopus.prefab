@@ -520,7 +520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manipulateWaterEnabled: 1
   delayBetweenPainting: 0.2
-  maxPaintDistance: 8
+  maxPaintDistance: 9
   waterPaintPrefab: {fileID: 2043344352436980482, guid: 29f8bab2e29f0504abab4c4e94662f42, type: 3}
 --- !u!114 &2674983276349008537
 MonoBehaviour:
