@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 439836871
-  m_SortingLayer: 10
+  m_SortingLayer: 13
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f2983f78e6560cd4096f00d7cf0b0906, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -288,7 +288,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 439836871
-  m_SortingLayer: 10
+  m_SortingLayer: 13
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f2983f78e6560cd4096f00d7cf0b0906, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -343,6 +343,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -109739882762214447, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1240914
+      objectReference: {fileID: 0}
+    - target: {fileID: -109739882762214447, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8624353
+      objectReference: {fileID: 0}
+    - target: {fileID: -109739882762214447, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.062045693
+      objectReference: {fileID: 0}
+    - target: {fileID: -109739882762214447, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.031022906
+      objectReference: {fileID: 0}
     - target: {fileID: 527786188859579242, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_Controller
       value: 
@@ -490,6 +506,14 @@ PrefabInstance:
     - target: {fileID: 5540263906027230079, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_Size.x
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6065978453710566712, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6065978453710566712, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6388401789814718081, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: climbSpeed
@@ -682,6 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 320ecb4ba9c9e224f908ad412de9a2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  windBlastEnabled: 1
   firePoint: {fileID: 1829230930339193933}
   projectile: {fileID: 7127585275002597518, guid: 24e804b6ae1fc1646830d0e19db2fdec, type: 3}
   hasFired: 0
@@ -697,6 +722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476b8d6efca296048a9917839ca6e928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songAOEEnabled: 1
   AOE: {fileID: 7588580165397391293}
 --- !u!82 &8139768576486102234
 AudioSource:

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 500657889
-  m_SortingLayer: 10
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: 1409995862, guid: 939b4f51968c43949a42785cc21c1194, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -234,6 +234,11 @@ MonoBehaviour:
   pointA: {fileID: 413318959599630510}
   pointB: {fileID: 1364897734346856058}
   moveSpeed: 2
+  platform: {fileID: 42486916977479201}
+  on: {fileID: -965417043, guid: 939b4f51968c43949a42785cc21c1194, type: 3}
+  off: {fileID: 332374957, guid: 939b4f51968c43949a42785cc21c1194, type: 3}
+  trigger: {fileID: 1409995862, guid: 939b4f51968c43949a42785cc21c1194, type: 3}
+  automatic: {fileID: 2112738385, guid: 939b4f51968c43949a42785cc21c1194, type: 3}
   platform_type: 0
   trigger_type: 0
   isSwitchOn: 0

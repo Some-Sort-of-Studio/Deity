@@ -1,14 +1,17 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    const int maxHealth = 5;
+
     private Animator animator;
 
     [Header("Lives")]
     private bool dying;
-    [SerializeField] private int health = 5;
+    [SerializeField] private int health = maxHealth;
 
     [Header("Checkpoints")]
     [SerializeField] private GameObject startingCheckpoint;
@@ -19,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float teleportToStartTime = 1;
 
     [Header("UI")]
+    [SerializeField] private Slider healthSlider;
     [SerializeField] private GameObject deathCanvas;
     [SerializeField] private float deathTime;
 
@@ -31,6 +35,9 @@ public class PlayerHealth : MonoBehaviour
 
         if (startingCheckpoint == null) { Debug.Log("Missing player start checkpoint"); }
         else { currentCheckpoint = startingCheckpoint; }
+
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = health;
     }
 
     public void Checkpoint(GameObject checkpoint)
@@ -65,7 +72,8 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(teleportToStartTime);
         if (teleporting) //if still teleporting after the time
         {
-            health = 5;
+            health = maxHealth;
+            healthSlider.value = health;
             transform.position = startingCheckpoint.transform.position;
 
             teleporting = false;
@@ -87,7 +95,7 @@ public class PlayerHealth : MonoBehaviour
 
             if (health <= 0)
             {
-                health = 5;
+                health = maxHealth;
                 transform.position = startingCheckpoint.transform.position;
             }
             else
@@ -95,6 +103,7 @@ public class PlayerHealth : MonoBehaviour
                 transform.position = currentCheckpoint.transform.position;
             }
 
+            healthSlider.value = health;
             yield return new WaitForSeconds(deathTime / 2);
 
             Destroy(deathCanvasInstance);

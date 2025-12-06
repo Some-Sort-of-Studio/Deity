@@ -1,5 +1,6 @@
 using AudioSystem;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class Teleporter : MonoBehaviour
@@ -11,6 +12,7 @@ public class Teleporter : MonoBehaviour
     [SerializeField] private KeyCode interactKey = KeyCode.W;
     [SerializeField] private GameObject objectToTeleportTo;
     [SerializeField] private float teleportAnimationTime = 0.5f;
+    [SerializeField] private UnityEvent extraStuffHappenEvent;
     private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -44,6 +46,7 @@ public class Teleporter : MonoBehaviour
     {
         playerAnimator.SetBool("Door", false);
         playerObject.transform.position = objectToTeleportTo.transform.position;
+        extraStuffHappenEvent.Invoke();
         playerOverlapping = false;
     }
 

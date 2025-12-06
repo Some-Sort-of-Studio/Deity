@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,10 +13,17 @@ public class PlayerInventory : MonoBehaviour
     [Tooltip("This var should include all potential sets in the game")]
     [SerializeField] private TomeSet[] existingTomesets;
 
+    #region Tooltips
+
+    [SerializeField] private GameObject openInventoryTooltip;
+    [SerializeField] private GameObject viewTomeTooltip;
+
+    #endregion
+
     #region TomeViewer
     [Header("Inventory References:")]
-    [SerializeField] protected GameObject InventoryHolder;
-    [SerializeField] protected GameObject SlotPrefab;
+    [SerializeField] private GameObject InventoryHolder;
+    [SerializeField] private GameObject SlotPrefab;
 
     // tome viewer struct
     [System.Serializable]
@@ -38,6 +44,8 @@ public class PlayerInventory : MonoBehaviour
 
     private AlterScript alterScript;
 
+    public bool hasPickedUp;
+
     public Tome selectedTome;
 
     private void Start()
@@ -46,70 +54,98 @@ public class PlayerInventory : MonoBehaviour
         tomeCanvas.TomeViewerClean.SetActive(false);
         InventoryHolder.SetActive(false);
 
+        openInventoryTooltip.SetActive(false);
+        viewTomeTooltip.SetActive(false);
+
         alterScript = GameObject.Find("Alter").GetComponent<AlterScript>();
+    }
+
+    public Tome SetTome(Tome tome)
+    {
+        if (tome == selectedTome) return selectedTome;
+        else
+        {
+            selectedTome = tome;
+            return selectedTome;
+        }
     }
 
     public void CollectTome(Tome tome)
     {
         collectedTomes.Add(tome);
+
+        if (openInventoryTooltip != null) { openInventoryTooltip.SetActive(true); }
     }
 
     public void OpenInventory(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            if (!opened && !AlterOpen())
+            if (!opened && !alteropened)
             {
-                UIManager.Instance.TogglePlayerAbilities(false);
-                InventoryHolder.SetActive(true);
-                UpdateInventory();
+                OpenInventory();
                 opened = true;
             }
-            else
+            else if (!alteropened)
             {
-                UIManager.Instance.TogglePlayerAbilities(true);
                 CloseInventory();
-                CloseTome();
                 opened = false;
             }
         }
     }
 
     // toggles the inventory for the alter
-    public bool AlterOpen(bool isopen = false)
+    public void AlterOpen(bool isopen = false)
     {
-        if(isopen == true)
+        if (isopen == true)
         {
-            UIManager.Instance.TogglePlayerAbilities(false);
-            InventoryHolder.SetActive(true);
-            UpdateInventory();
+            OpenInventory();
             alteropened = isopen;
-            return isopen;
         }
         else
         {
-            UIManager.Instance.TogglePlayerAbilities(true);
             CloseInventory();
             alteropened = isopen;
-            return isopen;
         }
+    }
+
+    public void OpenInventory()
+    {
+        UpdateInventory();
+        UIManager.Instance.TogglePlayerAbilities(false);
+        InventoryHolder.SetActive(true);
+
+        if (openInventoryTooltip != null) { Destroy(openInventoryTooltip); }
+        if(viewTomeTooltip != null) { viewTomeTooltip.SetActive(true); }
     }
 
     public void UpdateInventory()
     {
+        SetTome(null);
+
+        foreach (Transform children in InventoryHolder.transform)
+        {
+            Destroy(children.gameObject);
+        }
+
         foreach (Tome tome in collectedTomes)
         {
-            Instantiate(SlotPrefab, InventoryHolder.transform);
-            SlotPrefab.GetComponent<InventorySlot>().AddToSlot(tome);
+            GameObject slot = Instantiate(SlotPrefab, InventoryHolder.transform);
+            slot.GetComponent<InventorySlot>().CreateSlot(tome);
         }
     }
 
     public void CloseInventory()
     {
+        CloseTome();
+        UIManager.Instance.TogglePlayerAbilities(true);
+
         foreach (Transform children in InventoryHolder.transform)
         {
             Destroy(children.gameObject);
         }
+
+        if (viewTomeTooltip != null) { viewTomeTooltip.SetActive(false); }
 
         InventoryHolder.SetActive(false);
     }
@@ -120,17 +156,7 @@ public class PlayerInventory : MonoBehaviour
         tomeCanvas.TomeViewer.SetActive(true);
         tomeCanvas.TomeText.text = tome.TomeText;
 
-        //// TODO: REWORKKKK
-        //if (tomeCanvas.TomeViewer.activeSelf && Input.GetKey(KeyCode.Tab))
-        //{
-        //    tomeCanvas.TomeViewerClean.SetActive(true);
-        //    tomeCanvas.TomeTextClean.text = tome.TomeText;
-        //}
-        //else
-        //{
-        //    tomeCanvas.TomeViewerClean.SetActive(false);
-        //    tomeCanvas.TomeTextClean.text = "";
-        //}
+        if(viewTomeTooltip != null) { Destroy(viewTomeTooltip); }
     }
 
     // closes the tome viewer
@@ -138,34 +164,29 @@ public class PlayerInventory : MonoBehaviour
     {
         tomeCanvas.TomeViewer.SetActive(false);
         tomeCanvas.TomeText.text = "";
-
-        //tomeCanvas.TomeViewerClean.SetActive(false);
-        //tomeCanvas.TomeTextClean.text = "";
     }
 
     public void RemovedFromInventory(Tome tometoremove)
     {
         collectedTomes.Remove(tometoremove);
+        UpdateInventory();
+    }
 
-        foreach (Transform children in InventoryHolder.transform)
-        {
-            if(children.GetComponent<InventorySlot>().SlotTome == tometoremove)
-            {
-                Destroy(children.gameObject);
-            }
-        }
+    public void AddToInventory(Tome tome)
+    {
+        collectedTomes.Add(tome);
+        UpdateInventory();
     }
 
     public bool CheckInventory(Tome startome)
     {
-        foreach(Tome tome in collectedTomes)
+        foreach (Tome tome in collectedTomes)
         {
-            if(startome == tome)
+            if (startome == tome)
             {
                 return true;
             }
         }
-
         return false;
     }
 }

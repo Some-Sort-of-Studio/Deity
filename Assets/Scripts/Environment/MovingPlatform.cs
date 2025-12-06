@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using AudioSystem;
 using UnityEngine;
 
@@ -13,6 +12,7 @@ public class MovingPlatform : MonoBehaviour
     private AudioSource audioSource;
 
     private SpriteRenderer sprite;
+    public GameObject platform;
     public Sprite on;
     public Sprite off;
     public Sprite trigger;
@@ -48,17 +48,7 @@ public class MovingPlatform : MonoBehaviour
             nextPosition = pointB.position;
         }
 
-        if (platform_type == PlatformType.Automatic)
-        {
-            sprite.sprite = automatic;
-        }
-
-        if (platform_type == PlatformType.Trigger)
-        {
-            sprite.sprite = trigger;
-        }
-
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        sprite = platform.GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -133,34 +123,32 @@ public class MovingPlatform : MonoBehaviour
                 }
             }
         }
+
+        ChangeSprite();
     }
 
     public void switchToggleOn()
     {
         isSwitchOn = true;
         AudioManager.Instance.PlayAudio("MovingPlatforms", audioSource);
-        sprite.sprite = on;
     }
 
     public void switchToggleOff()
     {
         isSwitchOn = false;
         AudioManager.Instance.StopAudio(audioSource);
-        sprite.sprite = off;
     }
 
     public void pressurePlateToggleOn()
     {
         isPressurePlateActive = true;
         AudioManager.Instance.PlayAudio("MovingPlatforms", audioSource);
-        sprite.sprite = on;
     }
 
     public void pressurePlateToggleOff()
     {
         isPressurePlateActive = false;
         AudioManager.Instance.StopAudio(audioSource);
-        sprite.sprite = off;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -189,6 +177,73 @@ public class MovingPlatform : MonoBehaviour
             if (platform_type == PlatformType.Trigger)
             {
                 isPlayerOnPlatform = false;
+            }
+        }
+    }
+
+    private void ChangeSprite()
+    {
+        if (platform_type == PlatformType.Automatic)
+        {
+            sprite.sprite = automatic;
+        }
+
+        if (platform_type == PlatformType.Trigger)
+        {
+            sprite.sprite = trigger;
+        }
+
+        if (platform_type == PlatformType.Puzzle_Single)
+        {
+            if (trigger_type == TriggerType.Pressure_Plate)
+            {
+                if (isPressurePlateActive)
+                {
+                    sprite.sprite = on;
+                }
+                else if (!isPressurePlateActive)
+                {
+                    sprite.sprite = off;
+                }
+            }
+
+            if (trigger_type == TriggerType.Switch)
+            {
+                if (isSwitchOn)
+                {
+                    sprite.sprite = on;
+                }
+                else if (!isSwitchOn)
+                {
+                    sprite.sprite = off;
+                }
+            }
+        }
+
+        if (platform_type == PlatformType.Puzzle_Cycle)
+        {
+            if (trigger_type == TriggerType.Pressure_Plate)
+            {
+                if (isPressurePlateActive)
+                {
+                    sprite.sprite = on;
+                }
+                else if (!isPressurePlateActive)
+                {
+                    sprite.sprite = off;
+                }
+            }
+
+            if (trigger_type == TriggerType.Switch)
+            {
+                if (isSwitchOn)
+                {
+                    sprite.sprite = on;
+                }
+                else if (!isSwitchOn)
+                {
+                    sprite.sprite = off;
+                }
             }
         }
     }

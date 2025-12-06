@@ -9,7 +9,7 @@ public class ManipulateWater : MonoBehaviour
     public bool manipulateWaterEnabled = true;
 
     [SerializeField] private float delayBetweenPainting = 1;
-    [SerializeField] private float maxPaintDistance = 8;
+    [SerializeField] private float maxPaintDistance = 9;
     [SerializeField] private GameObject waterPaintPrefab;
 
     private bool painting;
@@ -46,7 +46,7 @@ public class ManipulateWater : MonoBehaviour
         currentWater = FindNearestWater();
         if (currentWater != null)
         {
-            while (painting && !currentWater.empty)
+            while (painting && !currentWater.empty && (transform.position.y + currentWater.transform.localScale.y/2 + 5) > currentWater.transform.position.y)
             {
                 DrawWater();
                 AudioManager.Instance.PlayAudio("WaterMoving", audioSource);
@@ -64,7 +64,7 @@ public class ManipulateWater : MonoBehaviour
 
         lastPaintedWater = Instantiate(waterPaintPrefab, closestWaterThing.transform.position, Quaternion.identity);
         WaterBlob lastPaintedWaterComp = lastPaintedWater.GetComponent<WaterBlob>();
-        lastPaintedWaterComp.destPosition = transform.position;
+        lastPaintedWaterComp.destPosition = transform.position + Vector3.down;
         lastPaintedWaterComp.waterSource = currentWater;
         lastPaintedWaterComp.drainAmount = drainAmount;
     }
