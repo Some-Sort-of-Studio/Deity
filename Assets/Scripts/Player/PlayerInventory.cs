@@ -5,9 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField] private List<Tome> collectedTomes = new List<Tome>();
+    [SerializeField] private Animator invanimator;
+    public Animator tomeanimator;
+
+    private List<Tome> collectedTomes = new List<Tome>();
     private bool opened = false;
     [HideInInspector] public bool alteropened = false;
+    [HideInInspector] public bool tomeopened = false;
 
     [Header("Lists and Arrays")]
     [Tooltip("This var should include all potential sets in the game")]
@@ -32,10 +36,6 @@ public class PlayerInventory : MonoBehaviour
         // normal version
         public GameObject TomeViewer;
         public TextMeshProUGUI TomeText;
-
-        // clean version
-        public GameObject TomeViewerClean;
-        public TextMeshProUGUI TomeTextClean;
     }
 
     [Header("Tome Viewer")]
@@ -51,7 +51,6 @@ public class PlayerInventory : MonoBehaviour
     private void Start()
     {
         tomeCanvas.TomeViewer.SetActive(false);
-        tomeCanvas.TomeViewerClean.SetActive(false);
         InventoryHolder.SetActive(false);
 
         openInventoryTooltip.SetActive(false);
@@ -83,12 +82,17 @@ public class PlayerInventory : MonoBehaviour
         {
             if (!opened && !alteropened)
             {
+                invanimator.SetBool("InventoryOpen", true);
                 OpenInventory();
+                if (openInventoryTooltip != null) { Destroy(openInventoryTooltip); }
+                if (viewTomeTooltip != null) { viewTomeTooltip.SetActive(true); }
                 opened = true;
             }
             else if (!alteropened)
             {
-                CloseInventory();
+                invanimator.SetBool("InventoryOpen", false);
+                if (viewTomeTooltip != null) { viewTomeTooltip.SetActive(false); }
+                Invoke(nameof(CloseInventory), 0.2f);
                 opened = false;
             }
         }
@@ -99,24 +103,26 @@ public class PlayerInventory : MonoBehaviour
     {
         if (isopen == true)
         {
+            invanimator.SetBool("InventoryOpen", true);
             OpenInventory();
+            if (openInventoryTooltip != null) { Destroy(openInventoryTooltip); }
+            if (viewTomeTooltip != null) { viewTomeTooltip.SetActive(true); }
             alteropened = isopen;
         }
         else
         {
-            CloseInventory();
+            invanimator.SetBool("InventoryOpen", false);
+            if (viewTomeTooltip != null) { viewTomeTooltip.SetActive(false); }
+            Invoke(nameof(CloseInventory), 0.2f);
             alteropened = isopen;
         }
     }
 
     public void OpenInventory()
     {
+        InventoryHolder.SetActive(true);
         UpdateInventory();
         UIManager.Instance.TogglePlayerAbilities(false);
-        InventoryHolder.SetActive(true);
-
-        if (openInventoryTooltip != null) { Destroy(openInventoryTooltip); }
-        if(viewTomeTooltip != null) { viewTomeTooltip.SetActive(true); }
     }
 
     public void UpdateInventory()
@@ -137,15 +143,14 @@ public class PlayerInventory : MonoBehaviour
 
     public void CloseInventory()
     {
-        CloseTome();
+        if(tomeCanvas.TomeViewer.activeSelf) PlayTomeAnim();
+
         UIManager.Instance.TogglePlayerAbilities(true);
 
         foreach (Transform children in InventoryHolder.transform)
         {
             Destroy(children.gameObject);
         }
-
-        if (viewTomeTooltip != null) { viewTomeTooltip.SetActive(false); }
 
         InventoryHolder.SetActive(false);
     }
@@ -154,14 +159,25 @@ public class PlayerInventory : MonoBehaviour
     public void ReadTome(Tome tome)
     {
         tomeCanvas.TomeViewer.SetActive(true);
+        tomeanimator.SetBool("TomeOpen", true);
+
+        tomeopened = true;
+
         tomeCanvas.TomeText.text = tome.TomeText;
 
         if(viewTomeTooltip != null) { Destroy(viewTomeTooltip); }
     }
 
     // closes the tome viewer
-    public void CloseTome()
+    public void PlayTomeAnim() // this is bad but it works
     {
+        tomeanimator.SetBool("TomeOpen", false);
+        Invoke(nameof(CloseTome), 0.5f);
+    }
+
+    private void CloseTome()
+    {
+        tomeopened = false;
         tomeCanvas.TomeViewer.SetActive(false);
         tomeCanvas.TomeText.text = "";
     }
