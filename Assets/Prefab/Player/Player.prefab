@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 197972112907101038}
   - component: {fileID: 6388401789814718081}
   - component: {fileID: 6752625784827998916}
-  - component: {fileID: -109739882762214447}
+  - component: {fileID: 3867574655484156098}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -660,6 +660,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8d7f9b1a-153f-42e5-844b-7112d5b92420
     m_ActionName: 'CharacterSelect/Back[/Keyboard/a,/Keyboard/leftArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 522ff369-ac59-4981-8aed-fe12b9e866b9
+    m_ActionName: 'CharacterSelect/Enter[/Keyboard/enter]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -684,6 +688,7 @@ MonoBehaviour:
   isSprinting: 0
   jumpPower: 6.25
   maxJumps: 2
+  coyoteTime: 0.2
   groundCheckPos: {fileID: 2013579520204813210}
   groundCheckSize: {x: 0.5, y: 0.05}
   smallJumpCheckSize: {x: 0.5, y: 2.5}
@@ -693,6 +698,7 @@ MonoBehaviour:
   grabObjectLayer:
     serializedVersion: 2
     m_Bits: 64
+  isGrounded: 0
   baseGravity: 1
   maxFallSpeed: 18
   fallSpeedMultiplier: 2
@@ -774,8 +780,8 @@ MonoBehaviour:
     TomeText: {fileID: 9101841022647806256}
   hasPickedUp: 0
   selectedTome: {fileID: 0}
---- !u!61 &-109739882762214447
-BoxCollider2D:
+--- !u!70 &3867574655484156098
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -809,17 +815,8 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 1.2, y: 1.8}
+  m_Direction: 0
 --- !u!1 &3392915431852195534
 GameObject:
   m_ObjectHideFlags: 0
