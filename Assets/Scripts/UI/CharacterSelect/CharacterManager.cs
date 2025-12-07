@@ -125,4 +125,12 @@ public class CharacterManager : MonoBehaviour
             BackOption();
         }
     }
+
+    public void HandleEnterInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            PlayGame();
+        }
+    }
 }

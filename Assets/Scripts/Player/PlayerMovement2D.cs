@@ -36,7 +36,7 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private Vector2 smallJumpCheckSize = new Vector2(0.5f, 2.5f);
     public LayerMask groundLayer;
     public LayerMask grabObjectLayer;
-    private bool isGrounded;
+    public bool isGrounded;
 
     [Header("Gravity")]
     [Tooltip("Player base gravity value")]
