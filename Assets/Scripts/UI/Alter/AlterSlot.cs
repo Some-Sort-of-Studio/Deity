@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +11,10 @@ public class AlterSlot : MonoBehaviour
     private SlotState state;
 
     [Header("References:")]
+    [SerializeField] private Image SlotIcon;
     [SerializeField] private Image SlotImage;
-    [SerializeField] private string SlotName;
+    [SerializeField] private Sprite SlotHolding;
+    [SerializeField] private Sprite SlotEmpty;
 
     [Header("Tome Held:")]
     [SerializeField] private Tome TomeInSlot;
@@ -21,6 +24,7 @@ public class AlterSlot : MonoBehaviour
         playerInv = GameObject.FindFirstObjectByType<PlayerInventory>();
 
         state = SlotState.empty;
+        SlotChange();
     }
 
     // this thing is a mess...too bad!
@@ -66,13 +70,13 @@ public class AlterSlot : MonoBehaviour
     {
         if (TomeInSlot != null)
         {
-            SlotImage.sprite = TomeInSlot.TomeIcon;
-            SlotName = TomeInSlot.TomeName;
+            SlotIcon.sprite = TomeInSlot.TomeIcon;
+            SlotImage.sprite = SlotHolding;
         }
         else
         {
-            SlotImage.sprite = null;
-            SlotName = "";
+            SlotIcon.sprite = null;
+            SlotImage.sprite = SlotEmpty;
         }
     }
 }
