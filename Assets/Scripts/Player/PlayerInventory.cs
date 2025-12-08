@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Animator invanimator;
     public Animator tomeanimator;
 
-    private List<Tome> collectedTomes = new List<Tome>();
+    [SerializeField] private List<Tome> collectedTomes = new List<Tome>();
     private bool opened = false;
     [HideInInspector] public bool alteropened = false;
     [HideInInspector] public bool tomeopened = false;
@@ -84,8 +84,6 @@ public class PlayerInventory : MonoBehaviour
             {
                 invanimator.SetBool("InventoryOpen", true);
                 OpenInventory();
-                if (openInventoryTooltip != null) { Destroy(openInventoryTooltip); }
-                if (viewTomeTooltip != null) { viewTomeTooltip.SetActive(true); }
                 opened = true;
             }
             else if (!alteropened)
@@ -121,6 +119,11 @@ public class PlayerInventory : MonoBehaviour
     public void OpenInventory()
     {
         InventoryHolder.SetActive(true);
+        if (openInventoryTooltip != null) { Destroy(openInventoryTooltip); }
+        if (viewTomeTooltip != null && collectedTomes.Count > 0) 
+        { 
+            viewTomeTooltip.SetActive(true); 
+        }
         UpdateInventory();
         UIManager.Instance.TogglePlayerAbilities(false);
     }

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +8,14 @@ public class AlterSlot : MonoBehaviour
     private enum SlotState { holding, empty }
 
     private PlayerInventory playerInv;
+    private AlterScript alterScript;
     private SlotState state;
 
     [Header("References:")]
+    [SerializeField] private Image SlotIcon;
     [SerializeField] private Image SlotImage;
-    [SerializeField] private string SlotName;
+    [SerializeField] private Sprite SlotHolding;
+    [SerializeField] private Sprite SlotEmpty;
 
     [Header("Tome Held:")]
     [SerializeField] private Tome TomeInSlot;
@@ -19,8 +23,10 @@ public class AlterSlot : MonoBehaviour
     private void Start()
     {
         playerInv = GameObject.FindFirstObjectByType<PlayerInventory>();
+        alterScript = gameObject.GetComponentInParent<AlterScript>();
 
         state = SlotState.empty;
+        SlotChange();
     }
 
     // this thing is a mess...too bad!
@@ -47,6 +53,7 @@ public class AlterSlot : MonoBehaviour
             TomeInSlot = playerInv.selectedTome;
             playerInv.RemovedFromInventory(TomeInSlot);
             playerInv.SetTome(null);
+            alterScript.AddtoAlter(TomeInSlot);
 
             state = SlotState.holding;
         }
@@ -57,6 +64,7 @@ public class AlterSlot : MonoBehaviour
         if (playerInv.selectedTome != null) playerInv.SetTome(null);
 
         playerInv.AddToInventory(TomeInSlot);
+        alterScript.RemoveFromAlter(TomeInSlot);
         TomeInSlot = null;
 
         state = SlotState.empty;
@@ -66,13 +74,15 @@ public class AlterSlot : MonoBehaviour
     {
         if (TomeInSlot != null)
         {
-            SlotImage.sprite = TomeInSlot.TomeIcon;
-            SlotName = TomeInSlot.TomeName;
+            SlotIcon.enabled = true;
+            SlotIcon.sprite = TomeInSlot.TomeIcon;
+            SlotImage.sprite = SlotHolding;
         }
         else
         {
-            SlotImage.sprite = null;
-            SlotName = "";
+            SlotIcon.enabled = false;
+            SlotIcon.sprite = null;
+            SlotImage.sprite = SlotEmpty;
         }
     }
 }
