@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Animator invanimator;
     public Animator tomeanimator;
 
-    private List<Tome> collectedTomes = new List<Tome>();
+    [SerializeField] private List<Tome> collectedTomes = new List<Tome>();
     private bool opened = false;
     [HideInInspector] public bool alteropened = false;
     [HideInInspector] public bool tomeopened = false;

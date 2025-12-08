@@ -8,6 +8,7 @@ public class AlterSlot : MonoBehaviour
     private enum SlotState { holding, empty }
 
     private PlayerInventory playerInv;
+    private AlterScript alterScript;
     private SlotState state;
 
     [Header("References:")]
@@ -22,6 +23,7 @@ public class AlterSlot : MonoBehaviour
     private void Start()
     {
         playerInv = GameObject.FindFirstObjectByType<PlayerInventory>();
+        alterScript = gameObject.GetComponentInParent<AlterScript>();
 
         state = SlotState.empty;
         SlotChange();
@@ -51,6 +53,7 @@ public class AlterSlot : MonoBehaviour
             TomeInSlot = playerInv.selectedTome;
             playerInv.RemovedFromInventory(TomeInSlot);
             playerInv.SetTome(null);
+            alterScript.AddtoAlter(TomeInSlot);
 
             state = SlotState.holding;
         }
@@ -61,6 +64,7 @@ public class AlterSlot : MonoBehaviour
         if (playerInv.selectedTome != null) playerInv.SetTome(null);
 
         playerInv.AddToInventory(TomeInSlot);
+        alterScript.RemoveFromAlter(TomeInSlot);
         TomeInSlot = null;
 
         state = SlotState.empty;
@@ -70,11 +74,13 @@ public class AlterSlot : MonoBehaviour
     {
         if (TomeInSlot != null)
         {
+            SlotIcon.enabled = true;
             SlotIcon.sprite = TomeInSlot.TomeIcon;
             SlotImage.sprite = SlotHolding;
         }
         else
         {
+            SlotIcon.enabled = false;
             SlotIcon.sprite = null;
             SlotImage.sprite = SlotEmpty;
         }

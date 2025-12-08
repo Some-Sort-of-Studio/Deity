@@ -29,7 +29,7 @@ public class InventorySlot : MonoBehaviour
             {
                 playerInv.ReadTome(tomeInSlot);
             }
-            else
+            else if(playerInv.tomeopened)
             {
                 playerInv.PlayTomeAnim();
             }
