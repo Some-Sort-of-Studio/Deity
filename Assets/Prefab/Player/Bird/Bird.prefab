@@ -805,6 +805,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2792016932355144892, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7.9074097
+      objectReference: {fileID: 0}
     - target: {fileID: 2854296980080945143, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1042,20 +1046,17 @@ PrefabInstance:
       addedObject: {fileID: 603089622921891574}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3101268727038175309, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
-      insertIndex: -1
+      insertIndex: 7
       addedObject: {fileID: 7690888615171848159}
     - targetCorrespondingSourceObject: {fileID: 3101268727038175309, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
-      insertIndex: -1
+      insertIndex: 8
       addedObject: {fileID: 8361350524237200211}
     - targetCorrespondingSourceObject: {fileID: 3101268727038175309, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
-      insertIndex: -1
+      insertIndex: 9
       addedObject: {fileID: 8139768576486102234}
     - targetCorrespondingSourceObject: {fileID: 3101268727038175309, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
-      insertIndex: -1
+      insertIndex: 10
       addedObject: {fileID: 1263408274843906420}
-    - targetCorrespondingSourceObject: {fileID: 3101268727038175309, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7156953605577216377}
   m_SourcePrefab: {fileID: 100100000, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
 --- !u!1 &1095281449741805334 stripped
 GameObject:
@@ -1205,43 +1206,6 @@ MonoBehaviour:
   drowningEffectObject: {fileID: 9138915301179216087}
   maxSwimmableWaterHeight: 2
   timeToDrown: 1.5
---- !u!70 &7156953605577216377
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095281449741805334}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.2, y: 1.8}
-  m_Direction: 0
 --- !u!114 &1829230930339193933 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4420397399978699542, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}

@@ -199,8 +199,13 @@ public class PlayerMovement2D : MonoBehaviour
 
         if (climb.isClimbing == true)
         {
+            animator.SetBool("Climb", true);
             animator.SetBool("Air", false);
             HandleClimbing();
+        }
+        else
+        {
+            animator.SetBool("Climb", false);
         }
     }
 
