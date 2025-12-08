@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: The Troubadour's Optimistic Journey
   m_EditorClassIdentifier: 
   TomeName: The Troubadour's Optimistic Journey
-  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
-  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeSprite: {fileID: 828456416, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
+  TomeIcon: {fileID: 828456416, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
   TomeText: "Maybe I shouldn't have joined that party in the woods.. but the wine,
     the food and the women were exquisite. Oh, I danced and drank as the panpipes
     played; tasted the delights of both feast and flesh, but I remember little now.

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Am I Deserving of Punishment
   m_EditorClassIdentifier: 
   TomeName: Am I Deserving of Punishment?
-  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
-  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeSprite: {fileID: -1362338349, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
+  TomeIcon: {fileID: -1362338349, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
   TomeText: 'I took a nap
 
 

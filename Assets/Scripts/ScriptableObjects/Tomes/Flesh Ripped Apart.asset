@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Flesh Ripped Apart
   m_EditorClassIdentifier: 
   TomeName: Flesh Ripped Apart
-  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
-  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeSprite: {fileID: 412310738, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
+  TomeIcon: {fileID: 412310738, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
   TomeText: 'Something claws its way
 
 

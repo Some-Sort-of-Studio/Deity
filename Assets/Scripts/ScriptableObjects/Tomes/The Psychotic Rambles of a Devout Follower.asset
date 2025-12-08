@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: The Psychotic Rambles of a Devout Follower
   m_EditorClassIdentifier: 
   TomeName: The Psychotic Rambles of a Devout Follower
-  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
-  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeSprite: {fileID: 784458241, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
+  TomeIcon: {fileID: 784458241, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
   TomeText: "My body, I give to the water. For you, oh great \xD8rvatha, as sacrifice.\_\n\nI,
     who have been devout. I, who never forgot. My flesh will be your sustenance.
     My mind, your possession. All to honour you. I am your last and most faithful.\_\n\nI
