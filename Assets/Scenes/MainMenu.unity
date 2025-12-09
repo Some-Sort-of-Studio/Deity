@@ -2386,6 +2386,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1338006569}
+    - target: {fileID: 8171398647558364556, guid: 9a15b4778bfd3a54ca483c14aecf60fb, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1553885746}
     - target: {fileID: 8317278639243386090, guid: 9a15b4778bfd3a54ca483c14aecf60fb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2470,8 +2474,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionsCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8730627944837741616, guid: 9a15b4778bfd3a54ca483c14aecf60fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7861812659527530693, guid: 9a15b4778bfd3a54ca483c14aecf60fb, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a15b4778bfd3a54ca483c14aecf60fb, type: 3}
