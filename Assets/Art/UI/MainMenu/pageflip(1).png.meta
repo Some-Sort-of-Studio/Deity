@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a17c766f71c406f489c1431792de745f
+guid: 7c6b946a3b402f24d9d7bc83010a33a7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,24 +93,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pageflip_0
+      name: pageflip(1)_0
       rect:
         serializedVersion: 2
         x: 98
@@ -125,14 +112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d19d740b70bf70c48910c21bfeff72e4
-      internalID: -155682167
+      spriteID: 5325396b478c6d640a99aac37be224e0
+      internalID: -18990822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pageflip_1
+      name: pageflip(1)_1
       rect:
         serializedVersion: 2
         x: 739
@@ -147,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67499349843258e458c048405ec96019
-      internalID: 587973658
+      spriteID: 37e9047af5307e84bb936bf4dcd1981d
+      internalID: -1307980550
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pageflip_2
+      name: pageflip(1)_2
       rect:
         serializedVersion: 2
         x: 1378
@@ -169,14 +156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc29171cc7d8cce47a00748508f27df1
-      internalID: -345825090
+      spriteID: c072c5601d418f5439e594087eb0a8e8
+      internalID: 1330247253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pageflip_3
+      name: pageflip(1)_3
       rect:
         serializedVersion: 2
         x: 2018
@@ -191,14 +178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d2ee9e49b62afb49a3c9d283fa47079
-      internalID: 467704594
+      spriteID: f788050f766e7854694ad5608b95718e
+      internalID: 939629394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pageflip_4
+      name: pageflip(1)_4
       rect:
         serializedVersion: 2
         x: 2659
@@ -213,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77c83b1de14544142bcbc13d51b13b16
-      internalID: -2140372782
+      spriteID: 294e190c44a20954c9c694278dd08160
+      internalID: -262684262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pageflip_5
+      name: pageflip(1)_5
       rect:
         serializedVersion: 2
         x: 3298
@@ -235,8 +222,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c004463f57b6d842855dd0f4103f2cc
-      internalID: -407045284
+      spriteID: d934b3e808d6bd34e966bc11eb814a3b
+      internalID: -1877358527
       vertices: []
       indices: 
       edges: []
@@ -245,7 +232,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c2f5ab3da65c4954a92821e9a8d041bc
+    spriteID: d3eea8c9752d8a14c88bd3f3b912958a
     internalID: 0
     vertices: []
     indices: 
@@ -255,12 +242,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pageflip_0: -155682167
-      pageflip_1: 587973658
-      pageflip_2: -345825090
-      pageflip_3: 467704594
-      pageflip_4: -2140372782
-      pageflip_5: -407045284
+      pageflip(1)_0: -18990822
+      pageflip(1)_1: -1307980550
+      pageflip(1)_2: 1330247253
+      pageflip(1)_3: 939629394
+      pageflip(1)_4: -262684262
+      pageflip(1)_5: -1877358527
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -11,6 +11,9 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private TMP_Text qualityText;
     [SerializeField] private TMP_Text particleText;
 
+    [Header("Animation References:")]
+    [SerializeField] private Animator animator;
+
     // resolution ID + array
     private int resolutionID;
     Resolution[] resolutions;
@@ -139,6 +142,11 @@ public class SettingsMenu : MonoBehaviour
             QualitySettings.SetQualityLevel(qualityIndex);
             qualityText.text = qualityName[qualityIndex];
         }
+    }
+
+    public void PageFlipPlay()
+    {
+
     }
 
     public void SetQualityLevelDown()
