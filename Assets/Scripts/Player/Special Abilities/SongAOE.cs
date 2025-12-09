@@ -8,7 +8,6 @@ public class SongAOE : MonoBehaviour
 {
     public bool songAOEEnabled = true;
 
-    public GameObject AOEGround;
     public GameObject AOEAir;
     private AudioSource audioSource;
 
@@ -18,31 +17,20 @@ public class SongAOE : MonoBehaviour
 
     void Start()
     {
-        AOEGround.SetActive(false);
         AOEAir.SetActive(false);
-        audioSource = AOEGround.GetComponent<AudioSource>();
-        audioSource = AOEAir.GetComponent<AudioSource>();
+        //audioSource = AOEAir.GetComponent<AudioSource>();
         player = GetComponent<PlayerMovement2D>();
         usingAbility = false;
     }
 
     private void Update()
     {
-        if (player.isGrounded && usingAbility)
-        {
-            AOEGround.SetActive(true);
-            AOEAir.SetActive(false);
-        }
-
-        if (!player.isGrounded && usingAbility)
+        if (usingAbility)
         {
             AOEAir.SetActive(true);
-            AOEGround.SetActive(false);
         }
-
-        if (!usingAbility)
+        else
         {
-            AOEGround.SetActive(false);
             AOEAir.SetActive(false);
         }
     }
@@ -54,12 +42,12 @@ public class SongAOE : MonoBehaviour
         if (context.performed)
         {
             usingAbility = true;
-            AudioManager.Instance.PlayAudio("Song_AOE", audioSource);
+            //AudioManager.Instance.PlayAudio("Song_AOE", audioSource);
         }
         else if(context.canceled)
         {
             usingAbility = false;
-            AudioManager.Instance.StopAudio(audioSource);
+            //AudioManager.Instance.StopAudio(audioSource);
         }
     }
 }
