@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "An Anthropologist\u2019s Journal"
   m_EditorClassIdentifier: 
   TomeName: "An Anthropologist\u2019s Journal"
-  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
-  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeSprite: {fileID: 1001596270, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
+  TomeIcon: {fileID: 1001596270, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
   TomeText: "I fear these may be the last words I write. I find myself lost in this
     damnable place. The fabled Gehenna. I find myself unable to recall how I came
     to be here, to which I must conclude, I am dead. What a shameful act, for I could

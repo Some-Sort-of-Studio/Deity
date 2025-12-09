@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: The Denial Of An Abandoned Deity.
   m_EditorClassIdentifier: 
   TomeName: The Denial Of An Abandoned Deity.
-  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
-  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeSprite: {fileID: -340834830, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
+  TomeIcon: {fileID: -340834830, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
   TomeText: "There is a chill, creeping up my spine, tracing along the bone up to
     my head.\_\n\nIt is fear, I am in here for a reason, I cannot remember it, maybe
     I do not want to.\_\n\nFear for myself or my situation, it evades me.\_\n\nIt

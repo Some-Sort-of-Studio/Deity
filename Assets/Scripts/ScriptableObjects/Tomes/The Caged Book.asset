@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: The Caged Book
   m_EditorClassIdentifier: 
   TomeName: The Caged Book
-  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
-  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeSprite: {fileID: -972221633, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
+  TomeIcon: {fileID: -972221633, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
   TomeText: "I reach out beyond\n\nBut brass bars restrict me.\n\nWhy does this land
     cage me so?\n\nIt\u2019s rusting with me\n\nDecaying inside this\n\nCramped hunk
     of metal.\n\nMy bones are being crushed\n\nAnd my feathers torn;\n\nThese wings

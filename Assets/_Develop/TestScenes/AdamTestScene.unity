@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 181814479391781863, guid: 3dd5ceb800899c9498ce714e41d5dda8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7.9074097
+      objectReference: {fileID: 0}
     - target: {fileID: 515295900130675785, guid: 3dd5ceb800899c9498ce714e41d5dda8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.51
@@ -171,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bird
       objectReference: {fileID: 0}
+    - target: {fileID: 2582371403806171543, guid: 3dd5ceb800899c9498ce714e41d5dda8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3036647275883313194, guid: 3dd5ceb800899c9498ce714e41d5dda8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -233,6 +241,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7852431335278242158, guid: 3dd5ceb800899c9498ce714e41d5dda8, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076217019568716387, guid: 3dd5ceb800899c9498ce714e41d5dda8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076217019568716387, guid: 3dd5ceb800899c9498ce714e41d5dda8, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -291,7 +307,7 @@ PrefabInstance:
     - target: {fileID: 3360763332310511635, guid: a132e193e227ae24f952387915cf0443, type: 3}
       propertyPath: tome
       value: 
-      objectReference: {fileID: 11400000, guid: a4bd409cc30b3c24089e2df7a33722dd, type: 2}
+      objectReference: {fileID: 11400000, guid: 51bd96c4c851765469b721244bc59994, type: 2}
     - target: {fileID: 5778573331688074490, guid: a132e193e227ae24f952387915cf0443, type: 3}
       propertyPath: m_Name
       value: Tome
@@ -613,7 +629,7 @@ PrefabInstance:
     - target: {fileID: 3360763332310511635, guid: a132e193e227ae24f952387915cf0443, type: 3}
       propertyPath: tome
       value: 
-      objectReference: {fileID: 11400000, guid: e3856b386a909cc41b8ce769a814480b, type: 2}
+      objectReference: {fileID: 11400000, guid: e7ccd034d9725444b962de9cca2494fa, type: 2}
     - target: {fileID: 5778573331688074490, guid: a132e193e227ae24f952387915cf0443, type: 3}
       propertyPath: m_Name
       value: Tome (2)

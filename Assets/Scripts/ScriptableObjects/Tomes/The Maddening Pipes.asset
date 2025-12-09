@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: The Maddening Pipes
   m_EditorClassIdentifier: 
   TomeName: The Maddening Pipes
-  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
-  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeSprite: {fileID: 1314966099, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
+  TomeIcon: {fileID: 1314966099, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
   TomeText: "Too many pipes and paths..\n\nNo matter which I choose, they always
     return to here, this churning palace of rot.\_\n\nI cannot dive again. The grasping,
     pale, pallid hands.\_\n\nI felt them clutching me.\_\n\nI saw their empty, sallow

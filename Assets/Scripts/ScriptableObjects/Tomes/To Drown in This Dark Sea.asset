@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: To Drown in This Dark Sea
   m_EditorClassIdentifier: 
   TomeName: To Drown in This Dark Sea
-  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
-  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeSprite: {fileID: 391951572, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
+  TomeIcon: {fileID: 391951572, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
   TomeText: "I writhe as I am submerged in\n\nA dark substance that\_\n\nfills my
     airways with frigidity.\n\nI can\u2019t see or hear or\n\nBreathe for that matter.\n\nAm
     I dying?"

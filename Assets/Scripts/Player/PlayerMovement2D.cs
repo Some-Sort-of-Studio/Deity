@@ -29,6 +29,9 @@ public class PlayerMovement2D : MonoBehaviour
     [Tooltip("Controls how many jumps the player can do")]
     [SerializeField] private int maxJumps = 2;
     int jumpsRemaining;
+    [Tooltip("This value changes how much time the player has when they are in the air")]
+    [SerializeField] private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
 
     [Header("GroundCheck")]
     public Transform groundCheckPos;
@@ -36,7 +39,7 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private Vector2 smallJumpCheckSize = new Vector2(0.5f, 2.5f);
     public LayerMask groundLayer;
     public LayerMask grabObjectLayer;
-    private bool isGrounded;
+    public bool isGrounded;
 
     [Header("Gravity")]
     [Tooltip("Player base gravity value")]
@@ -148,23 +151,28 @@ public class PlayerMovement2D : MonoBehaviour
     {
         if (!movementEnabled) { return; }
 
-        if (jumpsRemaining > 0)
+        if (coyoteTimeCounter > 0f)
         {
-            if (context.performed)
+            if (jumpsRemaining > 0)
             {
-                //Hold down jump button = full height
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-                jumpsRemaining--;
-                animator.SetTrigger(animator.GetBool("Air") ? "StartDoubleJump" : "StartJump");
-                PlayJumpSounds();
-            }
-            else if (context.canceled)
-            {
-                //Light tap of jump button = half the height
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
-                jumpsRemaining--;
-                //if still nearish to ground then we've released early so small jump anim
-                if (Physics2D.OverlapBox(groundCheckPos.position, smallJumpCheckSize, 0, groundLayer) || Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grabObjectLayer)) { animator.SetTrigger("StartSmallJump"); }
+                if (context.performed)
+                {
+                    //Hold down jump button = full height
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+                    jumpsRemaining--;
+                    coyoteTimeCounter = 0f;
+                    animator.SetTrigger(animator.GetBool("Air") ? "StartDoubleJump" : "StartJump");
+                    PlayJumpSounds();
+
+                }
+                else if (context.canceled)
+                {
+                    //Light tap of jump button = half the height
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+                    jumpsRemaining--;
+                    //if still nearish to ground then we've released early so small jump anim
+                    if (Physics2D.OverlapBox(groundCheckPos.position, smallJumpCheckSize, 0, groundLayer) || Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, grabObjectLayer)) { animator.SetTrigger("StartSmallJump"); }
+                }
             }
         }
     }
@@ -175,6 +183,7 @@ public class PlayerMovement2D : MonoBehaviour
         {
             //Grounded
             jumpsRemaining = maxJumps;
+            coyoteTimeCounter = coyoteTime;
             isGrounded = true;
 
             //if was in air and have just landed, trigger endjump
@@ -185,12 +194,18 @@ public class PlayerMovement2D : MonoBehaviour
         {
             animator.SetBool("Air", true);
             isGrounded = false;
+            coyoteTimeCounter -= Time.deltaTime;
         }
 
         if (climb.isClimbing == true)
         {
+            animator.SetBool("Climb", true);
             animator.SetBool("Air", false);
             HandleClimbing();
+        }
+        else
+        {
+            animator.SetBool("Climb", false);
         }
     }
 

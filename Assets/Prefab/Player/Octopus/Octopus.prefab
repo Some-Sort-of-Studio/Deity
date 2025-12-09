@@ -163,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 386750856565125168, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 527786188859579242, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_Controller
@@ -260,6 +260,10 @@ PrefabInstance:
     - target: {fileID: 2530003954449580818, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792016932355144892, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7.9074097
       objectReference: {fileID: 0}
     - target: {fileID: 2854296980080945143, guid: c31a5947b6b9b1d478b27e22a7d5b245, type: 3}
       propertyPath: m_Sprite

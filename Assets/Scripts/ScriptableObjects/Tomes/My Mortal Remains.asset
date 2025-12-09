@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: My Mortal Remains
   m_EditorClassIdentifier: 
   TomeName: My Mortal Remains
-  TomeSprite: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
-  TomeIcon: {fileID: 478162934, guid: ad65bececca3cf349b0e4f6bff47d077, type: 3}
+  TomeSprite: {fileID: -347495154, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
+  TomeIcon: {fileID: -347495154, guid: 3f74c6d1fdb9e464d90b59cabc9081df, type: 3}
   TomeText: 'The entirety of my carcass
 
 

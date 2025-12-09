@@ -2028,6 +2028,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8d7f9b1a-153f-42e5-844b-7112d5b92420
     m_ActionName: 'CharacterSelect/Back[/Keyboard/a,/Keyboard/leftArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1179911826}
+        m_TargetAssemblyTypeName: CharacterManager, Assembly-CSharp
+        m_MethodName: HandleEnterInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 522ff369-ac59-4981-8aed-fe12b9e866b9
+    m_ActionName: 'CharacterSelect/Enter[/Keyboard/enter]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: CharacterSelect

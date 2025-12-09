@@ -10,8 +10,6 @@ public class InventorySlot : MonoBehaviour
     {
         Icon.sprite = WhatItem.TomeIcon;
         tomeInSlot = WhatItem;
-
-        Debug.Log("Created slot:" +  WhatItem.TomeName);
     }
 
     // view the tome or select the tome
@@ -22,14 +20,19 @@ public class InventorySlot : MonoBehaviour
 
         // for alter selection
         if (playerInv.alteropened)
-        {
             playerInv.SetTome(tomeInSlot);
-        }
 
         // for reading tome
         if (!playerInv.alteropened)
         {
-            playerInv.ReadTome(tomeInSlot);
+            if (!playerInv.tomeopened)
+            {
+                playerInv.ReadTome(tomeInSlot);
+            }
+            else if(playerInv.tomeopened)
+            {
+                playerInv.PlayTomeAnim();
+            }
         }
     }
 }

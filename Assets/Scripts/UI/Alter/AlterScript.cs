@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AlterScript : MonoBehaviour
@@ -6,11 +7,14 @@ public class AlterScript : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject AlterCanvas;
     [SerializeField] protected GameObject PrayButton;
+    [SerializeField] private Animator animator;
 
+    [SerializeField] private GameObject tooltip;
 
     [Header("Lists and Arrays")]
     [Tooltip("This var should include all potential sets in the game")]
     [SerializeField] private TomeSet[] existingTomesets;
+    [SerializeField] private TomeSet currentSet;
 
     [SerializeField] private List<Tome> TomesInAlter = new List<Tome>();
 
@@ -24,7 +28,11 @@ public class AlterScript : MonoBehaviour
     {
         PrayButton.SetActive(false);
         AlterCanvas.SetActive(false);
+
+        tooltip.SetActive(false);
+
         playerOverlapping = false;
+        currentSet = null;
 
         playerInv = GameObject.FindFirstObjectByType<PlayerInventory>();
     }
@@ -40,10 +48,12 @@ public class AlterScript : MonoBehaviour
         {
             if (AlterCanvas.activeSelf)
             {
-                OnAlterDisable();
+                animator.SetBool("AltarOpen", false);
+                Invoke(nameof(OnAlterDisable), 0.2f);
             }
             else
             {
+                animator.SetBool("AltarOpen", true);
                 OnAlterEnable();
             }
         }
@@ -68,37 +78,43 @@ public class AlterScript : MonoBehaviour
     public void OnAlterEnable()
     {
         AlterCanvas.SetActive(true);
+        if(tooltip != null) {tooltip.SetActive(true);}
+
         playerInv.AlterOpen(true);
     }
 
     public void OnAlterDisable()
     {
         AlterCanvas.SetActive(false);
+        if (tooltip != null) { tooltip.SetActive(false); }
+
         playerInv.CloseInventory();
         playerInv.AlterOpen(false);
     }
 
     public void Pray()
     {
-        OnAlterDisable();
-
-        if (TomesInAlter.Count == 3)
-        {
-            CheckForEndings();
-        }
+        Instantiate(currentSet.endingCanvas, null);
+        UIManager.Instance.TogglePlayerAbilities(false);
     }
 
-    public void RemoveFromAlter(Tome tome) { TomesInAlter.Remove(tome); }
+    public void RemoveFromAlter(Tome tome)
+    { 
+        TomesInAlter.Remove(tome);
+        PrayButton.SetActive(false);
+        currentSet = null;
+    }
 
     public void AddtoAlter(Tome tome)
     {
         TomesInAlter.Add(tome);
 
+        if (tooltip != null) { Destroy(tooltip); }
+
         if (TomesInAlter.Count == 3)
         {
-            PrayButton.SetActive(true);
+            CheckForEndings();
         }
-        else PrayButton.SetActive(false);
     }
 
     public void CheckForEndings()
@@ -113,13 +129,15 @@ public class AlterScript : MonoBehaviour
                 if (!TomesInAlter.Contains(tome))
                 {
                     hasSet = false;
+                    currentSet = null;
                 }
             }
 
             //if has whole set show ending for that tomeset
             if (hasSet)
             {
-                Instantiate(tomeSet.endingCanvas, null);
+                PrayButton.SetActive(true);
+                currentSet = tomeSet;
                 return;
             }
         }
