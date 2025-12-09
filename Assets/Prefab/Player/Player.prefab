@@ -1682,10 +1682,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 1651317764180073448, guid: c582774fb301f84458fa5a80869f2514, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -7.9074097
-      objectReference: {fileID: 0}
     - target: {fileID: 1967041468397400001, guid: c582774fb301f84458fa5a80869f2514, type: 3}
       propertyPath: m_Pivot.x
       value: 0
