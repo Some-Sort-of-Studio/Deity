@@ -9,6 +9,7 @@ public class AlterScript : MonoBehaviour
     [SerializeField] protected GameObject PrayButton;
     [SerializeField] private Animator animator;
 
+    [SerializeField] private GameObject tooltip;
 
     [Header("Lists and Arrays")]
     [Tooltip("This var should include all potential sets in the game")]
@@ -27,6 +28,9 @@ public class AlterScript : MonoBehaviour
     {
         PrayButton.SetActive(false);
         AlterCanvas.SetActive(false);
+
+        tooltip.SetActive(false);
+
         playerOverlapping = false;
         currentSet = null;
 
@@ -74,12 +78,16 @@ public class AlterScript : MonoBehaviour
     public void OnAlterEnable()
     {
         AlterCanvas.SetActive(true);
+        if(tooltip != null) {tooltip.SetActive(true);}
+
         playerInv.AlterOpen(true);
     }
 
     public void OnAlterDisable()
     {
         AlterCanvas.SetActive(false);
+        if (tooltip != null) { tooltip.SetActive(false); }
+
         playerInv.CloseInventory();
         playerInv.AlterOpen(false);
     }
@@ -100,6 +108,8 @@ public class AlterScript : MonoBehaviour
     public void AddtoAlter(Tome tome)
     {
         TomesInAlter.Add(tome);
+
+        if (tooltip != null) { Destroy(tooltip); }
 
         if (TomesInAlter.Count == 3)
         {
