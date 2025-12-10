@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class AudioSettings : MonoBehaviour
 {
@@ -8,23 +8,31 @@ public class AudioSettings : MonoBehaviour
     [SerializeField] private Slider MasterVolSlider;
     [SerializeField] private Slider PlayerVolSlider;
     [SerializeField] private Slider EnvironmentVolSlider;
-    [SerializeField] private Slider SFXVolSlider;
-
-    public enum Volume { Master, Player, Environment, SFX };
-
-    public Volume volume;
+    [SerializeField] private Slider MusicVolSlider;
 
     [Header("Mixer:")]
-    [SerializeField] private AudioMixer mainMixer;
+    [SerializeField] private AudioMixer audioMixer;
 
-    public void SetVolume(float value)
+    public void SetMasterVolume(float sliderValue)
     {
-
+        audioMixer.SetFloat("MainVolume", Mathf.Log10(sliderValue) * 20);
     }
 
-    private void SavePrefs()
+    // sets the music volume according to the slider.
+    public void SetMusicVolume(float sliderValue)
     {
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20);
+    }
 
+    // sets the environment volume according to the slider.
+    public void SetEnvrionmentVolume(float sliderValue)
+    {
+        audioMixer.SetFloat("EnvrionmentVolume", Mathf.Log10(sliderValue) * 20);
+    }
+
+    public void SetPlayerVolume(float sliderValue)
+    {
+        audioMixer.SetFloat("PlayerVolume", Mathf.Log10(sliderValue) * 20);
     }
 
 }
